@@ -210,6 +210,7 @@ String EmployeeUsername = "";
 
 
 
+<<<<<<< HEAD
         try{
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
@@ -221,6 +222,9 @@ String EmployeeUsername = "";
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
          }
+=======
+       
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
     }//GEN-LAST:event_employeeTableMouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
@@ -254,8 +258,13 @@ String EmployeeUsername = "";
 
             // Community.CreateCommunity(house,person,community,city,hospital);
            // Bankemployee.CreateBankemployee(name,gender,age,phone,username,password);
+<<<<<<< HEAD
           // bankEmployee employee =  new bankEmployee(name,gender,age,phone,username,password);
                //employee.addEmployee();
+=======
+           bankEmployee employee =  new bankEmployee(name,gender,age,phone,username,password);
+               employee.addEmployee();
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
         }
 
         //JOptionPane.showMessageDialog(this,"New Employ details Added");
@@ -274,6 +283,10 @@ String EmployeeUsername = "";
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
         
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void viewBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtn1ActionPerformed
@@ -283,7 +296,13 @@ String EmployeeUsername = "";
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         
+=======
+        financialLogin emergencyLoginObj = new financialLogin();
+        setVisible(false);
+        emergencyLoginObj.setVisible(true);
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
     }//GEN-LAST:event_btnStudLogoutActionPerformed
 
 //    public void employee_table(){

@@ -135,7 +135,13 @@ public class bankServices extends javax.swing.JFrame {
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         
+=======
+        financialLogin emergencyLoginObj = new financialLogin();
+        setVisible(false);
+        emergencyLoginObj.setVisible(true);
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
     }//GEN-LAST:event_btnStudLogoutActionPerformed
     String currEmpName = "";
     String currRole = "";

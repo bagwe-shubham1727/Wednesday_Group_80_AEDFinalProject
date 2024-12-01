@@ -6,7 +6,11 @@ package bankEnterprise;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+<<<<<<< HEAD
 import main.signUp;
+=======
+//import main.signUp;
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
 
 /**
  *
@@ -148,6 +152,7 @@ public class financialLogin extends javax.swing.JFrame {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         
+<<<<<<< HEAD
         String role = selectUniRole.getSelectedItem().toString();
         String username = btnUsername.getText();
         String password = btnPassword.getText();
@@ -184,13 +189,22 @@ public class financialLogin extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null,"Please Enter Details Properly");
         }
+=======
+      
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void jButtonBackUniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackUniLoginActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         signUp signUpObj = new signUp();
         setVisible(false);
         signUpObj.setVisible(true);
+=======
+        //signUp signUpObj = new signUp();
+        setVisible(false);
+        //signUpObj.setVisible(true);
+>>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
     }//GEN-LAST:event_jButtonBackUniLoginActionPerformed
 
     /**
