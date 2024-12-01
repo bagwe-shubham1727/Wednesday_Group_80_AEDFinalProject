@@ -6,11 +6,10 @@ package bankEnterprise;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-<<<<<<< HEAD
+
 import main.signUp;
-=======
-//import main.signUp;
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+
+
 
 /**
  *
@@ -150,61 +149,12 @@ public class financialLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsernameActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        // TODO add your handling code here:
-        
-<<<<<<< HEAD
-        String role = selectUniRole.getSelectedItem().toString();
-        String username = btnUsername.getText();
-        String password = btnPassword.getText();
-        
-        if(role.equals("Bank Employee")){
-         try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.bankemployee WHERE username = '"+username+"' and password = '"+password+"'";
-            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-//            if(!studentData.next()){
-//                JOptionPane.showMessageDialog(null,"Invalid Credentials");
-//            }
-                
-            while(studentData.next()){
-                String studName = studentData.getString("Name"); 
-                
-                bankAction emp = new bankAction();
-                emp.setName(studName);
-                setVisible(false);
-                emp.setVisible(true);
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }   
-        }else if(role.equals("Bank Admin")){
-            if(username.equals("BANADMIN") && password.equals("7890")){
-                bankAdmin bakAdminObj = new bankAdmin();
-                setVisible(false);
-                bakAdminObj.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null,"Invalid Credentials");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null,"Please Enter Details Properly");
-        }
-=======
-      
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+    
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void jButtonBackUniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackUniLoginActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-        signUp signUpObj = new signUp();
-        setVisible(false);
-        signUpObj.setVisible(true);
-=======
-        //signUp signUpObj = new signUp();
-        setVisible(false);
-        //signUpObj.setVisible(true);
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+
     }//GEN-LAST:event_jButtonBackUniLoginActionPerformed
 
     /**

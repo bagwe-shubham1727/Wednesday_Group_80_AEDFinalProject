@@ -201,30 +201,7 @@ public class bankAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 String EmployeeUsername = "";
     private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
-         DefaultTableModel profModel = (DefaultTableModel)employeeTable.getModel();
-        String EnameTxt = employeeTable.getValueAt(employeeTable.getSelectedRow(), 0).toString();
-        nameTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 0).toString());        
-        genderTxt.setSelectedItem(employeeTable.getValueAt(employeeTable.getSelectedRow(), 1).toString());
-        ageTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 2).toString());
-        phoneTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 3).toString());
-
-
-
-<<<<<<< HEAD
-        try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            java.sql.Statement statement = connection.createStatement();
-            String profQuery = "SELECT * FROM universitysystem.bankemployee WHERE Name = '"+EnameTxt+"'";
-            java.sql.ResultSet profData = statement.executeQuery(profQuery);
-            while(profData.next()){
-                EmployeeUsername = profData.getString("username");
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-         }
-=======
-       
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+ 
     }//GEN-LAST:event_employeeTableMouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
@@ -241,52 +218,14 @@ String EmployeeUsername = "";
     private void addTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTxtActionPerformed
         // TODO add your handling code here:
 
-        String name = nameTxt.getText();
-        String gender = (String) genderTxt.getSelectedItem();
-        int age = Integer.parseInt(ageTxt.getText());
-        int phone = Integer.parseInt(phoneTxt.getText());
-
-        String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
-
-
-
-        if(usernameTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||ageTxt.getText().isEmpty()||passwordTxt.getText().isEmpty()           ){
-            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
-
-        } else{
-
-            // Community.CreateCommunity(house,person,community,city,hospital);
-           // Bankemployee.CreateBankemployee(name,gender,age,phone,username,password);
-<<<<<<< HEAD
-          // bankEmployee employee =  new bankEmployee(name,gender,age,phone,username,password);
-               //employee.addEmployee();
-=======
-           bankEmployee employee =  new bankEmployee(name,gender,age,phone,username,password);
-               employee.addEmployee();
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
-        }
-
-        //JOptionPane.showMessageDialog(this,"New Employ details Added");
-
-        genderTxt.setSelectedItem("");
-        nameTxt.setText("");
-        ageTxt.setText("");
-        phoneTxt.setText("");
-        usernameTxt.setText("");
-        passwordTxt.setText("");
-
+       
 
         //employee_table();
     }//GEN-LAST:event_addTxtActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
-        
-<<<<<<< HEAD
-=======
-        
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void viewBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtn1ActionPerformed
@@ -296,13 +235,7 @@ String EmployeeUsername = "";
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-        
-=======
-        financialLogin emergencyLoginObj = new financialLogin();
-        setVisible(false);
-        emergencyLoginObj.setVisible(true);
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+
     }//GEN-LAST:event_btnStudLogoutActionPerformed
 
 //    public void employee_table(){
