@@ -129,23 +129,11 @@ public class bankServicesPolice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-        // TODO add your handling code here:
-<<<<<<< HEAD
-      
-=======
-        
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
-        // TODO add your handling code here:
-<<<<<<< HEAD
-        financialLogin emergencyLoginObj = new financialLogin();
-        setVisible(false);
-        emergencyLoginObj.setVisible(true);
-=======
-       
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
+
     }//GEN-LAST:event_btnStudLogoutActionPerformed
 String currEmpName = "";
     public void getUserData(String studentName){
