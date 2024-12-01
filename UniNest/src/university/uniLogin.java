@@ -7,7 +7,7 @@ package university;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import main.signUp;
+//import main.signUp;
 
 /**
  *
@@ -180,9 +180,7 @@ public class uniLogin extends javax.swing.JFrame {
 
     private void jButtonBackUniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackUniLoginActionPerformed
         // TODO add your handling code here:
-        signUp signUpObj = new signUp();
-        setVisible(false);
-        signUpObj.setVisible(true);
+       
     }//GEN-LAST:event_jButtonBackUniLoginActionPerformed
 
     /**
