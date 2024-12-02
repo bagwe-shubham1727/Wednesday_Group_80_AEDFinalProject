@@ -129,11 +129,27 @@ public class bankServicesPolice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        String uname = nameTxt.getText();
+        String accountType = (String) accountTxt.getSelectedItem();
+        String operation = (String) operationTxt.getSelectedItem();
+        int amount = Integer.parseInt(amountTxt.getText());
 
+        if( nameTxt.getText().isEmpty()||amountTxt.getText().isEmpty()           ){
+            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
+
+        } else{
+
+            // Community.CreateCommunity(house,person,community,city,hospital);
+            //BankService.CreateBankService(name,accountType,operation,amount);
+            bankservices service =  new bankservices(uname,accountType,operation,amount);
+               service.addServices();
+        }
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
-
+        financialLogin emergencyLoginObj = new financialLogin();
+        setVisible(false);
+        emergencyLoginObj.setVisible(true);
     }//GEN-LAST:event_btnStudLogoutActionPerformed
 String currEmpName = "";
     public void getUserData(String studentName){
