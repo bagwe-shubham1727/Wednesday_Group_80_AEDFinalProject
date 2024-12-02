@@ -4,6 +4,9 @@
  */
 package emergencyEnterprise.emergency.Model;
 
+import java.sql.DriverManager;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author suhas
@@ -73,6 +76,44 @@ public class crimeaction {
 
     public void setAction(String action) {
         this.action = action;
+    }
+
+    public void addaction() {
+
+        try {
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+
+            System.out.println("connection open");
+            java.sql.Statement statement = connection.createStatement();
+            System.out.println("connection open");
+
+            String query = "INSERT INTO universitysystem.crimedetails (name,phone,address,crimeDetails,officer,action) values(?,?,?,?,?,?)";
+            System.out.println("connection insert");
+
+            // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+            java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, name);
+
+            System.out.println("connection insert");
+
+            preparedStmt.setInt(2, phone);
+            preparedStmt.setString(3, address);
+            preparedStmt.setString(4, cd);
+            preparedStmt.setString(5, officer);
+            preparedStmt.setString(6, action);
+
+            System.out.println("connection insert");
+
+            preparedStmt.execute();
+            System.out.println("connection run");
+            JOptionPane.showMessageDialog(null, "Details Added");
+
+            connection.close();
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "please add data in correct format!");
+        }
+
     }
 
 }
