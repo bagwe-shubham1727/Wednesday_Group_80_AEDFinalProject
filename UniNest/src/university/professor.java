@@ -12,7 +12,7 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author Anish
+ * @author aditi
  */
 public class professor extends javax.swing.JFrame {
 
