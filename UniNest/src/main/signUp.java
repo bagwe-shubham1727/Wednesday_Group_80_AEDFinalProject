@@ -1,19 +1,20 @@
 package main;
 
-//import Pharmacy.InventoryEnterpriseLogin;
-//import bankEnterprise.financialLogin;
-//import com.mysql.cj.xdevapi.Statement;
+import Pharmacy.InventoryEnterpriseLogin;
+import bankEnterprise.financialLogin;
+import com.mysql.cj.xdevapi.Statement;
 import com.sun.jdi.connect.spi.Connection;
-//import emergencyEnterprise.emergencyLogin;
+import emergencyEnterprise.emergencyLogin;
+import emergencyEnterprise.emergencyLogin;
 import javax.swing.JOptionPane;
-//import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.SQLException;
-//import java.sql.Statement;
+import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-//import universitysystem.JDBCConnection;
-//import view.panel.login;
+import universitysystem.JDBCConnection;
+import view.panel.login;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -88,7 +89,25 @@ public class signUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-       
+        String str =  comboRole.getSelectedItem().toString();
+        
+        if(str.equals("University Enterprise")){
+            setVisible(false);
+            new uniLogin().setVisible(true);
+        }else if(str.equals("Emergency Enterprise")){
+            setVisible(false);
+            new emergencyLogin().setVisible(true);
+        }else if(str.equals("Financial Enterprise")){
+            setVisible(false);
+            new financialLogin().setVisible(true);
+        }else if(str.equals("Pharmacy Enterprise")){
+            setVisible(false);
+            new InventoryEnterpriseLogin().setVisible(true);
+        }
+        else{
+            setVisible(false);
+        }
+        
 
     }//GEN-LAST:event_submitBtnActionPerformed
         
