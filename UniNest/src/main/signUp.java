@@ -2,16 +2,18 @@ package main;
 
 import Pharmacy.InventoryEnterpriseLogin;
 import bankEnterprise.financialLogin;
-//import com.mysql.cj.xdevapi.Statement;
-//import com.sun.jdi.connect.spi.Connection;
-//import emergencyEnterprise.emergencyLogin;
+import com.mysql.cj.xdevapi.Statement;
+import com.sun.jdi.connect.spi.Connection;
 import emergencyEnterprise.emergencyLogin;
-//import javax.swing.JOptionPane;
-//import java.sql.SQLException;
-//import java.sql.DriverManager;
-//import java.sql.ResultSet;
-//import javax.swing.JOptionPane;
-
+import javax.swing.JOptionPane;
+//import java.sql.Connection;
+import java.sql.SQLException;
+//import java.sql.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+//import universitysystem.JDBCConnection;
+//import view.panel.login;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -51,12 +53,13 @@ public class signUp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 0));
         jPanel1.setLayout(null);
 
+        submitBtn.setBackground(new java.awt.Color(255, 255, 255));
         submitBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        submitBtn.setForeground(new java.awt.Color(0, 0, 0));
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,12 +83,22 @@ public class signUp extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 900, 504);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 896, 504));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        // TODO add your handling code here:
         String str =  comboRole.getSelectedItem().toString();
         
         if(str.equals("University Enterprise")){
@@ -105,6 +118,22 @@ public class signUp extends javax.swing.JFrame {
             setVisible(false);
         }
         
+         
+
+//            try{
+//                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+//
+//                System.out.println("connection open");
+//                java.sql.Statement statement = connection.createStatement();
+//
+//                statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('"+role+"','"+username+"', '"+password+"')");
+//                JOptionPane.showMessageDialog(null, "User successfully added!");
+//
+//                setVisible(false);
+//                //new login().setVisible(true);
+//                
+//            }
+            
 
     }//GEN-LAST:event_submitBtnActionPerformed
         
