@@ -14,7 +14,7 @@ import java.sql.Statement;
  * @author suhas
  */
 public class JDBCconnection {
-    public static Connection connect(){
+    public static Connection Connect(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
@@ -25,5 +25,4 @@ public class JDBCconnection {
             return null;
         }
     }
-    
 }

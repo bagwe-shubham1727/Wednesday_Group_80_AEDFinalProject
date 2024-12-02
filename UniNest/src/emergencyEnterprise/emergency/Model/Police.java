@@ -4,6 +4,8 @@
  */
 package emergencyEnterprise.emergency.Model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author suhas
@@ -102,6 +104,16 @@ public class Police {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public void addPolice() {
+        try {
+            java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
+            statement.executeUpdate("insert into universitysystem.police" + "(name, gender, phone, age,salary,designation, username, password)" + "values ('" + this.name + "', '" + this.gender + "', '" + this.phone + "' ,'" + this.age + "' ,'" + this.salary + "' ,'" + this.designation + "' , '" + this.username + "', '" + this.password + "')");
+            JOptionPane.showMessageDialog(null, "Police successfully added!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
 }
