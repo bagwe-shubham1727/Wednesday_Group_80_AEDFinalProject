@@ -11,7 +11,7 @@ import university.Model.Student;
 
 /**
  *
- * @author suhas
+ * @author aditi
  */
 public class staffAdmin extends javax.swing.JFrame {
 
