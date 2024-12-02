@@ -5,7 +5,7 @@
 package bankEnterprise;
 
 import bankEnterprise.bank.Model.bankresponse;
-//import emergencyEnterprise.crimeReport;
+import emergencyEnterprise.crimeReport;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.DriverManager;
@@ -319,7 +319,28 @@ public class bankAction extends javax.swing.JFrame {
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
-        
+        DefaultTableModel tb1Model = (DefaultTableModel)bankserviceTable.getModel();
+        tb1Model.setRowCount(0);
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.bankservices";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+
+            while(studentData.next()){
+                String  name = studentData.getString("Name");
+                String accountType = studentData.getString("AccountType");
+                String operation = studentData.getString("Operation");
+                String amount = studentData.getString("Amount");
+
+                String tbData[] = {name, accountType,operation,amount};
+
+                tb1Model.addRow(tbData);
+            }
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+        }
     }//GEN-LAST:event_viewBtnActionPerformed
 
     
@@ -336,7 +357,24 @@ public class bankAction extends javax.swing.JFrame {
     }
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-    
+    String name = nameTxt.getText();
+
+        String accountType = accountTxt.getText();
+        String operation = operationTxt.getText();
+        int amount = Integer.parseInt(amountTxt.getText());
+        String employee = employeeTxt.getText();
+        String action = actionTakenTxt.getText();
+
+        if(amountTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||actionTakenTxt.getText().isEmpty()||employeeTxt.getText().isEmpty()           ){
+            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
+
+        } else{
+
+            // Community.CreateCommunity(house,person,community,city,hospital);
+            // BankResponse.CreateBankResponse(name,accountType,operation,amount,employee,action);
+            bankresponse response =  new bankresponse(name,accountType,operation,amount,employee,action,currRole);
+            response.addResponse();
+        }
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void policeTableDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_policeTableDMouseClicked
@@ -345,12 +383,59 @@ public class bankAction extends javax.swing.JFrame {
 
     private void viewDBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDBtnActionPerformed
         // TODO add your handling code here:
-        
+        DefaultTableModel tb1Model = (DefaultTableModel)policeTableD.getModel();
+        tb1Model.setRowCount(0);
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.police";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+
+            while(studentData.next()){
+                String  name = studentData.getString("name");
+                String gender = studentData.getString("gender");
+                String phone = studentData.getString("phone");
+                String age = studentData.getString("age");
+                String salary = studentData.getString("salary");
+                String designation = studentData.getString("designation");
+
+                String tbData[] = {name, gender, phone,age,salary,designation};
+
+                tb1Model.addRow(tbData);
+            }
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+        }
     }//GEN-LAST:event_viewDBtnActionPerformed
 
     private void viewDBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDBtn1ActionPerformed
         // TODO add your handling code here:
-       
+       DefaultTableModel tb1Model = (DefaultTableModel)studentTable.getModel();
+        tb1Model.setRowCount(0);
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.students";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+
+            while(studentData.next()){
+                String  name = studentData.getString("username");
+                String email = studentData.getString("Email");
+
+                String age = studentData.getString("Age");
+                String loanamount = studentData.getString("Loanamount");
+
+
+                
+                String tbData[] = {name,email,age,loanamount};
+                
+                tb1Model.addRow(tbData);
+            }
+            
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+         }
     }//GEN-LAST:event_viewDBtn1ActionPerformed
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
@@ -362,10 +447,10 @@ public class bankAction extends javax.swing.JFrame {
 
     private void btnReportCrime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportCrime1ActionPerformed
         // TODO add your handling code here:
-        //crimeReport cr = new crimeReport();
-        //cr.getUserData(currEmpName, "bankemployee");
+        crimeReport cr = new crimeReport();
+        cr.getUserData(currEmpName, "bankemployee");
         setVisible(false);
-        //cr.setVisible(true);
+        cr.setVisible(true);
     }//GEN-LAST:event_btnReportCrime1ActionPerformed
 
     /**

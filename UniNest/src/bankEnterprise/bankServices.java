@@ -5,7 +5,7 @@
 package bankEnterprise;
 
 import bankEnterprise.bank.Model.bankservices;
-//import emergencyEnterprise.policeAdmin;
+import emergencyEnterprise.policeAdmin;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
@@ -130,12 +130,53 @@ public class bankServices extends javax.swing.JFrame {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-       
+        String username = nameTxt.getText();
+        String accountType = (String) accountTxt.getSelectedItem();
+        String operation = (String) operationTxt.getSelectedItem();
+        int amount = Integer.parseInt(amountTxt.getText());
+        
+        if(username.isEmpty()|| amount == 0){
+            JOptionPane.showMessageDialog(null, "Please Enter Details!");
+        } else{
+            if(accountType.equals("Student Account") && operation.equals("Request Loan")){
+                try{
+                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                    java.sql.Statement statement = connection.createStatement();
+                    String studentQuery = "SELECT * FROM universitysystem.students WHERE username = '"+username+"'";
+                    java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+                    
+//                    have to add validation if user user exists or not
+                    
+                    while(studentData.next()){
+                            String name = studentData.getString("Name"); 
+                            bankservices service =  new bankservices(name,accountType,operation,amount);
+                            service.addServices();
+                    }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, e);
+                }
+            }else if(accountType.equals("Police Account") && operation.equals("Deposit Salary")){
+                try{
+                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                    java.sql.Statement statement = connection.createStatement();
+                    String studentQuery = "UPDATE universitysystem.police SET salary = salary + '"+amount+"' WHERE username = '"+username+"'";
+                    statement.executeUpdate(studentQuery);
+                    
+                    JOptionPane.showMessageDialog(null, "Amount Deposited Request Processed!");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, e);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Select Appropriate Account");
+            }
+        }
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
         // TODO add your handling code here:
-
+        financialLogin emergencyLoginObj = new financialLogin();
+        setVisible(false);
+        emergencyLoginObj.setVisible(true);
     }//GEN-LAST:event_btnStudLogoutActionPerformed
     String currEmpName = "";
     String currRole = "";
