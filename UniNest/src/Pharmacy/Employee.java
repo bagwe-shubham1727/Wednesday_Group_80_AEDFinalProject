@@ -6,37 +6,24 @@ package Pharmacy;
 
 /**
  *
- * @author prathamesh
+ * @author Soham Chavan
  */
 
 
-<<<<<<< HEAD
 import Pharmacy.model.EmployeeModel;
-=======
-//import Pharmacy.model.EmployeeModel;
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
-//import com.mysql.cj.xdevapi.Statement;
+import com.mysql.cj.xdevapi.Statement;
 import com.sun.jdi.connect.spi.Connection;
 //import java.sql.Connection;
 //import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-<<<<<<< HEAD
-//import connection.JDBCconnection;
-////import hospital.model.Patient;
-=======
 import connection.JDBCconnection;
 //import hospital.model.Patient;
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import main.signUp;
 import university.Model.Student;
-<<<<<<< HEAD
-//import university.student;
-=======
 import university.student;
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
 
 public class Employee extends javax.swing.JFrame {
 
@@ -82,19 +69,13 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
-<<<<<<< HEAD
-=======
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MEDICINE AVAILABLE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 38, 320, -1));
 
         tblMedicine.setBackground(new java.awt.Color(204, 255, 255));
-<<<<<<< HEAD
-=======
         tblMedicine.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         tblMedicine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -114,10 +95,7 @@ public class Employee extends javax.swing.JFrame {
 
         btnViewMedicine.setBackground(new java.awt.Color(0, 153, 153));
         btnViewMedicine.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         btnViewMedicine.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         btnViewMedicine.setText("View");
         btnViewMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,10 +106,7 @@ public class Employee extends javax.swing.JFrame {
 
         btnBuy.setBackground(new java.awt.Color(0, 153, 153));
         btnBuy.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         btnBuy.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         btnBuy.setText("Buy");
         btnBuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,34 +116,22 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 443, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jLabel3.setText("Medicine Name:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 116, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jLabel4.setText("Price");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 157, 95, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jLabel5.setText("Quantity");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 198, 95, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jLabel6.setText("Company");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 239, 86, -1));
         jPanel1.add(lblMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 113, 190, -1));
@@ -184,10 +147,7 @@ public class Employee extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,10 +157,7 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 44, -1, -1));
 
         tblMedTaken.setBackground(new java.awt.Color(204, 255, 255));
-<<<<<<< HEAD
-=======
         tblMedTaken.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         tblMedTaken.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -215,10 +172,7 @@ public class Employee extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 153, 153));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-<<<<<<< HEAD
-=======
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jButton2.setText("View");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,10 +182,7 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 443, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-<<<<<<< HEAD
-=======
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
         jLabel2.setText("Medicine Taken");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 295, 110, -1));
 
@@ -262,28 +213,6 @@ public class Employee extends javax.swing.JFrame {
         DefaultTableModel medModel = (DefaultTableModel)tblMedicine.getModel();
         medModel.setRowCount(0);
         
-<<<<<<< HEAD
-//        try{
-//            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-//            java.sql.Statement statement = connection.createStatement();
-//            String getMedQuery = "SELECT * FROM universitysystem.medicine";
-//            java.sql.ResultSet medData = statement.executeQuery(getMedQuery);
-//            
-//            while(medData.next()){
-//                String medName = medData.getString("MEDICINE_NAME");
-//                String price = medData.getString("PRICE");
-//                String quantity = medData.getString("QUANTITY");
-//                String company = medData.getString("COMPANY");
-//                
-//                String tbData[] = {medName,price, quantity, company};
-//                
-//                medModel.addRow(tbData);
-//            }
-//            
-//         }catch(Exception e){
-//            JOptionPane.showMessageDialog(null,e);
-//         }
-=======
         try{
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
@@ -304,7 +233,6 @@ public class Employee extends javax.swing.JFrame {
          }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
          }
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     }//GEN-LAST:event_btnViewMedicineActionPerformed
 
     int currentSelectedCount = 0;
@@ -314,22 +242,6 @@ public class Employee extends javax.swing.JFrame {
         String medPrice = lblPrice.getText();
         int medQuant = Integer.parseInt(lblQuant.getText());
         String medComp = lblCompany.getText();
-<<<<<<< HEAD
-//        if(medQuant > currentSelectedCount){
-//            JOptionPane.showMessageDialog(null,"Not enough Quantity");
-//        }else{
-//            try{
-//                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-//                java.sql.Statement statement = connection.createStatement();
-//                statement.executeUpdate("UPDATE universitysystem.students SET medicineTaken = '"+medName+"', medicineQuant = medicineQuant + '"+medQuant+"' where username ='"+currStudUsername+"'");
-//                statement.executeUpdate("UPDATE universitysystem.medicine SET QUANTITY = QUANTITY - '"+medQuant+"'");
-//                JOptionPane.showMessageDialog(null,"Thank you for Purchase");
-//            }
-//            catch(Exception e){
-//                JOptionPane.showMessageDialog(null,e);
-//            }
-//        }
-=======
         if(medQuant > currentSelectedCount){
             JOptionPane.showMessageDialog(null,"Not enough Quantity");
         }else{
@@ -344,7 +256,6 @@ public class Employee extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,e);
             }
         }
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     }//GEN-LAST:event_btnBuyActionPerformed
 
     private void tblMedicineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicineMouseClicked
@@ -379,26 +290,6 @@ public class Employee extends javax.swing.JFrame {
         DefaultTableModel medModel = (DefaultTableModel)tblMedTaken.getModel();
         medModel.setRowCount(0);
         
-<<<<<<< HEAD
-//        try{
-//            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-//            java.sql.Statement statement = connection.createStatement();
-//            String getMedQuery = "SELECT * FROM universitysystem.students where username = '"+currStudUsername+"'";
-//            java.sql.ResultSet medData = statement.executeQuery(getMedQuery);
-//            
-//            while(medData.next()){
-//                String medName = medData.getString("medicineTaken");
-//                String quantity = medData.getString("medicineQuant");
-//                
-//                String tbData[] = {medName,quantity};
-//                
-//                medModel.addRow(tbData);
-//            }
-//            
-//         }catch(Exception e){
-//            JOptionPane.showMessageDialog(null,e);
-//         }
-=======
         try{
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
@@ -417,7 +308,6 @@ public class Employee extends javax.swing.JFrame {
          }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
          }
->>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
