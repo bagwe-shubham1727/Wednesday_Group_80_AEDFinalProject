@@ -4,11 +4,11 @@
  */
 package university;
 
-//import Pharmacy.Employee;
-//import Pharmacy.Medicines;
-//import bankEnterprise.bankAction;
-//import bankEnterprise.bankServices;
-//import emergencyEnterprise.crimeReport;
+import Pharmacy.Employee;
+import Pharmacy.Medicines;
+import bankEnterprise.bankAction;
+import bankEnterprise.bankServices;
+import emergencyEnterprise.crimeReport;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -499,22 +499,54 @@ String profUserame = "";
 
     private void btnReportCrime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportCrime1ActionPerformed
         // TODO add your handling code here:
-        
+        crimeReport cr = new crimeReport();
+        cr.getUserData(currStudentName, "student");
+        setVisible(false);
+        cr.setVisible(true);
     }//GEN-LAST:event_btnReportCrime1ActionPerformed
 
     private void btnBuyMed1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyMed1ActionPerformed
         // TODO add your handling code here:
-
+        Employee emp = new Employee();
+        emp.setUsername(currStudUsername);
+        emp.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btnBuyMed1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
+        bankServices bank = new bankServices();
+        bank.setUsername(currStudUsername, "student");
+        bankAction ba = new bankAction();
+        ba.setRole("student");
+        bank.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
-  
+        DefaultTableModel tb1Model = (DefaultTableModel)resultsTable.getModel();
+        tb1Model.setRowCount(0);
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.coursegrade WHERE studentname = '"+currStudentName+"'";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+
+            while(studentData.next()){
+                String  name = studentData.getString("studentname");
+                String subject = studentData.getString("subject");
+                String marks = studentData.getString("marks");
+                String remarks = studentData.getString("remarks");
+
+                String tbData[] = {name, subject,marks,remarks};
+
+                tb1Model.addRow(tbData);
+            }
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+        }
     }//GEN-LAST:event_viewBtnActionPerformed
     String currStudentName = "";
     String currStudUsername = "";

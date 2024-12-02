@@ -5,6 +5,7 @@
 package university;
 
 //import emergencyEnterprise.crimeReport;
+import emergencyEnterprise.crimeReport;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.DriverManager;
@@ -188,7 +189,26 @@ public class professor extends javax.swing.JFrame {
     }
     
     private void btnViewStudDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudDataActionPerformed
-       
+        DefaultTableModel studSubModel = (DefaultTableModel)subjectTable.getModel();
+        studSubModel.setRowCount(0);
+
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '"+currSubjectTeach+"' and ProfessorName = '"+currProfUsername+"'";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+
+            while(studentData.next()){
+                String studName = studentData.getString("username");
+                String subject = studentData.getString("Subject");
+
+                String tbData[] = {studName,subject};
+
+                studSubModel.addRow(tbData);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
     }//GEN-LAST:event_btnViewStudDataActionPerformed
 
     
@@ -239,7 +259,26 @@ public class CourseGrade{
     
     
     private void gradeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeTxtActionPerformed
-      
+      String StudentName = sNameTxt.getText();
+        String Subject = subjectTxt.getText();
+        String Grade = GradeTxt.getText();
+        String Remarks = remarksTxt.getText();
+
+        if(sNameTxt.getText().isEmpty()|| GradeTxt.getText().isEmpty()||remarksTxt.getText().isEmpty()||subjectTxt.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
+
+        } else{
+
+            // Community.CreateCommunity(house,person,community,city,hospital);
+            CourseGrade.CreateCourseGrade(StudentName,Subject,Grade,Remarks);
+        }
+
+        //JOptionPane.showMessageDialog(this,"New Employ details Added");
+
+        sNameTxt.setText("");
+        subjectTxt.setText("");
+        GradeTxt.setText("");
+        remarksTxt.setText("");
 
     }//GEN-LAST:event_gradeTxtActionPerformed
 
@@ -270,11 +309,18 @@ public class CourseGrade{
     }//GEN-LAST:event_subjectTableMouseClicked
 
     private void btnProfLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfLogoutActionPerformed
-       
+       currSubjectTeach = "";
+        currProfUsername = "";
+        uniLogin uniLoginObj = new uniLogin();
+        setVisible(false);
+        uniLoginObj.setVisible(true);
     }//GEN-LAST:event_btnProfLogoutActionPerformed
 
     private void btnReportCrime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportCrime1ActionPerformed
-       
+       crimeReport cr = new crimeReport();
+        cr.getUserData(currProfUsername, "professor");
+        setVisible(false);
+        cr.setVisible(true);
     }//GEN-LAST:event_btnReportCrime1ActionPerformed
 
     private void sNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sNameTxtActionPerformed
