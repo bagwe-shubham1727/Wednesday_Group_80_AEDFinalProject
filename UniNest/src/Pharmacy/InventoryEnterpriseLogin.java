@@ -15,6 +15,7 @@ package Pharmacy;
  */
 
 
+<<<<<<< HEAD
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
 //import java.sql.DriverManager;
@@ -25,6 +26,18 @@ package Pharmacy;
 ////import connection.JDBCconnection;
 //import static java.lang.System.err;
 //import java.sql.ResultSet;
+=======
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import connection.JDBCconnection;
+import static java.lang.System.err;
+import java.sql.ResultSet;
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
 import main.signUp;
 
 public class InventoryEnterpriseLogin extends javax.swing.JFrame {
@@ -146,6 +159,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         String password = pfPassword.getText();
         String role = cfRole.getSelectedItem().toString();
         
+<<<<<<< HEAD
 //        if(username.isEmpty()||password.isEmpty()){
 //            JOptionPane.showMessageDialog(null, "Please Enter Details!");
 //        }
@@ -200,6 +214,62 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
 //                setVisible(false);
 //            }
 //        }
+=======
+        if(username.isEmpty()||password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please Enter Details!");
+        }
+        else if("Admin".equals(role) && username.equals("admin") && password.equals("admin")){
+            this.hide();
+            Medicines pa = new Medicines();
+            pa.setVisible(true);
+            JOptionPane.showMessageDialog(null, " Pharmacy Admin Login Successful!");
+        }else if("Student".equals(role)){
+            try{
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                java.sql.Statement statement = connection.createStatement();
+                ResultSet resultset = statement.executeQuery
+                ("SELECT * FROM universitysystem.students where username ='"+username+"' and password = '"+password+"'");
+                
+                Employee ha = new Employee();
+                setVisible(false);
+                ha.setVisible(true);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,e);
+                setVisible(false);
+            }
+        }else if("Professor".equals(role)){
+            try{
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                java.sql.Statement statement = connection.createStatement();
+                ResultSet resultset = statement.executeQuery
+                ("SELECT * FROM universitysystem.professor where username ='"+username+"' and password = '"+password+"'");
+                
+                Employee ha = new Employee();
+                setVisible(false);
+                ha.setVisible(true);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,e);
+                setVisible(false);
+            }
+        }else if("Police".equals(role)){
+            try{
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                java.sql.Statement statement = connection.createStatement();
+                ResultSet resultset = statement.executeQuery
+                ("SELECT * FROM universitysystem.police where username ='"+username+"' and password = '"+password+"'");
+                
+                Employee ha = new Employee();
+                setVisible(false);
+                ha.setVisible(true);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+                setVisible(false);
+            }
+        }
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

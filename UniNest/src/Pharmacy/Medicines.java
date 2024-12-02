@@ -11,11 +11,19 @@ package Pharmacy;
 
 import Pharmacy.model.MedicineModel;
 //import com.mysql.cj.xdevapi.Statement;
+<<<<<<< HEAD
 //import com.sun.jdi.connect.spi.Connection;
 //import java.sql.Connection;
 //import java.sql.Statement;
 //import java.sql.DriverManager;
 //import java.sql.ResultSet;
+=======
+import com.sun.jdi.connect.spi.Connection;
+//import java.sql.Connection;
+//import java.sql.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
 //import connection.JDBCconnection;
 //import hospital.LoginFrame;
 import java.text.SimpleDateFormat;
@@ -27,6 +35,7 @@ public class Medicines extends javax.swing.JFrame {
     /**
      * Creates new form Medicines
      */
+<<<<<<< HEAD
 //    public Medicines() {
 //        initComponents();
 //        try{
@@ -56,6 +65,37 @@ public class Medicines extends javax.swing.JFrame {
 //
 //        }
 //    }
+=======
+    public Medicines() {
+        initComponents();
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            System.out.println("connection open");
+            java.sql.Statement statement = connection.createStatement();
+            String sql = "SELECT * FROM universitysystem.medicine";
+            java.sql.ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                String id = Integer.toString(rs.getInt("ID"));
+                String medicine = rs.getString("MEDICINE_NAME");
+                String price = rs.getString("PRICE");
+                String quantity = rs.getString("QUANTITY");
+                String company = rs.getString("COMPANY");
+                
+                String tbData[] = {id,medicine,price,quantity,company};
+                DefaultTableModel tb1Model = (DefaultTableModel)tableMedicine.getModel();
+                
+                 tb1Model.addRow(tbData);
+                
+            }
+
+
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+
+        }
+    }
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -256,6 +296,7 @@ public class Medicines extends javax.swing.JFrame {
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
         // TODO add your handling code here:
         
+<<<<<<< HEAD
         DefaultTableModel tb1Model = (DefaultTableModel)tableMedicine.getModel();
         if(tableMedicine.getSelectedRowCount()==1){
             
@@ -286,11 +327,15 @@ public class Medicines extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Select a Row");
             } 
         }
+=======
+
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         // TODO add your handling code here:
 
+<<<<<<< HEAD
         int id = Integer.parseInt(tfID.getText());
         String medicine = tfMedicine.getText();
         String price = tfPrice.getText();
@@ -333,6 +378,39 @@ public class Medicines extends javax.swing.JFrame {
 //    
 //    }                                 
 //    }
+=======
+        
+    }//GEN-LAST:event_buttonAddActionPerformed
+
+    
+    public void medicine_table(){
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "root@123");
+
+            java.sql.Statement statement = connection.createStatement();
+            String sql = "SELECT * FROM universitysystem.medicine;";
+   
+            java.sql.ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                String id = rs.getString("Id");
+                String medicine = rs.getString("MEDICINE_NAME");
+                String price = rs.getString("PRICE");
+                String quantity = rs.getString("QUANTITY");
+                String company = rs.getString("COMPANY");
+                
+                String tbData[] = {id,medicine,price, quantity, company};
+                DefaultTableModel tb1Model = (DefaultTableModel)tableMedicine.getModel();
+                
+                tb1Model.addRow(tbData);
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Please add data in correct format");
+
+    
+    }                                 
+    }
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -361,6 +439,7 @@ public class Medicines extends javax.swing.JFrame {
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         // TODO add your handling code here:
         
+<<<<<<< HEAD
         DefaultTableModel tb1Model = (DefaultTableModel)tableMedicine.getModel();
         if(tableMedicine.getSelectedRowCount()==1){
         int id = Integer.parseInt(tfID.getText());
@@ -398,10 +477,18 @@ public class Medicines extends javax.swing.JFrame {
          this.hide();
         InventoryEnterpriseLogin frm = new InventoryEnterpriseLogin();
         frm.setVisible(true);
+=======
+
+    }//GEN-LAST:event_buttonDeleteActionPerformed
+
+    private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+       
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         DefaultTableModel medModel = (DefaultTableModel)tableMedicine.getModel();
         medModel.setRowCount(0);
         
@@ -425,6 +512,9 @@ public class Medicines extends javax.swing.JFrame {
 //         }catch(Exception e){
 //            JOptionPane.showMessageDialog(null,e);
 //         }
+=======
+      
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
     }//GEN-LAST:event_buttonSearchActionPerformed
 
     /**
