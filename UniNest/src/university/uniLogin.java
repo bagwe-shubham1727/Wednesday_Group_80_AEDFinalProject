@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Anish
+ * @author suhas
  */
 public class uniLogin extends javax.swing.JFrame {
 
