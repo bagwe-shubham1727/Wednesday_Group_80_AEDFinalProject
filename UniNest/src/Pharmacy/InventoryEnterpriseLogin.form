@@ -44,9 +44,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="18" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="INVENTORY ENTERPRISE LOGIN "/>
           </Properties>
@@ -61,9 +64,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="13" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
             <Property name="text" type="java.lang.String" value="USERNAME: "/>
           </Properties>
           <Constraints>
@@ -77,9 +83,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="13" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
             <Property name="text" type="java.lang.String" value="PASSWORD: "/>
           </Properties>
           <Constraints>
@@ -110,9 +119,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="13" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
             <Property name="text" type="java.lang.String" value="ROLE:"/>
           </Properties>
           <Constraints>
@@ -146,9 +158,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="13" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
             <Property name="text" type="java.lang.String" value="LOGIN "/>
           </Properties>
           <Events>
@@ -168,9 +183,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="13" style="1"/>
             </Property>
+<<<<<<< HEAD
+=======
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+>>>>>>> c078f07613cb240b5a47e4b20c41740363fc1245
             <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
           <Events>
