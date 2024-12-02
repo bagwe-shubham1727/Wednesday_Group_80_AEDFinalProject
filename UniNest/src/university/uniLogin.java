@@ -11,7 +11,7 @@ import main.signUp;
 
 /**
  *
- * @author suhas
+ * @author aditi
  */
 public class uniLogin extends javax.swing.JFrame {
 
