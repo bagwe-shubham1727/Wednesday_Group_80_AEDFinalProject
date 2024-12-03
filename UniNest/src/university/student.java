@@ -372,7 +372,7 @@ public class student extends javax.swing.JFrame {
                 java.sql.Statement statement = connection.createStatement();
                 System.out.println("connection open");
 
-                String query = "INSERT INTO universitysystem.courseregistration (username, Subject, ProfessorName, Email, Age) values(?,?,?,?,?)";
+                String query = "INSERT INTO universitysystem.courseregistration (username, Subject, ProfessorUserName, Email, Age) values(?,?,?,?,?)";
                 System.out.println("connection insert");
                 //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
 
@@ -415,6 +415,7 @@ public class student extends javax.swing.JFrame {
         //String username = txtStudUsername.getText();
         String username = currStudUsername;
         String subject = (String) subjectTxt.getSelectedItem();
+        System.out.println(pnameTxt.getText());
         String pname = pnameTxt.getText();
         String email = emailTxt.getText();
         int age = Integer.parseInt(AgeTxt.getText());
