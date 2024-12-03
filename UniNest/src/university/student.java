@@ -361,115 +361,116 @@ public class student extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public class CourseReg{
-        
-        
-        public static void CreateCourseReg(String username, String Subject, String pName, String email, int age){
-            
-             try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            
-            System.out.println("connection open");
-            java.sql.Statement statement = connection.createStatement();
-                        System.out.println("connection open");
+    public class CourseReg {
 
-            String query = "INSERT INTO universitysystem.courseregistration (username, Subject, ProfessorName, Email, Age) values(?,?,?,?,?)";
-                        System.out.println("connection insert");
-            //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
+        public static void CreateCourseReg(String username, String Subject, String pName, String email, int age) {
 
-           // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1,username);
-            preparedStmt.setString(2,Subject);
-            preparedStmt.setString(3,pName);
-            preparedStmt.setString(4,email);
-            preparedStmt.setInt(5,age);
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
 
-            
-            System.out.println("connection insert");
-            
-           
+                System.out.println("connection open");
+                java.sql.Statement statement = connection.createStatement();
+                System.out.println("connection open");
 
-            preparedStmt.execute();
-             System.out.println("connection run");
-             JOptionPane.showMessageDialog(null,"Details Added");
+                String query = "INSERT INTO universitysystem.courseregistration (username, Subject, ProfessorName, Email, Age) values(?,?,?,?,?)";
+                System.out.println("connection insert");
+                //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
 
-             connection.close();
+                // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setString(1, username);
+                preparedStmt.setString(2, Subject);
+                preparedStmt.setString(3, pName);
+                preparedStmt.setString(4, email);
+                preparedStmt.setInt(5, age);
+
+                System.out.println("connection insert");
+                
+                preparedStmt.execute();
+                System.out.println("connection run");
+                JOptionPane.showMessageDialog(null, "Details Added");
+
+                connection.close();
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "please add data in correct format!");
+            }
+
         }
-        catch(Exception e){
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null,"please add data in correct format!");
-        }      
-             
-        }
-    
-    } 
-    
-    
+
+    }
+
+    String currStudentName = "";
+    String currStudUsername = "";
+
+    public void setName(String studentName, String username) {
+        txtStudUsername.setText(studentName);
+        currStudentName = studentName;
+        currStudUsername = username;
+    }
+
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-         String username = txtStudUsername.getText();
+        String username = txtStudUsername.getText();
         String subject = (String) subjectTxt.getSelectedItem();
         String pname = pnameTxt.getText();
         String email = emailTxt.getText();
         int age = Integer.parseInt(AgeTxt.getText());
 
-        if(txtStudUsername.getText().isEmpty()|| AgeTxt.getText().isEmpty()||pnameTxt.getText().isEmpty()||emailTxt.getText().isEmpty()           ){
+        if (txtStudUsername.getText().isEmpty() || AgeTxt.getText().isEmpty() || pnameTxt.getText().isEmpty() || emailTxt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Plz Enter Details!");
 
-        } else{
+        } else {
 
             // Community.CreateCommunity(house,person,community,city,hospital);
-            CourseReg.CreateCourseReg(username,subject,pname,email,age);
+            CourseReg.CreateCourseReg(username, subject, pname, email, age);
         }
 
         //JOptionPane.showMessageDialog(this,"New Employ details Added");
-
-       // txtStudUsername.setText("");
+        // txtStudUsername.setText("");
         subjectTxt.setSelectedItem("");
         pnameTxt.setText("");
         AgeTxt.setText("");
         emailTxt.setText("");
     }//GEN-LAST:event_submitBtnActionPerformed
-String profUserame = "";
+    String profUserame = "";
     private void profTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profTableMouseClicked
         // TODO add your handling code here:
-        
-        DefaultTableModel profModel = (DefaultTableModel)profTable.getModel();
+
+        DefaultTableModel profModel = (DefaultTableModel) profTable.getModel();
         String profNameTxt = profTable.getValueAt(profTable.getSelectedRow(), 0).toString();
         pnameTxt.setText(profTable.getValueAt(profTable.getSelectedRow(), 0).toString());
         emailTxt.setText(profTable.getValueAt(profTable.getSelectedRow(), 1).toString());
         AgeTxt.setText(profTable.getValueAt(profTable.getSelectedRow(), 2).toString());
 
-        try{
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String profQuery = "SELECT * FROM universitysystem.professors WHERE Name = '"+profNameTxt+"'";
+            String profQuery = "SELECT * FROM universitysystem.professors WHERE Name = '" + profNameTxt + "'";
             java.sql.ResultSet profData = statement.executeQuery(profQuery);
-            while(profData.next()){
+            while (profData.next()) {
                 profUserame = profData.getString("username");
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_profTableMouseClicked
 
     private void findBtbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findBtbnActionPerformed
         // TODO add your handling code here:
-        
-         DefaultTableModel profModel = (DefaultTableModel)profTable.getModel();
+
+        DefaultTableModel profModel = (DefaultTableModel) profTable.getModel();
         profModel.setRowCount(0);
 
         String course = subjectTxt.getSelectedItem().toString();
-        try{
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String profQuery = "SELECT * FROM universitysystem.professors WHERE subjectTeach = '"+course+"'";
+            String profQuery = "SELECT * FROM universitysystem.professors WHERE subjectTeach = '" + course + "'";
 
             java.sql.ResultSet profData = statement.executeQuery(profQuery);
 
-            while(profData.next()){
+            while (profData.next()) {
                 String profName = profData.getString("username");
 
                 // String subject = profData.getString("SubjectTeach");
@@ -481,8 +482,8 @@ String profUserame = "";
                 profModel.addRow(tbData);
 
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
     }//GEN-LAST:event_findBtbnActionPerformed
 
@@ -525,37 +526,31 @@ String profUserame = "";
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tb1Model = (DefaultTableModel)resultsTable.getModel();
+        DefaultTableModel tb1Model = (DefaultTableModel) resultsTable.getModel();
         tb1Model.setRowCount(0);
-        try{
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.coursegrade WHERE studentname = '"+currStudentName+"'";
+            String studentQuery = "SELECT * FROM universitysystem.coursegrade WHERE studentname = '" + currStudentName + "'";
             java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
 
-            while(studentData.next()){
-                String  name = studentData.getString("studentname");
+            while (studentData.next()) {
+                String name = studentData.getString("studentname");
                 String subject = studentData.getString("subject");
                 String marks = studentData.getString("marks");
                 String remarks = studentData.getString("remarks");
 
-                String tbData[] = {name, subject,marks,remarks};
+                String tbData[] = {name, subject, marks, remarks};
 
                 tb1Model.addRow(tbData);
             }
 
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
     }//GEN-LAST:event_viewBtnActionPerformed
-    String currStudentName = "";
-    String currStudUsername = "";
-    public void setName(String studentName, String username){
-        txtStudUsername.setText(studentName);
-        currStudentName = studentName;
-        currStudUsername = username;
-    }
-            
+    
+
     /**
      * @param args the command line arguments
      */
