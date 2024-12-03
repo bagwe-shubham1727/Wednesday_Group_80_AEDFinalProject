@@ -411,7 +411,9 @@ public class student extends javax.swing.JFrame {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        String username = txtStudUsername.getText();
+        System.out.println(currStudUsername);
+        //String username = txtStudUsername.getText();
+        String username = currStudUsername;
         String subject = (String) subjectTxt.getSelectedItem();
         String pname = pnameTxt.getText();
         String email = emailTxt.getText();
