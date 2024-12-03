@@ -235,29 +235,28 @@ public class crimeAction extends javax.swing.JFrame {
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
-          DefaultTableModel tb1Model = (DefaultTableModel)crimeTable.getModel();
+        DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
         tb1Model.setRowCount(0);
-        try{
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
             String studentQuery = "SELECT * FROM universitysystem.crimereport";
             java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
 
-            while(studentData.next()){
-                String  name = studentData.getString("name");
+            while (studentData.next()) {
+                String name = studentData.getString("name");
                 String phone = studentData.getString("phone");
                 String address = studentData.getString("address");
                 String crimeDetails = studentData.getString("crimeDetails");
 
-                
-                String tbData[] = {name, phone,address,crimeDetails};
-                
+                String tbData[] = {name, phone, address, crimeDetails};
+
                 tb1Model.addRow(tbData);
             }
-            
-         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
-         }       
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+        }
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
@@ -270,71 +269,52 @@ public class crimeAction extends javax.swing.JFrame {
 
     private void crimeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crimeTableMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tb1Model = (DefaultTableModel)crimeTable.getModel();
-        
-        String tb1name = tb1Model.getValueAt(crimeTable.getSelectedRow(),0).toString();
-       
-        String tb1phone = tb1Model.getValueAt(crimeTable.getSelectedRow(),1).toString();
-        String tb1address = tb1Model.getValueAt(crimeTable.getSelectedRow(),2).toString();
-        String tb1cd = tb1Model.getValueAt(crimeTable.getSelectedRow(),3).toString();
+        DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
 
-        
+        String tb1name = tb1Model.getValueAt(crimeTable.getSelectedRow(), 0).toString();
 
-       
-        
-       
+        String tb1phone = tb1Model.getValueAt(crimeTable.getSelectedRow(), 1).toString();
+        String tb1address = tb1Model.getValueAt(crimeTable.getSelectedRow(), 2).toString();
+        String tb1cd = tb1Model.getValueAt(crimeTable.getSelectedRow(), 3).toString();
+
         nameTxt.setText(tb1name);
         phoneTxt.setText(tb1phone);
         addressTxt.setText(tb1address);
         cdTxt.setText(tb1cd);
 
-        
+
     }//GEN-LAST:event_crimeTableMouseClicked
 
-    
-    
-    
-    
-    
-    
+
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        
+
         String name = nameTxt.getText();
-        
+
         int phone = Integer.parseInt(phoneTxt.getText());
         String address = addressTxt.getText();
         String cd = cdTxt.getText();
         String officer = officerTxt.getText();
         String action = actionTxt.getText();
 
-        
+        if (addressTxt.getText().isEmpty() || nameTxt.getText().isEmpty() || phoneTxt.getText().isEmpty() || cdTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
 
-        
-       
-       
-        
-        if(addressTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||phoneTxt.getText().isEmpty()||cdTxt.getText().isEmpty()           ){
-                 JOptionPane.showMessageDialog(null, "Plz Enter Details!");
+        } else {
 
-        
-        } else{
-
-        
-        // Community.CreateCommunity(house,person,community,city,hospital);
-         //CrimeDetails.CreateCrimeDetails(name,phone,address,cd,officer,action);
-         crimeaction action1 =  new crimeaction(name,phone,address,cd,officer,action);
-               action1.addaction();
+            // Community.CreateCommunity(house,person,community,city,hospital);
+            //CrimeDetails.CreateCrimeDetails(name,phone,address,cd,officer,action);
+            crimeaction action1 = new crimeaction(name, phone, address, cd, officer, action);
+            action1.addaction();
         }
-        
-//        
 
+//        
 
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void officerTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_officerTxtActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_officerTxtActionPerformed
 
     private void btnStudLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudLogoutActionPerformed
@@ -346,17 +326,19 @@ public class crimeAction extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         bankServicesPolice cr = new bankServicesPolice();
+        bankServicesPolice cr = new bankServicesPolice();
         cr.getUserData(currPoliceName);
         setVisible(false);
         cr.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
- String currPoliceName = "";
-    public void setName(String policeName){
+    String currPoliceName = "";
+
+    public void setName(String policeName) {
         officerTxt.setText(policeName);
 //        lblUsername.setText("Welcome " + studentName);
         currPoliceName = policeName;
     }
+
     /**
      * @param args the command line arguments
      */
