@@ -9,27 +9,27 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ashis
+ * @author ananya
  */
 public class bankresponse {
-    
-     String name;
-        
-        String accountType ;
-        String operation ;
-        int amount ;
-        String employee ;
-        String action ;
-        String currRole;
-        public bankresponse(String name, String accountType,String operation, int amount, String employee,String action, String currRole){
-            this.setName(name);
-            this.setAccountType(accountType);
-            this.setOperation(operation);
-            this.setEmployee(employee);
-            this.setAmount(amount);
-            this.setAction(action);
-            this.setCurrRole(currRole);
-        }
+
+    String name;
+    String accountType;
+    String operation;
+    int amount;
+    String employee;
+    String action;
+    String currRole;
+
+    public bankresponse(String name, String accountType, String operation, int amount, String employee, String action, String currRole) {
+        this.setName(name);
+        this.setAccountType(accountType);
+        this.setOperation(operation);
+        this.setEmployee(employee);
+        this.setAmount(amount);
+        this.setAction(action);
+        this.setCurrRole(currRole);
+    }
 
     public String getCurrRole() {
         return currRole;
@@ -87,55 +87,49 @@ public class bankresponse {
         this.action = action;
     }
 
-   public void addResponse(){
-       try{
+    public void addResponse() {
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            
+
             System.out.println("connection open");
             java.sql.Statement statement = connection.createStatement();
-                        System.out.println("connection open");
+            System.out.println("connection open");
 
             String query = "INSERT INTO universitysystem.bankresponse (Name,AccountType,Operation,Amount,Employee,ActionTaken) values(?,?,?,?,?,?)";
             System.out.println("connection insert");
-            if(currRole=="student"){
-                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = '"+amount+"' WHERE username = '"+name+"'";
-            statement.executeUpdate(studentQuery);
-                
-            
+            if (currRole == "student") {
+                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = '" + amount + "' WHERE username = '" + name + "'";
+                statement.executeUpdate(studentQuery);
+
             }
-            String policeQuery = "UPDATE universitysystem.police SET salary = salary + '"+amount+"' WHERE username = '"+name+"'";
+            String policeQuery = "UPDATE universitysystem.police SET salary = salary + '" + amount + "' WHERE username = '" + name + "'";
             statement.executeUpdate(policeQuery);
-            
-            String studentQuery = "UPDATE universitysystem.students SET LoanAmount = '"+amount+"' WHERE username = '"+name+"'";
+
+            String studentQuery = "UPDATE universitysystem.students SET LoanAmount = '" + amount + "' WHERE username = '" + name + "'";
             statement.executeUpdate(studentQuery);
 
-
-
-           // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+            // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
             java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1,name);
-            
+            preparedStmt.setString(1, name);
+
             System.out.println("connection insert");
-            
-            preparedStmt.setString(2,accountType);
-            preparedStmt.setString(3,operation);
-            preparedStmt.setInt(4,amount);
-            preparedStmt.setString(5,employee);
-            preparedStmt.setString(6,action);
 
-
+            preparedStmt.setString(2, accountType);
+            preparedStmt.setString(3, operation);
+            preparedStmt.setInt(4, amount);
+            preparedStmt.setString(5, employee);
+            preparedStmt.setString(6, action);
 
             System.out.println("connection insert");
 
             preparedStmt.execute();
-             System.out.println("connection run");
-             JOptionPane.showMessageDialog(null,"Details Added");
+            System.out.println("connection run");
+            JOptionPane.showMessageDialog(null, "Details Added");
 
-             connection.close();
-        }
-        catch(Exception e){
+            connection.close();
+        } catch (Exception e) {
             System.out.println(e);
-            JOptionPane.showMessageDialog(null,"please add data in correct format!");
-        }      
-   } 
+            JOptionPane.showMessageDialog(null, "please add data in correct format!");
+        }
+    }
 }

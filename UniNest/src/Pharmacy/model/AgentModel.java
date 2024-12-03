@@ -4,22 +4,22 @@
  */
 package Pharmacy.model;
 
-
 //import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+
 /**
  *
- * @author prathamesh
+ * @author sohamchavan
  */
 public class AgentModel {
-    
+
     int id;
     String name;
     String age;
     String phone;
     String password;
     String gender;
-    
+
     public AgentModel(int id, String name, String age, String phone, String password, String gender) {
         this.setId(id);
         this.setName(name);
@@ -27,11 +27,10 @@ public class AgentModel {
         this.setPhone(phone);
         this.setPassword(password);
         this.setGender(gender);
-        
+
     }
-    
-    
-  public int getId() {
+
+    public int getId() {
         return id;
     }
 
@@ -78,41 +77,38 @@ public class AgentModel {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    
-//        public void insertAgents(){
-//        try{
-//                java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
-//
-//                statement.executeUpdate("insert into universitysystem.agent" + "(id, name, age, phone, password, gender)" + "values ('"+this.getId()+"','"+this.getName()+"','"+this.getAge()+"','"+this.getPhone()+"','"+this.getPassword()+"','"+this.getGender()+" ')");
-//                JOptionPane.showMessageDialog(null, "User successfully added!");
-//            }
-//            catch(Exception e){
-//                JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
-//
-//            }
-//    }
-//        
-//        public void updateAgents(){
-//        try{
-//                java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
-//                String sql = "UPDATE universitysystem.agent SET id = '"+this.getId()+"',name = '"+this.getName()+"',age = '"+this.getAge()+"', phone = '"+this.getPhone()+"', password = '"+this.getPassword()+"', gender = '"+this.getGender()+"' WHERE id ='" +this.getId()+"'";
-//                statement.executeUpdate(sql);
-//
-//            }
-//            catch(Exception e){
-//                JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
-//
-//            }
-//    }
-//        
-//        public void deleteAgents(){
-//        try{
-//                java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
-//                String sql = "DELETE FROM universitysystem.agent WHERE id ='" +this.getId()+"'";
-//                statement.executeUpdate(sql);
-//            }
-//            catch(Exception e){
-//                JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
-//            }
-//    }
+
+    public void insertAgents() {
+        try {
+            java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
+
+            statement.executeUpdate("insert into universitysystem.agent" + "(id, name, age, phone, password, gender)" + "values ('" + this.getId() + "','" + this.getName() + "','" + this.getAge() + "','" + this.getPhone() + "','" + this.getPassword() + "','" + this.getGender() + " ')");
+            JOptionPane.showMessageDialog(null, "User successfully added!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+
+        }
+    }
+
+    public void updateAgents() {
+        try {
+            java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
+            String sql = "UPDATE universitysystem.agent SET id = '" + this.getId() + "',name = '" + this.getName() + "',age = '" + this.getAge() + "', phone = '" + this.getPhone() + "', password = '" + this.getPassword() + "', gender = '" + this.getGender() + "' WHERE id ='" + this.getId() + "'";
+            statement.executeUpdate(sql);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+
+        }
+    }
+
+    public void deleteAgents() {
+        try {
+            java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
+            String sql = "DELETE FROM universitysystem.agent WHERE id ='" + this.getId() + "'";
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+        }
+    }
 }
