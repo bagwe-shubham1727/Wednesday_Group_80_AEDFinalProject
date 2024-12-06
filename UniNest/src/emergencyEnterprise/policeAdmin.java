@@ -32,6 +32,7 @@ public class policeAdmin extends javax.swing.JFrame {
      */
     public policeAdmin() {
         initComponents();
+        setResizable(false);
     }
 
     /**

@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author ashis
+ * @author ananya
  */
 public class bankAction extends javax.swing.JFrame {
 
@@ -22,6 +22,7 @@ public class bankAction extends javax.swing.JFrame {
      */
     public bankAction() {
         initComponents();
+        setResizable(false);
     }
 
     /**

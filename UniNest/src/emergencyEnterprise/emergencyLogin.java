@@ -20,6 +20,7 @@ public class emergencyLogin extends javax.swing.JFrame {
      */
     public emergencyLogin() {
         initComponents();
+        setResizable(false);
     }
 
     /**

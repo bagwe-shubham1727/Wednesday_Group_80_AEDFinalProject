@@ -20,6 +20,7 @@ public class staffAdmin extends javax.swing.JFrame {
      */
     public staffAdmin(){
         initComponents();
+        setResizable(false);
     }
 
     /**

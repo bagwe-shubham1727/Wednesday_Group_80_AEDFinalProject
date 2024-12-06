@@ -89,7 +89,7 @@ public class MedicineModel {
             java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
 
             statement.executeUpdate("insert into universitysystem.medicine" + "(ID, MEDICINE_NAME, PRICE, QUANTITY, COMPANY)" + "values ('" + this.getId() + "','" + this.getMedicine() + "','" + this.getPrice() + "','" + this.getQuantity() + "', '" + this.getCompany() + "')");
-            JOptionPane.showMessageDialog(null, "User successfully added!");
+            JOptionPane.showMessageDialog(null, "Medicine successfully added!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -100,7 +100,7 @@ public class MedicineModel {
             java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
             String sql = "UPDATE universitysystem.medicine SET id = '" + this.getId() + "',medicine_name = '" + this.getMedicine() + "',price = '" + this.getPrice() + "', quantity = '" + this.getQuantity() + "', company = '" + this.getCompany() + "' WHERE id ='" + this.getId() + "'";
             statement.executeUpdate(sql);
-
+            JOptionPane.showMessageDialog(null, "Medicine successfully updated!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -111,6 +111,7 @@ public class MedicineModel {
             java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
             String sql = "DELETE FROM universitysystem.medicine WHERE id ='" + this.getId() + "'";
             statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Medicine successfully deleted!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
 

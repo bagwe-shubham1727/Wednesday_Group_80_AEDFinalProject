@@ -24,6 +24,7 @@ public class student extends javax.swing.JFrame {
      */
     public student() {
         initComponents();
+        setResizable(false);
     }
 
     /**
@@ -371,26 +372,41 @@ public class student extends javax.swing.JFrame {
                 System.out.println("connection open");
                 java.sql.Statement statement = connection.createStatement();
                 System.out.println("connection open");
+                String getQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '" + Subject + "' AND Username = '" + username + "'";
+                java.sql.ResultSet studentData = statement.executeQuery(getQuery);
+                if (studentData.next()) {
+                    System.out.println("connection in");
+                }
+                String studName = studentData.getString("username");
+                String subject = studentData.getString("Subject");
 
-                String query = "INSERT INTO universitysystem.courseregistration (username, Subject, ProfessorUserName, Email, Age) values(?,?,?,?,?)";
-                System.out.println("connection insert");
-                //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
+                if (studName.equals(username) && subject.equals(Subject)) {
+                    JOptionPane.showMessageDialog(null, "Already Registered");
+                } else {
+                    String query = "INSERT INTO universitysystem.courseregistration (username, Subject, ProfessorUserName, Email, Age) values(?,?,?,?,?)";
+                    System.out.println("connection insert");
+                    //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
 
-                // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-                java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-                preparedStmt.setString(1, username);
-                preparedStmt.setString(2, Subject);
-                preparedStmt.setString(3, pName);
-                preparedStmt.setString(4, email);
-                preparedStmt.setInt(5, age);
+                    // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                    java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                    preparedStmt.setString(1, username);
+                    preparedStmt.setString(2, Subject);
+                    preparedStmt.setString(3, pName);
+                    preparedStmt.setString(4, email);
+                    preparedStmt.setInt(5, age);
 
-                System.out.println("connection insert");
-                
-                preparedStmt.execute();
-                System.out.println("connection run");
-                JOptionPane.showMessageDialog(null, "Details Added");
+                    System.out.println("connection insert");
 
-                connection.close();
+                    preparedStmt.execute();
+                    System.out.println("connection run");
+                    JOptionPane.showMessageDialog(null, "Details Added");
+                }
+
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                } else {
+                    System.out.println("Connection is already closed.");
+                }
             } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "please add data in correct format!");
@@ -552,7 +568,6 @@ public class student extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
     }//GEN-LAST:event_viewBtnActionPerformed
-    
 
     /**
      * @param args the command line arguments
