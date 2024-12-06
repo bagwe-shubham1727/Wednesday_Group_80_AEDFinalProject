@@ -19,6 +19,7 @@ public class financialLogin extends javax.swing.JFrame {
      */
     public financialLogin() {
         initComponents();
+        setResizable(false);
     }
 
     /**

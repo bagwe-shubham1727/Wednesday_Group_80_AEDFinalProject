@@ -22,6 +22,7 @@ public class crimeAction extends javax.swing.JFrame {
      */
     public crimeAction() {
         initComponents();
+        setResizable(false);
     }
 
     /**

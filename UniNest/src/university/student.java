@@ -24,6 +24,7 @@ public class student extends javax.swing.JFrame {
      */
     public student() {
         initComponents();
+        setResizable(false);
     }
 
     /**

@@ -22,6 +22,7 @@ public class professor extends javax.swing.JFrame {
      */
     public professor() {
         initComponents();
+        setResizable(false);
     }
 
     /**

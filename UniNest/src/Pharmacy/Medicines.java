@@ -29,6 +29,7 @@ public class Medicines extends javax.swing.JFrame {
      */
     public Medicines() {
         initComponents();
+        setResizable(false);
         try{
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             System.out.println("connection open");

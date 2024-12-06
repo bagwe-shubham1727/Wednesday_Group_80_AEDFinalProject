@@ -20,6 +20,7 @@ public class bankServicesPolice extends javax.swing.JFrame {
      */
     public bankServicesPolice() {
         initComponents();
+        setResizable(false);
     }
 
     /**

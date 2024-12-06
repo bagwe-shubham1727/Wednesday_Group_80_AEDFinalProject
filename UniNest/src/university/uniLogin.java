@@ -20,6 +20,7 @@ public class uniLogin extends javax.swing.JFrame {
      */
     public uniLogin() {
         initComponents();
+        setResizable(false);
     }
 
     /**

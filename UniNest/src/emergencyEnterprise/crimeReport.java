@@ -23,6 +23,7 @@ public class crimeReport extends javax.swing.JFrame {
      */
     public crimeReport() {
         initComponents();
+        setResizable(false);
     }
 
     /**

@@ -35,6 +35,7 @@ public class signUp extends javax.swing.JFrame {
      */
     public signUp() {
         initComponents();
+        setResizable(false);
     }
 
     /**

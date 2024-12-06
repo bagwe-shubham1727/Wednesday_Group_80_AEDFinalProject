@@ -34,6 +34,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
      */
     public InventoryEnterpriseLogin() {
         initComponents();
+        setResizable(false);
     }
     
     /**

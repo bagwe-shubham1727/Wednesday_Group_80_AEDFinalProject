@@ -20,7 +20,7 @@ public class bankAdmin extends javax.swing.JFrame {
      */
     public bankAdmin() {
         initComponents();
-        
+        setResizable(false);
         
     }
 

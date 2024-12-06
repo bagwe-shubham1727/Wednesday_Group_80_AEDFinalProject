@@ -20,6 +20,7 @@ public class bankServices extends javax.swing.JFrame {
      */
     public bankServices() {
         initComponents();
+        setResizable(false);
     }
 
     /**
