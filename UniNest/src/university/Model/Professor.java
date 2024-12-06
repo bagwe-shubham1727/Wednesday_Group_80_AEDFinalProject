@@ -11,14 +11,15 @@ import javax.swing.JOptionPane;
  * @author aditi
  */
 public class Professor {
-     String profName;
+
+    String profName;
     String subjectTeach;
     String Email;
     int Age;
     String username;
     String password;
-    
-    public Professor(String profName, String subjectTeach, String Email, int Age, String username, String password){
+
+    public Professor(String profName, String subjectTeach, String Email, int Age, String username, String password) {
         this.setprofName(profName);
         this.setEmail(Email);
         this.setAge(Age);
@@ -74,15 +75,15 @@ public class Professor {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public void addProfessor(){
-        //try{
-               // java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
-                //statement.executeUpdate("insert into universitysystem.professors" + "(Name, subjectTeach, Email, Age, username, password)" + "values ('"+this.profName+"','"+this.subjectTeach+"', '"+this.Email+"', '"+this.Age+"' , '"+this.username+"', '"+this.password+"')");
-                //JOptionPane.showMessageDialog(null, "Professors successfully added!");
-            //}catch(Exception e){
-              //   JOptionPane.showMessageDialog(null,e);
-            //}
+
+    public void addProfessor() {
+        try {
+            java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
+            statement.executeUpdate("insert into universitysystem.professors" + "(Name, subjectTeach, Email, Age, username, password)" + "values ('" + this.profName + "','" + this.subjectTeach + "', '" + this.Email + "', '" + this.Age + "' , '" + this.username + "', '" + this.password + "')");
+            JOptionPane.showMessageDialog(null, "Professors successfully added!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
 }
