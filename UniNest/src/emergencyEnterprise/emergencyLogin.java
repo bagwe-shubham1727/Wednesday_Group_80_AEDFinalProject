@@ -156,14 +156,16 @@ public class emergencyLogin extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
         }   
-        }else if(role.equals("Police Admin")){
-            if(username.equals("POLADM") && password.equals("7890")){
+        } else if (role.equals("Police Admin")) {
+            if (username.equals("POLADM") && password.equals("7890")) {
                 policeAdmin policeAdminObj = new policeAdmin();
                 setVisible(false);
                 policeAdminObj.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null,"Invalid Credentials");
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Credentials");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid Credentials");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
