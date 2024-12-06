@@ -89,7 +89,7 @@ public class MedicineModel {
             java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
 
             statement.executeUpdate("insert into universitysystem.medicine" + "(ID, MEDICINE_NAME, PRICE, QUANTITY, COMPANY)" + "values ('" + this.getId() + "','" + this.getMedicine() + "','" + this.getPrice() + "','" + this.getQuantity() + "', '" + this.getCompany() + "')");
-            JOptionPane.showMessageDialog(null, "User successfully added!");
+            JOptionPane.showMessageDialog(null, "Medicine successfully added!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
