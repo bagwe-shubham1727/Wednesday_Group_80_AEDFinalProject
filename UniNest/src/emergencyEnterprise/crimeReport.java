@@ -104,7 +104,6 @@ public class crimeReport extends javax.swing.JFrame {
 
         submitBtn.setBackground(new java.awt.Color(255, 255, 0));
         submitBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        submitBtn.setForeground(new java.awt.Color(0, 0, 0));
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +141,7 @@ public class crimeReport extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(detailsTable);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 118, 652, 294));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 652, 294));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,14 +149,13 @@ public class crimeReport extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, 32));
 
         viewBtn.setBackground(new java.awt.Color(255, 255, 0));
-        viewBtn.setForeground(new java.awt.Color(0, 0, 0));
         viewBtn.setText("View");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(viewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 430, -1, -1));
+        jPanel2.add(viewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/NUPDbg.jpg"))); // NOI18N
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -168,7 +166,6 @@ public class crimeReport extends javax.swing.JFrame {
 
         btnStudLogout1.setBackground(new java.awt.Color(255, 255, 0));
         btnStudLogout1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnStudLogout1.setForeground(new java.awt.Color(0, 0, 0));
         btnStudLogout1.setText("Logout");
         btnStudLogout1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +194,7 @@ public class crimeReport extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, Short.MAX_VALUE)
         );
 
         pack();
