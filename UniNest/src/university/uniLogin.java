@@ -49,9 +49,7 @@ public class uniLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonBackUniLogin.setBackground(new java.awt.Color(255, 255, 255));
         jButtonBackUniLogin.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jButtonBackUniLogin.setForeground(new java.awt.Color(0, 0, 0));
         jButtonBackUniLogin.setText("Back");
         jButtonBackUniLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +71,7 @@ public class uniLogin extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 342, -1, -1));
         jPanel1.add(btnUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 298, 131, -1));
-        jPanel1.add(btnPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 339, 134, -1));
+        jPanel1.add(btnPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 339, 130, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,11 +80,9 @@ public class uniLogin extends javax.swing.JFrame {
 
         selectUniRole.setForeground(new java.awt.Color(255, 255, 255));
         selectUniRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Professor", "University Admin" }));
-        jPanel1.add(selectUniRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 380, -1, -1));
+        jPanel1.add(selectUniRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 130, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
