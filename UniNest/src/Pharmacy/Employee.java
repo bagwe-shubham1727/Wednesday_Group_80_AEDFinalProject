@@ -69,14 +69,12 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MEDICINE AVAILABLE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 38, 320, -1));
 
         tblMedicine.setBackground(new java.awt.Color(204, 255, 255));
-        tblMedicine.setForeground(new java.awt.Color(0, 0, 0));
         tblMedicine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -94,9 +92,8 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 113, 466, 312));
 
-        btnViewMedicine.setBackground(new java.awt.Color(0, 153, 153));
+        btnViewMedicine.setBackground(new java.awt.Color(0, 204, 204));
         btnViewMedicine.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        btnViewMedicine.setForeground(new java.awt.Color(0, 0, 0));
         btnViewMedicine.setText("View");
         btnViewMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,9 +102,8 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(btnViewMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 443, -1, -1));
 
-        btnBuy.setBackground(new java.awt.Color(0, 153, 153));
+        btnBuy.setBackground(new java.awt.Color(0, 204, 204));
         btnBuy.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        btnBuy.setForeground(new java.awt.Color(0, 0, 0));
         btnBuy.setText("Buy");
         btnBuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,22 +113,18 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 443, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Medicine Name:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 116, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Price");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 157, 95, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Quantity");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 198, 95, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Company");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 239, 86, -1));
         jPanel1.add(lblMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 113, 190, -1));
@@ -146,9 +138,8 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.add(lblQuant, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 195, 190, -1));
         jPanel1.add(lblCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 236, 190, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
+        jButton1.setBackground(new java.awt.Color(0, 204, 204));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +149,6 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 44, -1, -1));
 
         tblMedTaken.setBackground(new java.awt.Color(204, 255, 255));
-        tblMedTaken.setForeground(new java.awt.Color(0, 0, 0));
         tblMedTaken.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -171,9 +161,8 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 318, 313, 107));
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 153));
+        jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("View");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +172,6 @@ public class Employee extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 443, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Medicine Taken");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 295, 110, -1));
 
