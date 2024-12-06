@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ashis
+ * @author ananya
  */
 public class bankAdmin extends javax.swing.JFrame {
 

@@ -49,12 +49,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="18" style="3"/>
             </Property>
-<<<<<<< HEAD
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-=======
->>>>>>> 32a6289267eccb0bc5087a65d089889cc5be3fa3
             <Property name="text" type="java.lang.String" value="Financial Login"/>
           </Properties>
           <Constraints>

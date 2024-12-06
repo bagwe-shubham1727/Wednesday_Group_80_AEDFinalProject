@@ -6,14 +6,11 @@ package bankEnterprise;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 import main.signUp;
-
-
 
 /**
  *
- * @author Anish
+ * @author ananya
  */
 public class financialLogin extends javax.swing.JFrame {
 
@@ -149,41 +146,45 @@ public class financialLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsernameActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-     String role = selectUniRole.getSelectedItem().toString();
+        // TODO add your handling code here:
+        
+        String role = selectUniRole.getSelectedItem().toString();
         String username = btnUsername.getText();
         String password = btnPassword.getText();
         
-        if(role.equals("Bank Employee")){
-         try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.bankemployee WHERE username = '"+username+"' and password = '"+password+"'";
-            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-//            if(!studentData.next()){
-//                JOptionPane.showMessageDialog(null,"Invalid Credentials");
-//            }
-                
-            while(studentData.next()){
-                String studName = studentData.getString("Name"); 
-                
-                bankAction emp = new bankAction();
-                emp.setName(studName);
-                setVisible(false);
-                emp.setVisible(true);
+        switch (role) {
+            case "Bank Employee" -> {
+                try{
+                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                    java.sql.Statement statement = connection.createStatement();
+                    String studentQuery = "SELECT * FROM universitysystem.bankemployee WHERE username = '"+username+"' and password = '"+password+"'";
+                    java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+                    if(!studentData.next()){
+                        JOptionPane.showMessageDialog(null,"Invalid Credentials");
+                    }
+                    
+                    while(studentData.next()){
+                        String studName = studentData.getString("Name");
+                        
+                        bankAction emp = new bankAction();
+                        emp.setName(studName);
+                        setVisible(false);
+                        emp.setVisible(true);
+                    }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                }
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }   
-        }else if(role.equals("Bank Admin")){
-            if(username.equals("BANADMIN") && password.equals("7890")){
-                bankAdmin bakAdminObj = new bankAdmin();
-                setVisible(false);
-                bakAdminObj.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null,"Invalid Credentials");
+            case "Bank Admin" -> {
+                if(username.equals("BANADMIN") && password.equals("7890")){
+                    bankAdmin bakAdminObj = new bankAdmin();
+                    setVisible(false);
+                    bakAdminObj.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Invalid Credentials");
+                }
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Please Enter Details Properly");
+            default -> JOptionPane.showMessageDialog(null,"Please Enter Details Properly");
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 
