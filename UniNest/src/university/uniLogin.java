@@ -49,7 +49,9 @@ public class uniLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonBackUniLogin.setBackground(new java.awt.Color(255, 255, 255));
         jButtonBackUniLogin.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jButtonBackUniLogin.setForeground(new java.awt.Color(0, 0, 0));
         jButtonBackUniLogin.setText("Back");
         jButtonBackUniLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +73,7 @@ public class uniLogin extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 342, -1, -1));
         jPanel1.add(btnUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 298, 131, -1));
-        jPanel1.add(btnPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 339, 130, -1));
+        jPanel1.add(btnPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 339, 134, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,9 +82,11 @@ public class uniLogin extends javax.swing.JFrame {
 
         selectUniRole.setForeground(new java.awt.Color(255, 255, 255));
         selectUniRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Professor", "University Admin" }));
-        jPanel1.add(selectUniRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 130, -1));
+        jPanel1.add(selectUniRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 380, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,63 +122,59 @@ public class uniLogin extends javax.swing.JFrame {
         String role = selectUniRole.getSelectedItem().toString();
         String username = btnUsername.getText();
         String password = btnPassword.getText();
-
-        switch (role) {
-            case "Student" -> {
-                try {
-                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-                    java.sql.Statement statement = connection.createStatement();
-                    String studentQuery = "SELECT * FROM universitysystem.students WHERE username = '" + username + "' and password = '" + password + "'";
-                    java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-                    if (!studentData.next()) {
-                        JOptionPane.showMessageDialog(null, "Invalid Credentials");
-                    }
-
-                    while (studentData.next()) {
-                        String studName = studentData.getString("Name");
-
-                        student stud = new student();
-                        stud.setName(studName, username);
-                        setVisible(false);
-                        stud.setVisible(true);
-                    }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
+        
+        if(role.equals("Student")){
+         try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.students WHERE username = '"+username+"' and password = '"+password+"'";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+//            if(!studentData.next()){
+//                JOptionPane.showMessageDialog(null,"Invalid Credentials");
+//            }
+                
+            while(studentData.next()){
+                String studName = studentData.getString("Name"); 
+                
+                student stud = new student();
+                stud.setName(studName, username);
+                setVisible(false);
+                stud.setVisible(true);
             }
-            case "Professor" -> {
-                try {
-                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-                    java.sql.Statement statement = connection.createStatement();
-                    String profQuery = "SELECT * FROM universitysystem.professors WHERE username = '" + username + "' and password = '" + password + "'";
-                    java.sql.ResultSet profData = statement.executeQuery(profQuery);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }   
+        }else if(role.equals("Professor")){
+            try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String profQuery = "SELECT * FROM universitysystem.professors WHERE username = '"+username+"' and password = '"+password+"'";
+            java.sql.ResultSet profData = statement.executeQuery(profQuery);
 
-                    if (!profData.next()) {
-                        JOptionPane.showMessageDialog(null, "Invalid Credentials");
-                    }
-
-                    while (profData.next()) {
-                        String currentSubjectTeach = profData.getString("subjectTeach");
-                        professor profObj = new professor();
-                        profObj.setProfData(username, currentSubjectTeach);
-                        setVisible(false);
-                        profObj.setVisible(true);
-                    }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
+//            if(!profData.next()){
+//                JOptionPane.showMessageDialog(null,"Invalid Credentials");
+//            }
+            
+            while(profData.next()){
+                String currentSubjectTeach = profData.getString("subjectTeach");
+                professor profObj = new professor();
+                profObj.setProfData(username, currentSubjectTeach);
+                setVisible(false);
+                profObj.setVisible(true);
             }
-            case "University Admin" -> {
-                if (username.equals("UNIADMIN") && password.equals("7890")) {
-                    staffAdmin staffAdminObj = new staffAdmin();
-                    setVisible(false);
-                    staffAdminObj.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Invalid Credentials");
-                }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+        }else if(role.equals("University Admin")){
+            if(username.equals("UNIADMIN") && password.equals("7890")){
+                staffAdmin staffAdminObj = new staffAdmin();
+                setVisible(false);
+                staffAdminObj.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Invalid Credentials");
             }
-            default ->
-                JOptionPane.showMessageDialog(null, "Please Enter Details Properly");
+        }else{
+            JOptionPane.showMessageDialog(null,"Please Enter Details Properly");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -1,13 +1,20 @@
+
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
+
 package Pharmacy;
 
 /**
  *
  * @author Soham Chavan
  */
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
@@ -28,7 +35,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
     public InventoryEnterpriseLogin() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,15 +63,18 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INVENTORY ENTERPRISE LOGIN ");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
 
         labelUsername.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        labelUsername.setForeground(new java.awt.Color(0, 0, 0));
         labelUsername.setText("USERNAME: ");
         jPanel1.add(labelUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
 
         labelPassword.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        labelPassword.setForeground(new java.awt.Color(0, 0, 0));
         labelPassword.setText("PASSWORD: ");
         jPanel1.add(labelPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 80, -1));
         jPanel1.add(tfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 200, -1));
@@ -77,19 +87,16 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         jPanel1.add(pfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 200, -1));
 
         labelRole.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        labelRole.setForeground(new java.awt.Color(0, 0, 0));
         labelRole.setText("ROLE:");
         jPanel1.add(labelRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 74, -1));
 
-        cfRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student", "Professor", "Police" }));
-        cfRole.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cfRoleActionPerformed(evt);
-            }
-        });
+        cfRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin" }));
         jPanel1.add(cfRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 90, -1));
 
         buttonLogin.setBackground(new java.awt.Color(0, 153, 153));
         buttonLogin.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        buttonLogin.setForeground(new java.awt.Color(0, 0, 0));
         buttonLogin.setText("LOGIN ");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +107,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,80 +145,61 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         String username = tfUsername.getText();
         String password = pfPassword.getText();
         String role = cfRole.getSelectedItem().toString();
-
-        if (username.isEmpty() || password.isEmpty()) {
+        
+        if(username.isEmpty()||password.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please Enter Details!");
-        } else if ("Admin".equals(role) && username.equals("admin") && password.equals("admin")) {
+        }
+        else if("Admin".equals(role) && username.equals("admin") && password.equals("admin")){
             this.hide();
             Medicines pa = new Medicines();
             pa.setVisible(true);
             JOptionPane.showMessageDialog(null, " Pharmacy Admin Login Successful!");
-        } else if ("Student".equals(role)) {
-            try {
+        }else if("Student".equals(role)){
+            try{
                 java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
                 java.sql.Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT * FROM universitysystem.students where username ='" + username + "' and password = '" + password + "'");
-
-                if (!resultset.next()) {
-                    JOptionPane.showMessageDialog(null, "Invalid Credentials");
-                }
-
-                while (resultset.next()) {
-                    Employee ha = new Employee();
-                    setVisible(false);
-                    ha.setVisible(true);
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                ResultSet resultset = statement.executeQuery
+                ("SELECT * FROM universitysystem.students where username ='"+username+"' and password = '"+password+"'");
+                
+                Employee ha = new Employee();
+                setVisible(false);
+                ha.setVisible(true);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,e);
                 setVisible(false);
             }
-        } else if ("Professor".equals(role)) {
-            try {
+        }else if("Professor".equals(role)){
+            try{
                 java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
                 java.sql.Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT * FROM universitysystem.professors where username ='" + username + "' and password = '" + password + "'");
-
-                if (!resultset.next()) {
-                    JOptionPane.showMessageDialog(null, "Invalid Credentials");
-                }
-
-                while (resultset.next()) {
-                    Employee ha = new Employee();
-                    setVisible(false);
-                    ha.setVisible(true);
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                ResultSet resultset = statement.executeQuery
+                ("SELECT * FROM universitysystem.professor where username ='"+username+"' and password = '"+password+"'");
+                
+                Employee ha = new Employee();
+                setVisible(false);
+                ha.setVisible(true);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,e);
                 setVisible(false);
             }
-        } else if ("Police".equals(role)) {
-            try {
+        }else if("Police".equals(role)){
+            try{
                 java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
                 java.sql.Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery("SELECT * FROM universitysystem.police where username ='" + username + "' and password = '" + password + "'");
-
-                if (!resultset.next()) {
-                    JOptionPane.showMessageDialog(null, "Invalid Credentials");
-                }
-
-                while (resultset.next()) {
-                    Employee ha = new Employee();
-                    setVisible(false);
-                    ha.setVisible(true);
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+                ResultSet resultset = statement.executeQuery
+                ("SELECT * FROM universitysystem.police where username ='"+username+"' and password = '"+password+"'");
+                
+                Employee ha = new Employee();
+                setVisible(false);
+                ha.setVisible(true);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
                 setVisible(false);
             }
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Invalid Credentials");
-
         }
-
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -219,10 +208,6 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         setVisible(false);
         su.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void cfRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cfRoleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cfRoleActionPerformed
 
     /**
      * @param args the command line arguments
