@@ -75,8 +75,6 @@ public class professor extends javax.swing.JFrame {
         jLabeltitleProfessor.setText("Grading");
         jPanel1.add(jLabeltitleProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
 
-        subjectTable.setBackground(new java.awt.Color(153, 0, 0));
-        subjectTable.setForeground(new java.awt.Color(255, 255, 255));
         subjectTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -144,9 +142,7 @@ public class professor extends javax.swing.JFrame {
         jLabel3.setText("Student Name:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 180, -1, -1));
 
-        btnProfLogout.setBackground(new java.awt.Color(0, 0, 0));
         btnProfLogout.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnProfLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnProfLogout.setText("Log Out");
         btnProfLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,13 +152,13 @@ public class professor extends javax.swing.JFrame {
         jPanel1.add(btnProfLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 21, -1, -1));
         jPanel1.add(lblProfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 116, 337, 43));
 
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Report a crime to NUPD?");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 410, -1, -1));
 
-        btnReportCrime1.setBackground(new java.awt.Color(0, 0, 0));
         btnReportCrime1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnReportCrime1.setForeground(new java.awt.Color(255, 255, 255));
         btnReportCrime1.setText("Report Crime");
         btnReportCrime1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

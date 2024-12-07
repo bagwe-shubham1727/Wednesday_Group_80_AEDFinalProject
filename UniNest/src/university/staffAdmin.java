@@ -39,10 +39,10 @@ public class staffAdmin extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtStudName = new javax.swing.JTextField();
-        txtStudPassword = new javax.swing.JTextField();
         txtStudUsername = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblStud = new javax.swing.JTable();
+        txtStudPassword = new javax.swing.JPasswordField();
         addStudents = new javax.swing.JButton();
         btnUpdateStud = new javax.swing.JButton();
         btnStudDelete = new javax.swing.JButton();
@@ -59,7 +59,6 @@ public class staffAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtProfPassword = new javax.swing.JTextField();
         txtProfName = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         btnProfDelete = new javax.swing.JButton();
@@ -74,6 +73,7 @@ public class staffAdmin extends javax.swing.JFrame {
         btnProfView = new javax.swing.JButton();
         txtSubTeach = new javax.swing.JComboBox<>();
         jLabellogostafadmin = new javax.swing.JLabel();
+        txtProfPassword = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnUniAdminLogout = new javax.swing.JButton();
@@ -83,7 +83,6 @@ public class staffAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane1.setBackground(new java.awt.Color(153, 0, 0));
-        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel2.setBackground(new java.awt.Color(204, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,11 +107,8 @@ public class staffAdmin extends javax.swing.JFrame {
         jLabel10.setText("Username:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 114, -1, -1));
         jPanel2.add(txtStudName, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 112, 100, -1));
-        jPanel2.add(txtStudPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 152, 100, -1));
         jPanel2.add(txtStudUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 111, 100, -1));
 
-        tblStud.setBackground(new java.awt.Color(153, 0, 0));
-        tblStud.setForeground(new java.awt.Color(255, 255, 255));
         tblStud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -128,11 +124,16 @@ public class staffAdmin extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblStud);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 780, 180));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 780, 180));
 
-        addStudents.setBackground(new java.awt.Color(255, 255, 255));
+        txtStudPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStudPasswordActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtStudPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 100, -1));
+
         addStudents.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        addStudents.setForeground(new java.awt.Color(0, 0, 0));
         addStudents.setText("Add");
         addStudents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,9 +142,7 @@ public class staffAdmin extends javax.swing.JFrame {
         });
         jPanel2.add(addStudents, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, -1, -1));
 
-        btnUpdateStud.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdateStud.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnUpdateStud.setForeground(new java.awt.Color(0, 0, 0));
         btnUpdateStud.setText("Update");
         btnUpdateStud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,9 +151,7 @@ public class staffAdmin extends javax.swing.JFrame {
         });
         jPanel2.add(btnUpdateStud, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, -1, -1));
 
-        btnStudDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnStudDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnStudDelete.setForeground(new java.awt.Color(0, 0, 0));
         btnStudDelete.setText("Delete");
         btnStudDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,9 +172,7 @@ public class staffAdmin extends javax.swing.JFrame {
         jPanel2.add(txtStudMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 153, 100, -1));
         jPanel2.add(txtStudAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 194, 100, -1));
 
-        btnStudView.setBackground(new java.awt.Color(255, 255, 255));
         btnStudView.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnStudView.setForeground(new java.awt.Color(0, 0, 0));
         btnStudView.setText("View");
         btnStudView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,12 +216,9 @@ public class staffAdmin extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Username:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 124, -1, -1));
-        jPanel1.add(txtProfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 165, 139, -1));
         jPanel1.add(txtProfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 121, 178, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,9 +227,7 @@ public class staffAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 468, -1, -1));
 
-        btnProfDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnProfDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnProfDelete.setForeground(new java.awt.Color(0, 0, 0));
         btnProfDelete.setText("Delete");
         btnProfDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,9 +237,7 @@ public class staffAdmin extends javax.swing.JFrame {
         jPanel1.add(btnProfDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(633, 468, -1, -1));
         jPanel1.add(txtProfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 121, 161, -1));
 
-        btnAddProf.setBackground(new java.awt.Color(255, 255, 255));
         btnAddProf.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnAddProf.setForeground(new java.awt.Color(0, 0, 0));
         btnAddProf.setText("Add");
         btnAddProf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,9 +283,7 @@ public class staffAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(txtProfAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 247, 53, -1));
 
-        btnProfView.setBackground(new java.awt.Color(255, 255, 255));
         btnProfView.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnProfView.setForeground(new java.awt.Color(0, 0, 0));
         btnProfView.setText("View");
         btnProfView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,6 +298,13 @@ public class staffAdmin extends javax.swing.JFrame {
 
         jLabellogostafadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Northeastern_University_Logo-White.png"))); // NOI18N
         jPanel1.add(jLabellogostafadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 6, 120, -1));
+
+        txtProfPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProfPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtProfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 160, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/toppng.com-vignette-png-19201080-overlay-photo-1920x1080.png"))); // NOI18N
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 510));
@@ -578,7 +571,7 @@ public class staffAdmin extends javax.swing.JFrame {
         String profEmail = txtProfMail.getText();
         int profAge = Integer.parseInt(txtProfAge.getText());
         String profUsername = txtProfUsername.getText();
-        String profPassword = txtProfPassword.getText();
+        String profPassword = txtStudPassword.getText();
 
         if(profname.isEmpty()|| subjectTeach.isEmpty()|| profEmail.isEmpty()|| profAge == 0 || profUsername.isEmpty() || profPassword.isEmpty()){
             JOptionPane.showMessageDialog(null, "Plz Enter Details!");
@@ -593,7 +586,7 @@ public class staffAdmin extends javax.swing.JFrame {
         txtProfMail.setText("");
         txtProfAge.setText("");
         txtProfUsername.setText("");
-        txtProfPassword.setText("");
+        txtStudPassword.setText("");
     }//GEN-LAST:event_btnAddProfActionPerformed
 
     private void btnProfDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfDeleteActionPerformed
@@ -643,6 +636,14 @@ public class staffAdmin extends javax.swing.JFrame {
     private void txtProfAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProfAgeActionPerformed
+
+    private void txtStudPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStudPasswordActionPerformed
+
+    private void txtProfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProfPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -719,12 +720,12 @@ public class staffAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtProfAge;
     private javax.swing.JTextField txtProfMail;
     private javax.swing.JTextField txtProfName;
-    private javax.swing.JTextField txtProfPassword;
+    private javax.swing.JPasswordField txtProfPassword;
     private javax.swing.JTextField txtProfUsername;
     private javax.swing.JTextField txtStudAge;
     private javax.swing.JTextField txtStudMail;
     private javax.swing.JTextField txtStudName;
-    private javax.swing.JTextField txtStudPassword;
+    private javax.swing.JPasswordField txtStudPassword;
     private javax.swing.JTextField txtStudUsername;
     private javax.swing.JComboBox<String> txtSubTeach;
     // End of variables declaration//GEN-END:variables

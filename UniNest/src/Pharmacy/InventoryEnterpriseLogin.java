@@ -91,7 +91,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         cfRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student", "Professor", "Police" }));
         jPanel1.add(cfRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 90, -1));
 
-        buttonLogin.setBackground(new java.awt.Color(0, 204, 204));
+        buttonLogin.setBackground(new java.awt.Color(204, 255, 255));
         buttonLogin.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         buttonLogin.setText("Login");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         });
         jPanel1.add(buttonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 204));
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +112,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 30, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/UHCS2-removebg-preview.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 230, 120));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 230, 120));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/UCSbg.jpg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
