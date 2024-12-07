@@ -54,7 +54,7 @@ public class financialLogin extends javax.swing.JFrame {
         jLabelFinanceTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         jLabelFinanceTitle.setText("Financial Login");
         jPanel1.add(jLabelFinanceTitle);
-        jLabelFinanceTitle.setBounds(396, 241, 131, 23);
+        jLabelFinanceTitle.setBounds(396, 241, 132, 24);
 
         jLabelLOGOfinance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/northeastern-university-student-financial-services-2-removebg-preview.png"))); // NOI18N
         jPanel1.add(jLabelLOGOfinance);
@@ -76,7 +76,7 @@ public class financialLogin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setText("Username:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(350, 300, 72, 18);
+        jLabel1.setBounds(350, 300, 78, 19);
 
         btnUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,24 +84,24 @@ public class financialLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnUsername);
-        btnUsername.setBounds(440, 300, 127, 23);
+        btnUsername.setBounds(440, 300, 127, 22);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 0, 0));
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(350, 340, 72, 18);
+        jLabel2.setBounds(350, 340, 72, 19);
 
         selectUniRole.setForeground(new java.awt.Color(255, 255, 255));
         selectUniRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bank Employee", "Bank Admin" }));
         jPanel1.add(selectUniRole);
-        selectUniRole.setBounds(440, 380, 127, 23);
+        selectUniRole.setBounds(440, 380, 116, 22);
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("Role:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(350, 380, 35, 18);
+        jLabel3.setBounds(350, 380, 38, 19);
 
         loginBtn.setBackground(new java.awt.Color(0, 0, 0));
         loginBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -113,7 +113,7 @@ public class financialLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(loginBtn);
-        loginBtn.setBounds(430, 430, 72, 23);
+        loginBtn.setBounds(430, 430, 72, 25);
 
         jButtonBackUniLogin.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jButtonBackUniLogin.setText("Back");
@@ -155,43 +155,65 @@ public class financialLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String role = selectUniRole.getSelectedItem().toString();
-        String username = btnUsername.getText();
-        String password = new String(pfPassword.getPassword());
-        
-        switch (role) {
-            case "Bank Employee" -> {
-                try{
-                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-                    java.sql.Statement statement = connection.createStatement();
-                    String studentQuery = "SELECT * FROM universitysystem.bankemployee WHERE username = '"+username+"' and password = '"+password+"'";
-                    java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-//                    if(!studentData.next()){
-//                        JOptionPane.showMessageDialog(null,"Invalid Credentials");
-//                    }
-                    
-                    while(studentData.next()){
-                        String studName = studentData.getString("Name");
-                        
-                        bankAction emp = new bankAction();
-                        emp.setName(studName);
-                        setVisible(false);
-                        emp.setVisible(true);
-                    }
-                }catch(Exception e){
-                    JOptionPane.showMessageDialog(null,e);
-                }
-            }
-            case "Bank Admin" -> {
-                if(username.equals("BANADMIN") && password.equals("7890")){
-                    bankAdmin bakAdminObj = new bankAdmin();
+        String username = btnUsername.getText().trim();
+        String password = new String(pfPassword.getPassword()).trim();
+
+switch (role) {
+    case "Bank Employee" -> {
+        try {
+            // Establish connection
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+
+            // First, check if the username exists
+            String usernameQuery = "SELECT * FROM universitysystem.bankemployee WHERE username = ?";
+            java.sql.PreparedStatement usernameStatement = connection.prepareStatement(usernameQuery);
+            usernameStatement.setString(1, username);
+
+            java.sql.ResultSet usernameResult = usernameStatement.executeQuery();
+
+            if (!usernameResult.next()) {
+                // Username not found
+                JOptionPane.showMessageDialog(null, "Invalid Username");
+            } else {
+                // Username exists, check the password
+                String correctPassword = usernameResult.getString("password").trim();
+
+                if (!correctPassword.equals(password)) {
+                    JOptionPane.showMessageDialog(null, "You entered the password wrong");
+                } else {
+                    // Successful login
+                    String empName = usernameResult.getString("Name");
+                    bankAction emp = new bankAction();
+                    emp.setName(empName);
                     setVisible(false);
-                    bakAdminObj.setVisible(true);
-                }else{
-                    JOptionPane.showMessageDialog(null,"Invalid Credentials");
+                    emp.setVisible(true);
                 }
             }
-            default -> JOptionPane.showMessageDialog(null,"Please Enter Details Properly");
+
+            // Close resources
+            usernameStatement.close();
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
+    case "Bank Admin" -> {
+        if (!username.equals("BANADMIN")) {
+            JOptionPane.showMessageDialog(null, "Invalid Username");
+        } else if (!password.equals("7890")) {
+            JOptionPane.showMessageDialog(null, "You entered the password wrong");
+        } else {
+            // Successful login for Bank Admin
+            bankAdmin bankAdminObj = new bankAdmin();
+            setVisible(false);
+            bankAdminObj.setVisible(true);
+        }
+    }
+    default -> {
+        JOptionPane.showMessageDialog(null, "Please Enter Details Properly");
+    }
+}
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void jButtonBackUniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackUniLoginActionPerformed
