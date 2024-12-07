@@ -38,10 +38,10 @@ public class uniLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnUsername = new javax.swing.JTextField();
-        btnPassword = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         selectUniRole = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        pfPassword = new javax.swing.JPasswordField();
         jLabelTitlelogin = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -72,7 +72,6 @@ public class uniLogin extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 342, -1, -1));
         jPanel1.add(btnUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 298, 131, -1));
-        jPanel1.add(btnPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 339, 130, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,7 +89,14 @@ public class uniLogin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 421, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, -1, -1));
+
+        pfPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 130, -1));
 
         jLabelTitlelogin.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabelTitlelogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,7 +124,7 @@ public class uniLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String role = selectUniRole.getSelectedItem().toString();
         String username = btnUsername.getText();
-        String password = btnPassword.getText();
+        String password = pfPassword.getText();
         
         if(role.equals("Student")){
          try{
@@ -182,6 +188,10 @@ public class uniLogin extends javax.swing.JFrame {
         signUpObj.setVisible(true);
     }//GEN-LAST:event_jButtonBackUniLoginActionPerformed
 
+    private void pfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pfPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,7 +228,6 @@ public class uniLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btnPassword;
     private javax.swing.JTextField btnUsername;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBackUniLogin;
@@ -229,6 +238,7 @@ public class uniLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogoUNILogin;
     private javax.swing.JLabel jLabelTitlelogin;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField pfPassword;
     private javax.swing.JComboBox<String> selectUniRole;
     // End of variables declaration//GEN-END:variables
 }
