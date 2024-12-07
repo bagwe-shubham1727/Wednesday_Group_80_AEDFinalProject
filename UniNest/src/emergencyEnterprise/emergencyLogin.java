@@ -41,8 +41,8 @@ public class emergencyLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblUsername = new javax.swing.JTextField();
-        lblPassword = new javax.swing.JTextField();
         btnPoliceBack = new javax.swing.JButton();
+        pfPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,7 +57,6 @@ public class emergencyLogin extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 0));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +64,7 @@ public class emergencyLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(400, 400, 72, 22);
+        jButton1.setBounds(390, 400, 72, 22);
 
         jLabelTitleEmergencyLogin.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabelTitleEmergencyLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,12 +95,9 @@ public class emergencyLogin extends javax.swing.JFrame {
         jLabel3.setBounds(340, 360, 72, 17);
         jPanel1.add(lblUsername);
         lblUsername.setBounds(430, 280, 111, 23);
-        jPanel1.add(lblPassword);
-        lblPassword.setBounds(430, 320, 111, 23);
 
         btnPoliceBack.setBackground(new java.awt.Color(255, 255, 0));
         btnPoliceBack.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        btnPoliceBack.setForeground(new java.awt.Color(0, 0, 0));
         btnPoliceBack.setText("Back");
         btnPoliceBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +106,14 @@ public class emergencyLogin extends javax.swing.JFrame {
         });
         jPanel1.add(btnPoliceBack);
         btnPoliceBack.setBounds(30, 20, 72, 22);
+
+        pfPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pfPassword);
+        pfPassword.setBounds(430, 320, 110, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/NUPDbg.jpg"))); // NOI18N
         jPanel1.add(jLabel4);
@@ -132,7 +136,7 @@ public class emergencyLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String username = lblUsername.getText();
-        String password = lblPassword.getText();
+        String password = new String(pfPassword.getPassword());
         String role = selectEmerRole.getSelectedItem().toString();
         
         if(role.equals("Police")){
@@ -176,6 +180,10 @@ public class emergencyLogin extends javax.swing.JFrame {
         setVisible(false);
         signUpObj.setVisible(true);
     }//GEN-LAST:event_btnPoliceBackActionPerformed
+
+    private void pfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pfPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,8 +230,8 @@ public class emergencyLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSymbolEmergencyLogin;
     private javax.swing.JLabel jLabelTitleEmergencyLogin;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField lblPassword;
     private javax.swing.JTextField lblUsername;
+    private javax.swing.JPasswordField pfPassword;
     private javax.swing.JComboBox<String> selectEmerRole;
     // End of variables declaration//GEN-END:variables
 }
