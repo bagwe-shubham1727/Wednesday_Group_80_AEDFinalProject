@@ -113,7 +113,7 @@ public class bankAction extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Account Type", "Operation", "Amount"
+                "Name", "Account Type", "Operation", "Amount", "Action Taken"
             }
         ));
         bankserviceTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +123,7 @@ public class bankAction extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(bankserviceTable);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 144, 425, 228));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 144, 480, 228));
 
         amountTxt.setEnabled(false);
         jPanel3.add(amountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 267, 205, -1));
@@ -313,11 +313,20 @@ public class bankAction extends javax.swing.JFrame {
         String tb1account = tb1Model.getValueAt(bankserviceTable.getSelectedRow(),1).toString();
         String tb1operation = tb1Model.getValueAt(bankserviceTable.getSelectedRow(),2).toString();
         String tb1amount = tb1Model.getValueAt(bankserviceTable.getSelectedRow(),3).toString();
-
+        String tb1action = tb1Model.getValueAt(bankserviceTable.getSelectedRow(), 4).toString();
         nameTxt.setText(tb1name);
         accountTxt.setText(tb1account);
         operationTxt.setText(tb1operation);
         amountTxt.setText(tb1amount);
+        actionTakenTxt.setText(tb1action);
+        
+        if (!tb1action.isBlank()){
+            actionTakenTxt.setEnabled(false);
+        }
+        else {
+            actionTakenTxt.setEnabled(true);
+        }
+        
     }//GEN-LAST:event_bankserviceTableMouseClicked
 
     private void employeeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeTxtActionPerformed
@@ -335,19 +344,22 @@ public class bankAction extends javax.swing.JFrame {
             java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
 
             while(studentData.next()){
-                String  name = studentData.getString("Name");
+                String name = studentData.getString("Name");
                 String accountType = studentData.getString("AccountType");
                 String operation = studentData.getString("Operation");
                 String amount = studentData.getString("Amount");
-
-                String tbData[] = {name, accountType,operation,amount};
+                String ActionTaken = studentData.getString("ActionTaken") != null ? studentData.getString("ActionTaken") : "";
+                
+                String tbData[] = {name, accountType,operation,amount,ActionTaken};
 
                 tb1Model.addRow(tbData);
             }
 
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null,"Something went wrong");
         }
+        
+        
     }//GEN-LAST:event_viewBtnActionPerformed
 
     
@@ -433,7 +445,7 @@ public class bankAction extends javax.swing.JFrame {
 
                 String age = studentData.getString("Age");
                 String loanamount = studentData.getString("Loanamount");
-
+                
 
                 
                 String tbData[] = {name,email,age,loanamount};
