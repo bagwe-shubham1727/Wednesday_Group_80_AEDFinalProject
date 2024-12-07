@@ -203,6 +203,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="lblMed">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="682" y="113" width="190" height="-1"/>
@@ -210,6 +213,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="lblPrice">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="682" y="154" width="190" height="-1"/>
@@ -227,6 +233,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="lblCompany">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="682" y="236" width="190" height="-1"/>

@@ -156,9 +156,14 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
                 ResultSet resultset = statement.executeQuery
                 ("SELECT * FROM universitysystem.students where username ='"+username+"' and password = '"+password+"'");
                 
-                Employee ha = new Employee();
-                setVisible(false);
-                ha.setVisible(true);
+                while (resultset.next()) {
+                    String studName = resultset.getString("username");
+
+                    Employee ha = new Employee();
+                    ha.setUsername(studName);
+                    setVisible(false);
+                    ha.setVisible(true);
+                }
             }
             catch(Exception e){
                 JOptionPane.showMessageDialog(null,e);
@@ -171,9 +176,14 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
                 ResultSet resultset = statement.executeQuery
                 ("SELECT * FROM universitysystem.professors where username ='"+username+"' and password = '"+password+"'");
                 
-                Employee ha = new Employee();
-                setVisible(false);
-                ha.setVisible(true);
+                while (resultset.next()) {
+                    String studName = resultset.getString("username");
+
+                    Employee ha = new Employee();
+                    ha.setUsername(studName);
+                    setVisible(false);
+                    ha.setVisible(true);
+                }
             }
             catch(Exception e){
                 JOptionPane.showMessageDialog(null,e);
@@ -186,9 +196,14 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
                 ResultSet resultset = statement.executeQuery
                 ("SELECT * FROM universitysystem.police where username ='"+username+"' and password = '"+password+"'");
                 
-                Employee ha = new Employee();
-                setVisible(false);
-                ha.setVisible(true);
+                while (resultset.next()) {
+                    String studName = resultset.getString("username");
+
+                    Employee ha = new Employee();
+                    ha.setUsername(studName);
+                    setVisible(false);
+                    ha.setVisible(true);
+                }
             }
             catch(Exception e){
                 JOptionPane.showMessageDialog(null,e.getLocalizedMessage());

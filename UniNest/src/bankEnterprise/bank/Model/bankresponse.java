@@ -97,7 +97,7 @@ public class bankresponse {
 
             String query = "INSERT INTO universitysystem.bankresponse (Name,AccountType,Operation,Amount,Employee,ActionTaken) values(?,?,?,?,?,?)";
             System.out.println("connection insert");
-            if (currRole == "student") {
+            if ("student".equals(currRole)) {
                 String studentQuery = "UPDATE universitysystem.students SET LoanAmount = '" + amount + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(studentQuery);
 
