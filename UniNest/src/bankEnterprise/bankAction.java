@@ -81,7 +81,6 @@ public class bankAction extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Employee Action");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 91, 181, -1));
@@ -98,8 +97,14 @@ public class bankAction extends javax.swing.JFrame {
 
         jLabelBankresponseLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/northeastern-university-student-financial-services-2-removebg-preview.png"))); // NOI18N
         jPanel3.add(jLabelBankresponseLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 19, -1, 66));
+
+        nameTxt.setEnabled(false);
         jPanel3.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 144, 205, -1));
+
+        accountTxt.setEnabled(false);
         jPanel3.add(accountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 185, 205, -1));
+
+        operationTxt.setEnabled(false);
         jPanel3.add(operationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 226, 205, -1));
 
         bankserviceTable.setBackground(new java.awt.Color(0, 102, 102));
@@ -119,8 +124,11 @@ public class bankAction extends javax.swing.JFrame {
         jScrollPane1.setViewportView(bankserviceTable);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 144, 425, 228));
+
+        amountTxt.setEnabled(false);
         jPanel3.add(amountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 267, 205, -1));
 
+        employeeTxt.setEnabled(false);
         employeeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeTxtActionPerformed(evt);
@@ -246,7 +254,6 @@ public class bankAction extends javax.swing.JFrame {
 
         btnStudLogout.setBackground(new java.awt.Color(0, 102, 102));
         btnStudLogout.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        btnStudLogout.setForeground(new java.awt.Color(0, 0, 0));
         btnStudLogout.setText("Logout");
         btnStudLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,7 +279,6 @@ public class bankAction extends javax.swing.JFrame {
         jPanel2.add(btnReportCrime1, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 447, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("End Current Session?");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
 
@@ -375,6 +381,7 @@ public class bankAction extends javax.swing.JFrame {
             // BankResponse.CreateBankResponse(name,accountType,operation,amount,employee,action);
             bankresponse response =  new bankresponse(name,accountType,operation,amount,employee,action,currRole);
             response.addResponse();
+            actionTakenTxt.setEnabled(false);
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 

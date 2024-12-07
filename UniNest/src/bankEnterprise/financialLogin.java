@@ -160,9 +160,9 @@ public class financialLogin extends javax.swing.JFrame {
                     java.sql.Statement statement = connection.createStatement();
                     String studentQuery = "SELECT * FROM universitysystem.bankemployee WHERE username = '"+username+"' and password = '"+password+"'";
                     java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-                    if(!studentData.next()){
-                        JOptionPane.showMessageDialog(null,"Invalid Credentials");
-                    }
+//                    if(!studentData.next()){
+//                        JOptionPane.showMessageDialog(null,"Invalid Credentials");
+//                    }
                     
                     while(studentData.next()){
                         String studName = studentData.getString("Name");

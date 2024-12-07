@@ -119,6 +119,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="nameTxt">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="639" y="144" width="205" height="-1"/>
@@ -126,6 +129,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="accountTxt">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="639" y="185" width="205" height="-1"/>
@@ -133,6 +139,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="operationTxt">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="639" y="226" width="205" height="-1"/>
@@ -175,6 +184,9 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JTextField" name="amountTxt">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="639" y="267" width="205" height="-1"/>
@@ -182,6 +194,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="employeeTxt">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeTxtActionPerformed"/>
               </Events>
