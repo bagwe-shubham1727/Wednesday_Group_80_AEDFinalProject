@@ -34,11 +34,11 @@ public class financialLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelFinanceTitle = new javax.swing.JLabel();
         jLabelLOGOfinance = new javax.swing.JLabel();
+        pfPassword = new javax.swing.JPasswordField();
         jLabelLogo2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        btnPassword = new javax.swing.JTextField();
         selectUniRole = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         loginBtn = new javax.swing.JButton();
@@ -52,7 +52,6 @@ public class financialLogin extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabelFinanceTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
-        jLabelFinanceTitle.setForeground(new java.awt.Color(0, 0, 0));
         jLabelFinanceTitle.setText("Financial Login");
         jPanel1.add(jLabelFinanceTitle);
         jLabelFinanceTitle.setBounds(396, 241, 131, 23);
@@ -60,6 +59,14 @@ public class financialLogin extends javax.swing.JFrame {
         jLabelLOGOfinance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/northeastern-university-student-financial-services-2-removebg-preview.png"))); // NOI18N
         jPanel1.add(jLabelLOGOfinance);
         jLabelLOGOfinance.setBounds(350, 100, 290, 135);
+
+        pfPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pfPassword);
+        pfPassword.setBounds(440, 340, 130, 20);
 
         jLabelLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/northeasternuniversity_logoseal-2.png"))); // NOI18N
         jPanel1.add(jLabelLogo2);
@@ -84,8 +91,6 @@ public class financialLogin extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(350, 340, 72, 18);
-        jPanel1.add(btnPassword);
-        btnPassword.setBounds(440, 340, 127, 23);
 
         selectUniRole.setForeground(new java.awt.Color(255, 255, 255));
         selectUniRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bank Employee", "Bank Admin" }));
@@ -151,7 +156,7 @@ public class financialLogin extends javax.swing.JFrame {
         
         String role = selectUniRole.getSelectedItem().toString();
         String username = btnUsername.getText();
-        String password = btnPassword.getText();
+        String password = new String(pfPassword.getPassword());
         
         switch (role) {
             case "Bank Employee" -> {
@@ -196,6 +201,10 @@ public class financialLogin extends javax.swing.JFrame {
         signUpObj.setVisible(true);
     }//GEN-LAST:event_jButtonBackUniLoginActionPerformed
 
+    private void pfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pfPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,7 +241,6 @@ public class financialLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btnPassword;
     private javax.swing.JTextField btnUsername;
     private javax.swing.JButton jButtonBackUniLogin;
     private javax.swing.JLabel jLabel1;
@@ -245,6 +253,7 @@ public class financialLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginBtn;
+    private javax.swing.JPasswordField pfPassword;
     private javax.swing.JComboBox<String> selectUniRole;
     // End of variables declaration//GEN-END:variables
 }

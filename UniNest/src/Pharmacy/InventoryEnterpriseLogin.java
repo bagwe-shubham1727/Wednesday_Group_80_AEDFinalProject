@@ -91,17 +91,17 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         cfRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student", "Professor", "Police" }));
         jPanel1.add(cfRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 90, -1));
 
-        buttonLogin.setBackground(new java.awt.Color(0, 153, 153));
+        buttonLogin.setBackground(new java.awt.Color(0, 204, 204));
         buttonLogin.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        buttonLogin.setText("LOGIN ");
+        buttonLogin.setText("Login");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, -1, -1));
+        jPanel1.add(buttonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
+        jButton1.setBackground(new java.awt.Color(0, 204, 204));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

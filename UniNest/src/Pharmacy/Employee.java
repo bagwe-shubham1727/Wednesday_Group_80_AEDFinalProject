@@ -92,7 +92,7 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 113, 466, 312));
 
-        btnViewMedicine.setBackground(new java.awt.Color(0, 153, 153));
+        btnViewMedicine.setBackground(new java.awt.Color(0, 204, 204));
         btnViewMedicine.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnViewMedicine.setText("View");
         btnViewMedicine.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +102,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(btnViewMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 443, -1, -1));
 
-        btnBuy.setBackground(new java.awt.Color(0, 153, 153));
+        btnBuy.setBackground(new java.awt.Color(0, 204, 204));
         btnBuy.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnBuy.setText("Buy");
         btnBuy.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class Employee extends javax.swing.JFrame {
         lblCompany.setEnabled(false);
         jPanel1.add(lblCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 236, 190, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
+        jButton1.setBackground(new java.awt.Color(0, 204, 204));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +167,7 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 318, 313, 107));
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 153));
+        jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jButton2.setText("View");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
