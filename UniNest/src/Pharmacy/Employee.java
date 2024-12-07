@@ -69,7 +69,7 @@ public class Employee extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MEDICINE AVAILABLE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 38, 320, -1));
@@ -127,7 +127,11 @@ public class Employee extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel6.setText("Company");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 239, 86, -1));
+
+        lblMed.setEnabled(false);
         jPanel1.add(lblMed, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 113, 190, -1));
+
+        lblPrice.setEnabled(false);
         jPanel1.add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 154, 190, -1));
 
         lblQuant.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +140,8 @@ public class Employee extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lblQuant, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 195, 190, -1));
+
+        lblCompany.setEnabled(false);
         jPanel1.add(lblCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 236, 190, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 204, 204));

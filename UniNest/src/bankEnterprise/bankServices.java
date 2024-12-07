@@ -63,6 +63,12 @@ public class bankServices extends javax.swing.JFrame {
         });
         jPanel1.add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 425, -1, -1));
         jPanel1.add(amountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 384, 146, -1));
+
+        nameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTxtActionPerformed(evt);
+            }
+        });
         jPanel1.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 261, 146, -1));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -86,7 +92,6 @@ public class bankServices extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 264, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Welcome Users");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 190, -1, -1));
 
@@ -98,7 +103,7 @@ public class bankServices extends javax.swing.JFrame {
         jPanel1.add(operationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 343, 146, -1));
 
         accountTxt.setForeground(new java.awt.Color(255, 255, 255));
-        accountTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student Account" }));
+        accountTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student Account", "Police Account" }));
         jPanel1.add(accountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 302, 146, -1));
 
         btnStudLogout.setBackground(new java.awt.Color(0, 0, 0));
@@ -149,7 +154,7 @@ public class bankServices extends javax.swing.JFrame {
 //                    have to add validation if user user exists or not
                     
                     while(studentData.next()){
-                            String name = studentData.getString("Name"); 
+                            String name = studentData.getString("username"); 
                             bankservices service =  new bankservices(name,accountType,operation,amount);
                             service.addServices();
                     }
@@ -179,6 +184,10 @@ public class bankServices extends javax.swing.JFrame {
         setVisible(false);
         emergencyLoginObj.setVisible(true);
     }//GEN-LAST:event_btnStudLogoutActionPerformed
+
+    private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTxtActionPerformed
     String currEmpName = "";
     String currRole = "";
     public void setUsername(String studentName, String role){
