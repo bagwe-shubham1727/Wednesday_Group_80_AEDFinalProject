@@ -106,7 +106,7 @@ public class policeAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 102));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 204));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,7 +138,7 @@ public class policeAdmin extends javax.swing.JFrame {
         jLabel3.setText("Gender:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 131, 49, 17));
 
-        updateBtn.setBackground(new java.awt.Color(255, 255, 0));
+        updateBtn.setBackground(new java.awt.Color(255, 255, 204));
         updateBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +179,7 @@ public class policeAdmin extends javax.swing.JFrame {
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 89, 78, 17));
         jPanel1.add(phoneTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 163, 150, -1));
 
-        addTxt.setBackground(new java.awt.Color(255, 255, 0));
+        addTxt.setBackground(new java.awt.Color(255, 255, 204));
         addTxt.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         addTxt.setText("Add");
         addTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -191,10 +191,10 @@ public class policeAdmin extends javax.swing.JFrame {
         jPanel1.add(salaryTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 198, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ADD POLICE");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 202, 36));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 202, 36));
 
         pfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +214,7 @@ public class policeAdmin extends javax.swing.JFrame {
         jLabel7.setText("Password:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 160, 66, 17));
 
-        viewBtn.setBackground(new java.awt.Color(255, 255, 0));
+        viewBtn.setBackground(new java.awt.Color(255, 255, 204));
         viewBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         viewBtn.setText("View");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +224,7 @@ public class policeAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(viewBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, -1, 23));
 
-        deleteBtn.setBackground(new java.awt.Color(255, 255, 0));
+        deleteBtn.setBackground(new java.awt.Color(255, 255, 204));
         deleteBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +245,6 @@ public class policeAdmin extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        detailsTable.setBackground(new java.awt.Color(0, 0, 51));
         detailsTable.setForeground(new java.awt.Color(255, 255, 255));
         detailsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -257,14 +256,15 @@ public class policeAdmin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(detailsTable);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 131, 652, 294));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 670, 210));
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 204));
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 204));
         jLabel6.setText("Crime Details");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 140, 32));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 0));
+        jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jButton1.setText("View");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +272,7 @@ public class policeAdmin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, -1, -1));
 
         searchTxt.setForeground(new java.awt.Color(153, 0, 0));
         searchTxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -316,7 +316,7 @@ public class policeAdmin extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 65, 424, 155));
 
-        viewDBtn.setBackground(new java.awt.Color(255, 255, 0));
+        viewDBtn.setBackground(new java.awt.Color(255, 255, 204));
         viewDBtn.setText("View");
         viewDBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,7 +339,7 @@ public class policeAdmin extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 65, 403, 155));
 
-        viewBEBtn.setBackground(new java.awt.Color(255, 255, 0));
+        viewBEBtn.setBackground(new java.awt.Color(255, 255, 204));
         viewBEBtn.setText("View");
         viewBEBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,23 +376,23 @@ public class policeAdmin extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 403, 142));
 
-        viewSBtn.setBackground(new java.awt.Color(255, 255, 0));
+        viewSBtn.setBackground(new java.awt.Color(255, 255, 204));
         viewSBtn.setText("View");
         viewSBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewSBtnActionPerformed(evt);
             }
         });
-        jPanel3.add(viewSBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
+        jPanel3.add(viewSBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
-        viewPBtn.setBackground(new java.awt.Color(255, 255, 0));
+        viewPBtn.setBackground(new java.awt.Color(255, 255, 204));
         viewPBtn.setText("View");
         viewPBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewPBtnActionPerformed(evt);
             }
         });
-        jPanel3.add(viewPBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, -1, -1));
+        jPanel3.add(viewPBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,7 +421,7 @@ public class policeAdmin extends javax.swing.JFrame {
 
         jPanel4.setLayout(null);
 
-        btnStudLogout.setBackground(new java.awt.Color(255, 255, 0));
+        btnStudLogout.setBackground(new java.awt.Color(255, 255, 204));
         btnStudLogout.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnStudLogout.setText("Logout");
         btnStudLogout.addActionListener(new java.awt.event.ActionListener() {

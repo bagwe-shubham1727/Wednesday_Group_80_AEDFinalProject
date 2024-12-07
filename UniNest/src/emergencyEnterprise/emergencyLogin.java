@@ -55,7 +55,7 @@ public class emergencyLogin extends javax.swing.JFrame {
         jPanel1.add(selectEmerRole);
         selectEmerRole.setBounds(430, 360, 111, 23);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 0));
+        jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +67,7 @@ public class emergencyLogin extends javax.swing.JFrame {
         jButton1.setBounds(390, 400, 72, 22);
 
         jLabelTitleEmergencyLogin.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabelTitleEmergencyLogin.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitleEmergencyLogin.setForeground(new java.awt.Color(255, 255, 204));
         jLabelTitleEmergencyLogin.setText("Emergency Login");
         jPanel1.add(jLabelTitleEmergencyLogin);
         jLabelTitleEmergencyLogin.setBounds(370, 220, 133, 21);
@@ -76,27 +76,28 @@ public class emergencyLogin extends javax.swing.JFrame {
         jPanel1.add(jLabelSymbolEmergencyLogin);
         jLabelSymbolEmergencyLogin.setBounds(370, 30, 140, 190);
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 204));
         jLabel1.setText("Username:");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(340, 280, 80, 17);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 204));
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(340, 320, 80, 17);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 204));
         jLabel3.setText("Role:");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(340, 360, 72, 17);
         jPanel1.add(lblUsername);
         lblUsername.setBounds(430, 280, 111, 23);
 
-        btnPoliceBack.setBackground(new java.awt.Color(255, 255, 0));
+        btnPoliceBack.setBackground(new java.awt.Color(255, 255, 204));
         btnPoliceBack.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnPoliceBack.setText("Back");
         btnPoliceBack.addActionListener(new java.awt.event.ActionListener() {

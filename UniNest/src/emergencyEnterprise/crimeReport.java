@@ -67,23 +67,25 @@ public class crimeReport extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 204));
         jLabel1.setText("Name");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 193, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 204));
         jLabel2.setText("Phone");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 234, -1, -1));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 204));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 204));
         jLabel3.setText("Address");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 275, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 204));
         jLabel4.setText("Crime Details");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 316, -1, -1));
 
@@ -103,7 +105,7 @@ public class crimeReport extends javax.swing.JFrame {
         jPanel1.add(addressTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 273, 188, -1));
         jPanel1.add(cdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 314, 188, -1));
 
-        submitBtn.setBackground(new java.awt.Color(255, 255, 0));
+        submitBtn.setBackground(new java.awt.Color(255, 255, 204));
         submitBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -113,8 +115,9 @@ public class crimeReport extends javax.swing.JFrame {
         });
         jPanel1.add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 366, -1, -1));
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 204));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Report Crime Here");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 97, 202, 31));
