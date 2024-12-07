@@ -79,24 +79,21 @@ public class bankAdmin extends javax.swing.JFrame {
         jPanel1.add(addTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 467, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 0, 0));
         jLabel4.setText("User name:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 129, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 0, 0));
         jLabel6.setText("Password:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 167, -1, -1));
         jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 126, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add Bank Employee");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 87, 202, -1));
         jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 167, 150, -1));
 
-        employeeTable.setBackground(new java.awt.Color(0, 102, 102));
+        employeeTable.setBackground(new java.awt.Color(204, 204, 255));
         employeeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -140,24 +137,20 @@ public class bankAdmin extends javax.swing.JFrame {
         jPanel1.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(728, 467, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("Gender:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 169, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(153, 0, 0));
         jLabel14.setText("Name:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 128, -1, 20));
         jPanel1.add(ageTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 245, 150, -1));
 
         jLabel15.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(153, 0, 0));
         jLabel15.setText("Phone:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 213, -1, -1));
         jPanel1.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 128, 150, -1));
 
         jLabel16.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(153, 0, 0));
         jLabel16.setText("Age:");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 245, -1, -1));
 
