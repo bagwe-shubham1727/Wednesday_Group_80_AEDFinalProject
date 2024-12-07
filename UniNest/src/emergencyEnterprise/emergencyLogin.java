@@ -138,40 +138,49 @@ public class emergencyLogin extends javax.swing.JFrame {
         String username = lblUsername.getText();
         String password = new String(pfPassword.getPassword());
         String role = selectEmerRole.getSelectedItem().toString();
-        
-        if(role.equals("Police")){
-         try{
+
+    if (role.equals("Police")) {
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.police WHERE username = '"+username+"' and password = '"+password+"'";
-            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-            
-//            if(!studentData.next()){
-//                JOptionPane.showMessageDialog(null,"Invalid Credentials");
-//            }
-            
-            while(studentData.next()){
-                String policeUName = studentData.getString("username");
-                
-                crimeAction pol = new crimeAction();
-                pol.setName(policeUName);
-                setVisible(false);
-                pol.setVisible(true);
+            String policeQuery = "SELECT * FROM universitysystem.police WHERE username = '" + username + "'";
+            java.sql.ResultSet policeData = statement.executeQuery(policeQuery);
+
+            if (!policeData.next()) {
+                JOptionPane.showMessageDialog(null, "Invalid Username");
+            } else {
+                String correctPassword = policeData.getString("password");
+                if (!correctPassword.equals(password)) {
+                    JOptionPane.showMessageDialog(null, "You entered the password wrong");
+                } else {
+                    // Successful login
+                    String policeUName = policeData.getString("username");
+                    crimeAction pol = new crimeAction();
+                    pol.setName(policeUName);
+                    setVisible(false);
+                    pol.setVisible(true);
+                }
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }   
-        } else if (role.equals("Police Admin")) {
-            if (username.equals("POLADM") && password.equals("7890")) {
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    } else if (role.equals("Police Admin")) {
+        if (username.equals("POLADM")) {
+            if (!password.equals("7890")) {
+                JOptionPane.showMessageDialog(null, "You entered the password wrong");
+            } else {
                 policeAdmin policeAdminObj = new policeAdmin();
                 setVisible(false);
                 policeAdminObj.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid Credentials");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid Credentials");
+            JOptionPane.showMessageDialog(null, "Invalid Username");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid Role Selected");
+    }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnPoliceBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliceBackActionPerformed

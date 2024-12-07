@@ -136,80 +136,97 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_pfPasswordActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+            String username = tfUsername.getText().trim();
+            String password = new String(pfPassword.getPassword()).trim(); // Use getPassword() for JPasswordField
+            String role = cfRole.getSelectedItem().toString();
 
-        String username = tfUsername.getText();
-        String password = pfPassword.getText();
-        String role = cfRole.getSelectedItem().toString();
-        
-        if(username.isEmpty()||password.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter Details!");
-        }
-        else if("Admin".equals(role) && username.equals("admin") && password.equals("admin")){
-            this.hide();
-            Medicines pa = new Medicines();
-            pa.setVisible(true);
-            JOptionPane.showMessageDialog(null, " Pharmacy Admin Login Successful!");
-        }else if("Student".equals(role)){
-            try{
-                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-                java.sql.Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery
-                ("SELECT * FROM universitysystem.students where username ='"+username+"' and password = '"+password+"'");
-                
-                while (resultset.next()) {
-                    String studName = resultset.getString("username");
+if (username.isEmpty() || password.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please Enter Both Username and Password!");
+    return;
+}
 
-                    Employee ha = new Employee();
-                    ha.setUsername(studName);
-                    setVisible(false);
-                    ha.setVisible(true);
-                }
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null,e);
+if ("Admin".equals(role) && username.equals("admin") && password.equals("admin")) {
+    this.setVisible(false);
+    Medicines pa = new Medicines();
+    pa.setVisible(true);
+    JOptionPane.showMessageDialog(null, "Pharmacy Admin Login Successful!");
+} else if ("Student".equals(role)) {
+    try {
+        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+        java.sql.Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("SELECT * FROM universitysystem.students WHERE username = '" + username + "'");
+
+        if (!resultset.next()) {
+            JOptionPane.showMessageDialog(null, "Invalid Username");
+        } else {
+            String correctPassword = resultset.getString("password").trim();
+            if (!correctPassword.equals(password)) {
+                JOptionPane.showMessageDialog(null, "You Entered the Password Wrong");
+            } else {
+                String studName = resultset.getString("username");
+                Employee ha = new Employee();
+                ha.setUsername(studName);
                 setVisible(false);
-            }
-        }else if("Professor".equals(role)){
-            try{
-                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-                java.sql.Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery
-                ("SELECT * FROM universitysystem.professors where username ='"+username+"' and password = '"+password+"'");
-                
-                while (resultset.next()) {
-                    String studName = resultset.getString("username");
-
-                    Employee ha = new Employee();
-                    ha.setUsername(studName);
-                    setVisible(false);
-                    ha.setVisible(true);
-                }
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null,e);
-                setVisible(false);
-            }
-        }else if("Police".equals(role)){
-            try{
-                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-                java.sql.Statement statement = connection.createStatement();
-                ResultSet resultset = statement.executeQuery
-                ("SELECT * FROM universitysystem.police where username ='"+username+"' and password = '"+password+"'");
-                
-                while (resultset.next()) {
-                    String studName = resultset.getString("username");
-
-                    Employee ha = new Employee();
-                    ha.setUsername(studName);
-                    setVisible(false);
-                    ha.setVisible(true);
-                }
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null,e.getLocalizedMessage());
-                setVisible(false);
+                ha.setVisible(true);
             }
         }
+        connection.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+} else if ("Professor".equals(role)) {
+    try {
+        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+        java.sql.Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("SELECT * FROM universitysystem.professors WHERE username = '" + username + "'");
+
+        if (!resultset.next()) {
+            JOptionPane.showMessageDialog(null, "Invalid Username");
+        } else {
+            String correctPassword = resultset.getString("password").trim();
+            if (!correctPassword.equals(password)) {
+                JOptionPane.showMessageDialog(null, "You Entered the Password Wrong");
+            } else {
+                String profName = resultset.getString("username");
+                Employee ha = new Employee();
+                ha.setUsername(profName);
+                setVisible(false);
+                ha.setVisible(true);
+            }
+        }
+        connection.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+} else if ("Police".equals(role)) {
+    try {
+        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+        java.sql.Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("SELECT * FROM universitysystem.police WHERE username = '" + username + "'");
+
+        if (!resultset.next()) {
+            JOptionPane.showMessageDialog(null, "Invalid Username");
+        } else {
+            String correctPassword = resultset.getString("password").trim();
+            if (!correctPassword.equals(password)) {
+                JOptionPane.showMessageDialog(null, "You Entered the Password Wrong");
+            } else {
+                String policeName = resultset.getString("username");
+                Employee ha = new Employee();
+                ha.setUsername(policeName);
+                setVisible(false);
+                ha.setVisible(true);
+            }
+        }
+        connection.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+} else {
+    JOptionPane.showMessageDialog(null, "Please Enter Details Properly");
+}
+
+  
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

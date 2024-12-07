@@ -38,12 +38,12 @@ public class uniLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnUsername = new javax.swing.JTextField();
-        btnPassword = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         selectUniRole = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabelTitlelogin = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        pfPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,7 +72,6 @@ public class uniLogin extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 342, -1, -1));
         jPanel1.add(btnUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 298, 131, -1));
-        jPanel1.add(btnPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 339, 130, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,6 +98,7 @@ public class uniLogin extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/toppng.com-vignette-png-19201080-overlay-photo-1920x1080.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 510));
+        jPanel1.add(pfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 130, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,63 +116,83 @@ public class uniLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String role = selectUniRole.getSelectedItem().toString();
-        String username = btnUsername.getText();
-        String password = btnPassword.getText();
-        
-        if(role.equals("Student")){
-         try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.students WHERE username = '"+username+"' and password = '"+password+"'";
-            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-//            if(!studentData.next()){
-//                JOptionPane.showMessageDialog(null,"Invalid Credentials");
-//            }
-                
-            while(studentData.next()){
-                String studName = studentData.getString("Name"); 
-                
-                student stud = new student();
-                stud.setName(studName, username);
-                setVisible(false);
-                stud.setVisible(true);
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }   
-        }else if(role.equals("Professor")){
-            try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            java.sql.Statement statement = connection.createStatement();
-            String profQuery = "SELECT * FROM universitysystem.professors WHERE username = '"+username+"' and password = '"+password+"'";
-            java.sql.ResultSet profData = statement.executeQuery(profQuery);
+                String role = selectUniRole.getSelectedItem().toString();
+                String username = btnUsername.getText().trim();
+                String password = new String(pfPassword.getPassword()).trim();
 
-//            if(!profData.next()){
-//                JOptionPane.showMessageDialog(null,"Invalid Credentials");
-//            }
-            
-            while(profData.next()){
-                String currentSubjectTeach = profData.getString("subjectTeach");
-                professor profObj = new professor();
-                profObj.setProfData(username, currentSubjectTeach);
-                setVisible(false);
-                profObj.setVisible(true);
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter both Username and Password.");
+            return;
         }
-        }else if(role.equals("University Admin")){
-            if(username.equals("UNIADMIN") && password.equals("7890")){
+
+        if (role.equals("Student")) {
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                String studentQuery = "SELECT * FROM universitysystem.students WHERE username = ?";
+                java.sql.PreparedStatement preparedStatement = connection.prepareStatement(studentQuery);
+                preparedStatement.setString(1, username);
+
+                java.sql.ResultSet studentData = preparedStatement.executeQuery();
+
+                if (!studentData.next()) {
+                    JOptionPane.showMessageDialog(null, "Invalid Username");
+                } else {
+                    String correctPassword = studentData.getString("password").trim();
+                    if (!correctPassword.equals(password)) {
+                        JOptionPane.showMessageDialog(null, "You entered the password wrong");
+                    } else {
+                        String studName = studentData.getString("Name");
+                        student stud = new student();
+                        stud.setName(studName, username);
+                        setVisible(false);
+                        stud.setVisible(true);
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        } else if (role.equals("Professor")) {
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                String profQuery = "SELECT * FROM universitysystem.professors WHERE username = ?";
+                java.sql.PreparedStatement preparedStatement = connection.prepareStatement(profQuery);
+                preparedStatement.setString(1, username);
+
+                java.sql.ResultSet profData = preparedStatement.executeQuery();
+
+                if (!profData.next()) {
+                    JOptionPane.showMessageDialog(null, "Invalid Username");
+                } else {
+                    String correctPassword = profData.getString("password").trim();
+                    if (!correctPassword.equals(password)) {
+                        JOptionPane.showMessageDialog(null, "You entered the password wrong");
+                    } else {
+                        String currentSubjectTeach = profData.getString("subjectTeach");
+                        professor profObj = new professor();
+                        profObj.setProfData(username, currentSubjectTeach);
+                        setVisible(false);
+                        profObj.setVisible(true);
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        } else if (role.equals("University Admin")) {
+            if (!username.equals("UNIADMIN")) {
+                JOptionPane.showMessageDialog(null, "Invalid Username");
+            } else if (!password.equals("7890")) {
+                JOptionPane.showMessageDialog(null, "You entered the password wrong");
+            } else {
                 staffAdmin staffAdminObj = new staffAdmin();
                 setVisible(false);
                 staffAdminObj.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null,"Invalid Credentials");
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Please Enter Details Properly");
+        } else {
+            JOptionPane.showMessageDialog(null, "Please Enter Details Properly");
         }
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonBackUniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackUniLoginActionPerformed
@@ -218,7 +238,6 @@ public class uniLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btnPassword;
     private javax.swing.JTextField btnUsername;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBackUniLogin;
@@ -229,6 +248,7 @@ public class uniLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogoUNILogin;
     private javax.swing.JLabel jLabelTitlelogin;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField pfPassword;
     private javax.swing.JComboBox<String> selectUniRole;
     // End of variables declaration//GEN-END:variables
 }
