@@ -124,6 +124,21 @@ public class bankresponse {
 
             preparedStmt.execute();
             System.out.println("connection run");
+            
+            //String updateQuery = "UPDATE university.bankservices SET Employee = '" + employee + "' AND SET ActionTaken = '" + action + "' WHERE username = '" + name + "'";
+            //statement.executeUpdate(updateQuery);
+            
+            String updateQuery = "UPDATE universitysystem.bankservices SET Employee = ?, ActionTaken = ? WHERE Name = ?";
+            try (java.sql.PreparedStatement pstmt = connection.prepareStatement(updateQuery)) {
+                pstmt.setString(1, employee);
+                pstmt.setString(2, action);
+                pstmt.setString(3, name);
+                pstmt.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+            
             JOptionPane.showMessageDialog(null, "Details Added");
 
             connection.close();
