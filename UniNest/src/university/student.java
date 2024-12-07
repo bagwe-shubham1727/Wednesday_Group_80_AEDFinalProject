@@ -364,25 +364,20 @@ public class student extends javax.swing.JFrame {
 
     public class CourseReg {
 
+        //public boolean dupCourse = false;
+
         public static void CreateCourseReg(String username, String Subject, String pName, String email, int age) {
 
-            try {
-                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            boolean dupCourse = CheckCoursereg(username, Subject);
+            
+            if (!dupCourse) {
+                try {
+                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
 
-                System.out.println("connection open");
-                java.sql.Statement statement = connection.createStatement();
-                System.out.println("connection open");
-                String getQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '" + Subject + "' AND Username = '" + username + "'";
-                java.sql.ResultSet studentData = statement.executeQuery(getQuery);
-                if (studentData.next()) {
-                    System.out.println("connection in");
-                }
-                String studName = studentData.getString("username");
-                String subject = studentData.getString("Subject");
+                    System.out.println("connection open");
+                    java.sql.Statement statement = connection.createStatement();
+                    System.out.println("connection open");
 
-                if (studName.equals(username) && subject.equals(Subject)) {
-                    JOptionPane.showMessageDialog(null, "Already Registered");
-                } else {
                     String query = "INSERT INTO universitysystem.courseregistration (username, Subject, ProfessorUserName, Email, Age) values(?,?,?,?,?)";
                     System.out.println("connection insert");
                     //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
@@ -400,25 +395,55 @@ public class student extends javax.swing.JFrame {
                     preparedStmt.execute();
                     System.out.println("connection run");
                     JOptionPane.showMessageDialog(null, "Details Added");
-                }
 
-                if (connection != null && !connection.isClosed()) {
-                    connection.close();
-                } else {
-                    System.out.println("Connection is already closed.");
+                    if (connection != null && !connection.isClosed()) {
+                        connection.close();
+                    } else {
+                        System.out.println("Connection is already closed.");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null, "please add data in correct format!");
                 }
-            } catch (Exception e) {
-                System.out.println(e);
-                JOptionPane.showMessageDialog(null, "please add data in correct format!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Already Registered");
             }
 
+        }
+
+        public static boolean CheckCoursereg(String username, String Subject) {
+            boolean dupCourse = false;
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+
+                System.out.println("connection open");
+                java.sql.Statement statement = connection.createStatement();
+                System.out.println("connection open");
+                String getQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '" + Subject + "' AND Username = '" + username + "'";
+                java.sql.ResultSet studentData = statement.executeQuery(getQuery);
+
+                while (studentData.next()) {
+                    String studName = studentData.getString("username");
+                    String subject = studentData.getString("Subject");
+
+                    if (studName.equals(username) && subject.equals(Subject)) {
+
+                        dupCourse = true;
+                    }
+                    break;
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            return dupCourse;
         }
 
     }
 
     String currStudentName = "";
     String currStudUsername = "";
-
+    
     public void setName(String studentName, String username) {
         txtStudUsername.setText(studentName);
         currStudentName = studentName;
@@ -435,12 +460,13 @@ public class student extends javax.swing.JFrame {
         String pname = pnameTxt.getText();
         String email = emailTxt.getText();
         int age = Integer.parseInt(AgeTxt.getText());
+        
 
         if (txtStudUsername.getText().isEmpty() || AgeTxt.getText().isEmpty() || pnameTxt.getText().isEmpty() || emailTxt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Plz Enter Details!");
 
         } else {
-
+            
             // Community.CreateCommunity(house,person,community,city,hospital);
             CourseReg.CreateCourseReg(username, subject, pname, email, age);
         }
