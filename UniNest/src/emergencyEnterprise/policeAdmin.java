@@ -63,9 +63,9 @@ public class policeAdmin extends javax.swing.JFrame {
         addTxt = new javax.swing.JButton();
         salaryTxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        pfPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         usernameTxt = new javax.swing.JTextField();
-        passwordTxt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         viewBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
@@ -128,7 +128,7 @@ public class policeAdmin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(policeTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 239, 779, 197));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 779, 197));
 
         designationTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Major ", "Sergeant", "CBI", "Officer" }));
         jPanel1.add(designationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 86, 150, -1));
@@ -140,7 +140,6 @@ public class policeAdmin extends javax.swing.JFrame {
 
         updateBtn.setBackground(new java.awt.Color(255, 255, 0));
         updateBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        updateBtn.setForeground(new java.awt.Color(0, 0, 0));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +181,6 @@ public class policeAdmin extends javax.swing.JFrame {
 
         addTxt.setBackground(new java.awt.Color(255, 255, 0));
         addTxt.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        addTxt.setForeground(new java.awt.Color(0, 0, 0));
         addTxt.setText("Add");
         addTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,12 +196,18 @@ public class policeAdmin extends javax.swing.JFrame {
         jLabel1.setText("ADD POLICE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 202, 36));
 
+        pfPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 160, 150, -1));
+
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("User name:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 119, 71, 17));
         jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 119, 151, -1));
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 157, 151, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,7 +216,6 @@ public class policeAdmin extends javax.swing.JFrame {
 
         viewBtn.setBackground(new java.awt.Color(255, 255, 0));
         viewBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        viewBtn.setForeground(new java.awt.Color(0, 0, 0));
         viewBtn.setText("View");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +226,6 @@ public class policeAdmin extends javax.swing.JFrame {
 
         deleteBtn.setBackground(new java.awt.Color(255, 255, 0));
         deleteBtn.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        deleteBtn.setForeground(new java.awt.Color(0, 0, 0));
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -527,7 +529,7 @@ public class policeAdmin extends javax.swing.JFrame {
         int age = Integer.parseInt(ageTxt.getText());
         int phone = Integer.parseInt(phoneTxt.getText());
         String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
+        String password = pfPassword.getText();
 
         int salary = Integer.parseInt(salaryTxt.getText());
         String designation = (String) designationTxt.getSelectedItem();
@@ -552,7 +554,7 @@ public class policeAdmin extends javax.swing.JFrame {
         salaryTxt.setText("");
         designationTxt.setSelectedItem("");
         usernameTxt.setText("");
-        passwordTxt.setText("");
+        pfPassword.setText("");
 
         // police_table();
     }//GEN-LAST:event_addTxtActionPerformed
@@ -760,6 +762,10 @@ public class policeAdmin extends javax.swing.JFrame {
         emergencyLoginObj.setVisible(true);
     }//GEN-LAST:event_btnStudLogoutActionPerformed
 
+    private void pfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pfPasswordActionPerformed
+
     public void police_table() {
         try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
@@ -871,7 +877,7 @@ public class policeAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField nameTxt;
-    private javax.swing.JTextField passwordTxt;
+    private javax.swing.JPasswordField pfPassword;
     private javax.swing.JTextField phoneTxt;
     private javax.swing.JTable policeTable;
     private javax.swing.JTable policeTableD;
