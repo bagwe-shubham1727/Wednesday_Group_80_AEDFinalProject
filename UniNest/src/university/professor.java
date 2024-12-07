@@ -196,9 +196,9 @@ public class professor extends javax.swing.JFrame {
         try{
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '"+currSubjectTeach+"' and ProfessorName = '"+currProfUsername+"'";
+            String studentQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '"+currSubjectTeach+"' and ProfessorUsername = '"+currProfUsername+"'";
             java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-
+            
             while(studentData.next()){
                 String studName = studentData.getString("username");
                 String subject = studentData.getString("Subject");
@@ -208,7 +208,7 @@ public class professor extends javax.swing.JFrame {
                 studSubModel.addRow(tbData);
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null,"No Students Registered Under You");
         }
     }//GEN-LAST:event_btnViewStudDataActionPerformed
 

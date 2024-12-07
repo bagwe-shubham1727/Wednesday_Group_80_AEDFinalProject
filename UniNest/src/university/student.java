@@ -576,7 +576,7 @@ public class student extends javax.swing.JFrame {
         try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.coursegrade WHERE studentname = '" + currStudentName + "'";
+            String studentQuery = "SELECT * FROM universitysystem.coursegrade WHERE studentname = '" + currStudUsername + "'";
             java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
 
             while (studentData.next()) {
