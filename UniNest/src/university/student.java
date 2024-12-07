@@ -99,8 +99,6 @@ public class student extends javax.swing.JFrame {
         jLabel5.setText("Age:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 348, -1, -1));
 
-        profTable.setBackground(new java.awt.Color(102, 0, 0));
-        profTable.setForeground(new java.awt.Color(255, 255, 255));
         profTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -141,9 +139,7 @@ public class student extends javax.swing.JFrame {
         jLabel2.setText("Username:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 147, -1, -1));
 
-        submitBtn.setBackground(new java.awt.Color(255, 255, 255));
         submitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        submitBtn.setForeground(new java.awt.Color(0, 0, 0));
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,9 +157,7 @@ public class student extends javax.swing.JFrame {
         pnameTxt.setEnabled(false);
         jPanel1.add(pnameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(703, 275, 151, -1));
 
-        findBtbn.setBackground(new java.awt.Color(255, 255, 255));
         findBtbn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        findBtbn.setForeground(new java.awt.Color(0, 0, 0));
         findBtbn.setText("Find Professor");
         findBtbn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,9 +204,7 @@ public class student extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(resultsTable);
 
-        viewBtn.setBackground(new java.awt.Color(255, 255, 255));
         viewBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        viewBtn.setForeground(new java.awt.Color(0, 0, 0));
         viewBtn.setText("View");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,9 +268,7 @@ public class student extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(204, 0, 0));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnStudLogout.setBackground(new java.awt.Color(255, 255, 255));
         btnStudLogout.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnStudLogout.setForeground(new java.awt.Color(0, 0, 0));
         btnStudLogout.setText("Logout");
         btnStudLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,9 +290,7 @@ public class student extends javax.swing.JFrame {
         jLabel10.setText("Report a crime to NUPD?");
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 373, -1, -1));
 
-        btnReportCrime1.setBackground(new java.awt.Color(255, 255, 255));
         btnReportCrime1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnReportCrime1.setForeground(new java.awt.Color(0, 0, 0));
         btnReportCrime1.setText("Report Crime");
         btnReportCrime1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,9 +304,7 @@ public class student extends javax.swing.JFrame {
         jLabel11.setText("Buy Meds?");
         jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 373, -1, -1));
 
-        btnBuyMed1.setBackground(new java.awt.Color(255, 255, 255));
         btnBuyMed1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        btnBuyMed1.setForeground(new java.awt.Color(0, 0, 0));
         btnBuyMed1.setText("Buy Medicine");
         btnBuyMed1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,9 +318,7 @@ public class student extends javax.swing.JFrame {
         jLabel12.setText("Apply Loan from bank?");
         jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 373, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Apply Loan");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

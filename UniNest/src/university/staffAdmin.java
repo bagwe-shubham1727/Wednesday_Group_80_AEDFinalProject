@@ -109,8 +109,6 @@ public class staffAdmin extends javax.swing.JFrame {
         jPanel2.add(txtStudName, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 112, 100, -1));
         jPanel2.add(txtStudUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 111, 100, -1));
 
-        tblStud.setBackground(new java.awt.Color(153, 0, 0));
-        tblStud.setForeground(new java.awt.Color(255, 255, 255));
         tblStud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
