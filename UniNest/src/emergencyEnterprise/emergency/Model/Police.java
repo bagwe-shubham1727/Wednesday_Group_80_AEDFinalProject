@@ -16,13 +16,13 @@ public class Police {
     String name;
     String gender;
     int age;
-    int phone;
+    long phone;
     String username;
     String password;
     int salary;
     String designation;
 
-    public Police(String name, String gender, int phone, int age, String username, String password, int salary, String designation) {
+    public Police(String name, String gender, int age, long phone, String username, String password, int salary, String designation) {
         this.setId(id);
         this.setName(name);
         this.setGender(gender);
@@ -66,11 +66,11 @@ public class Police {
         this.age = age;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -112,7 +112,7 @@ public class Police {
             statement.executeUpdate("insert into universitysystem.police" + "(name, gender, phone, age,salary,designation, username, password)" + "values ('" + this.name + "', '" + this.gender + "', '" + this.phone + "' ,'" + this.age + "' ,'" + this.salary + "' ,'" + this.designation + "' , '" + this.username + "', '" + this.password + "')");
             JOptionPane.showMessageDialog(null, "Police successfully added!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);;
         }
     }
 

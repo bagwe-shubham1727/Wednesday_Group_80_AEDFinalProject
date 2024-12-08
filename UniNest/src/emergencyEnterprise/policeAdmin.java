@@ -498,7 +498,7 @@ public class policeAdmin extends javax.swing.JFrame {
         String Gender = (String) genderTxt.getSelectedItem();
 
         int age = Integer.parseInt(ageTxt.getText());
-        int phone = Integer.parseInt(phoneTxt.getText());
+        long phone = Long.parseLong(phoneTxt.getText());
         int salary = Integer.parseInt(salaryTxt.getText());
         String Designation = (String) designationTxt.getSelectedItem();
 
@@ -527,7 +527,18 @@ public class policeAdmin extends javax.swing.JFrame {
         String gender = genderTxt.getSelectedItem().toString();
         //int age = ageTxt.getText();
         int age = Integer.parseInt(ageTxt.getText());
-        int phone = Integer.parseInt(phoneTxt.getText());
+        String phoneStr = phoneTxt.getText();
+        long phone = 0;
+        // Check if the phone number has exactly 10 digits
+        if (phoneStr.length() == 10 && phoneStr.matches("\\d{10}")) {
+            // Convert the string to an integer if validation passes
+            phone = Long.parseLong(phoneStr);
+            // Proceed with the logic after successful validation
+        } else {
+            // Show an error message if the phone number is invalid
+            JOptionPane.showMessageDialog(null, "Phone number must be exactly 10 digits.");
+        }
+        //int phone = Integer.parseInt(phoneTxt.getText());
         String username = usernameTxt.getText();
         String password = pfPassword.getText();
 

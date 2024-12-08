@@ -14,13 +14,13 @@ import javax.swing.JOptionPane;
 public class crimeaction {
 
     String name;
-    int phone;
+    long phone;
     String address;
     String cd;
     String officer;
     String action;
 
-    public crimeaction(String name, int phone, String address, String cd, String officer, String action) {
+    public crimeaction(String name, long phone, String address, String cd, String officer, String action) {
 
         this.setName(name);
         this.setPhone(phone);
@@ -38,11 +38,11 @@ public class crimeaction {
         this.name = name;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -79,7 +79,65 @@ public class crimeaction {
     }
 
     public void addaction() {
+        boolean actionExists = checkaction();
+        if (!actionExists) {
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
 
+                System.out.println("connection open");
+                java.sql.Statement statement = connection.createStatement();
+                System.out.println("connection open");
+
+                String query = "INSERT INTO universitysystem.crimedetails (name,phone,address,crimeDetails,officer,action) values(?,?,?,?,?,?)";
+                System.out.println("connection insert");
+
+                // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setString(1, name);
+
+                System.out.println("connection insert");
+
+                preparedStmt.setLong(2, phone);
+                preparedStmt.setString(3, address);
+                preparedStmt.setString(4, cd);
+                preparedStmt.setString(5, officer);
+                preparedStmt.setString(6, action);
+
+                System.out.println("connection insert");
+
+                preparedStmt.execute();
+                System.out.println("connection run");
+                JOptionPane.showMessageDialog(null, "Details Added");
+
+                connection.close();
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "please add data in correct format!");
+            }
+        }
+        else if (actionExists){
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+
+                System.out.println("connection open");
+                java.sql.Statement statement = connection.createStatement();
+                System.out.println("connection open");
+                
+                String updateQuery = "UPDATE universitysystem.crimedetails SET action = '"+action+"' WHERE name = '"+name+"' AND crimeDetails = '"+cd+"'";
+                statement.executeUpdate(updateQuery);
+                JOptionPane.showMessageDialog(null, "Details exists already, updated the action");
+                System.out.println("Update Successful");
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "please add data in correct format!");
+            }
+        }
+        
+
+    }
+    
+    public boolean checkaction() {
+        boolean actionExists = false;
         try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
 
@@ -87,33 +145,26 @@ public class crimeaction {
             java.sql.Statement statement = connection.createStatement();
             System.out.println("connection open");
 
-            String query = "INSERT INTO universitysystem.crimedetails (name,phone,address,crimeDetails,officer,action) values(?,?,?,?,?,?)";
+            String query = "SELECT * FROM universitysystem.crimedetails WHERE name = '"+name+"' AND crimeDetails = '"+cd+"'";
             System.out.println("connection insert");
+            
+            java.sql.ResultSet studentData = statement.executeQuery(query);
 
-            // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1, name);
-
-            System.out.println("connection insert");
-
-            preparedStmt.setInt(2, phone);
-            preparedStmt.setString(3, address);
-            preparedStmt.setString(4, cd);
-            preparedStmt.setString(5, officer);
-            preparedStmt.setString(6, action);
-
-            System.out.println("connection insert");
-
-            preparedStmt.execute();
-            System.out.println("connection run");
-            JOptionPane.showMessageDialog(null, "Details Added");
-
-            connection.close();
+                while (studentData.next()) {
+                    String action = studentData.getString("action") != null ? studentData.getString("action") : "";
+                    
+                    if (!action.isBlank()){
+                        actionExists = true;
+                    }
+                    
+                    break;
+                }
+                
+            
         } catch (Exception e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, "please add data in correct format!");
+            System.err.println(e);
         }
-
+        return actionExists;
     }
 
 }
