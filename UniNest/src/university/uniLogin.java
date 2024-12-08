@@ -180,11 +180,17 @@ public class uniLogin extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
+        } else if (role.equals("University Admin")) {
+            if (username.equals("UNIADMIN") && password.equals("7890")) {
+                staffAdmin staffAdminObj = new staffAdmin();
+                setVisible(false);
+                staffAdminObj.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Credentials");
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Please Enter Details Properly");
         }
-
-
 
 
     }//GEN-LAST:event_jButton1ActionPerformed

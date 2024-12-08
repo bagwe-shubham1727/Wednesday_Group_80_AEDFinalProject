@@ -380,6 +380,8 @@ public class student extends javax.swing.JFrame {
                     System.out.println("connection run");
                     JOptionPane.showMessageDialog(null, "Details Added");
 
+                    UpdateStudentCourse(username, Subject);
+                    
                     if (connection != null && !connection.isClosed()) {
                         connection.close();
                     } else {
@@ -389,6 +391,7 @@ public class student extends javax.swing.JFrame {
                     System.out.println(e);
                     JOptionPane.showMessageDialog(null, "please add data in correct format!");
                 }
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Already Registered");
             }
@@ -422,6 +425,24 @@ public class student extends javax.swing.JFrame {
             }
             return dupCourse;
         }
+        
+        public static void UpdateStudentCourse(String username, String Subject){
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+
+                System.out.println("connection open");
+                java.sql.Statement statement = connection.createStatement();
+                System.out.println("connection open");
+                
+                String updateQuery = "UPDATE universitysystem.students SET subjectTaken = '"+Subject+"' WHERE username = '"+username+"'";
+                statement.executeUpdate(updateQuery);
+                
+                System.out.println("Update Successful");
+                
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
 
     }
 
@@ -429,7 +450,7 @@ public class student extends javax.swing.JFrame {
     String currStudUsername = "";
     
     public void setName(String studentName, String username) {
-        txtStudUsername.setText(studentName);
+        txtStudUsername.setText(username);
         currStudentName = studentName;
         currStudUsername = username;
     }
