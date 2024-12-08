@@ -251,8 +251,6 @@ public class Medicines extends javax.swing.JFrame {
         String medicine = tfMedicine.getText();
         String price = tfPrice.getText();
         String quantity = tfQuantity.getText();
-        String production = "";
-        String expiry = "";
         String company = (String) cbCompany.getSelectedItem().toString();
         
         MedicineModel medicines = new MedicineModel(id, medicine, price, quantity, company);
@@ -261,9 +259,7 @@ public class Medicines extends javax.swing.JFrame {
         tb1Model.setValueAt(medicine,tableMedicine.getSelectedRow(), 1);
         tb1Model.setValueAt(price,tableMedicine.getSelectedRow(), 2);
         tb1Model.setValueAt(quantity,tableMedicine.getSelectedRow(), 3); 
-        tb1Model.setValueAt(production,tableMedicine.getSelectedRow(), 4); 
-        tb1Model.setValueAt(expiry,tableMedicine.getSelectedRow(), 5); 
-        tb1Model.setValueAt(company,tableMedicine.getSelectedRow(), 6); 
+        tb1Model.setValueAt(company,tableMedicine.getSelectedRow(), 4); 
   
         }
         else{
@@ -324,21 +320,28 @@ public class Medicines extends javax.swing.JFrame {
     private void tableMedicineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMedicineMouseClicked
         // TODO add your handling code here:
         
-        DefaultTableModel tb1Model = (DefaultTableModel)tableMedicine.getModel();
-        
-        String tb1id = tb1Model.getValueAt(tableMedicine.getSelectedRow(),0).toString();
-        String tb1medicine = tb1Model.getValueAt(tableMedicine.getSelectedRow(),1).toString();
-        String tb1price = tb1Model.getValueAt(tableMedicine.getSelectedRow(),2).toString();
-        String tb1quantity = tb1Model.getValueAt(tableMedicine.getSelectedRow(),3).toString();
-        String tb1production = tb1Model.getValueAt(tableMedicine.getSelectedRow(),4).toString();
-        String tb1expiry = tb1Model.getValueAt(tableMedicine.getSelectedRow(),5).toString();
-        String tb1company = tb1Model.getValueAt(tableMedicine.getSelectedRow(),6).toString();
-        
-        tfID.setText(tb1id);
-        tfMedicine.setText(tb1medicine);
-        tfPrice.setText(tb1price);
-        tfQuantity.setText(tb1quantity);
-        cbCompany.setSelectedItem(tb1company);
+        DefaultTableModel tb1Model = (DefaultTableModel) tableMedicine.getModel();
+        int selectedRow = tableMedicine.getSelectedRow(); // Get the selected row index
+
+// Check if a valid row is selected and that the table has data
+        if (selectedRow >= 0 && selectedRow < tb1Model.getRowCount()) {
+            String tb1id = tb1Model.getValueAt(selectedRow, 0).toString();
+            String tb1medicine = tb1Model.getValueAt(selectedRow, 1).toString();
+            String tb1price = tb1Model.getValueAt(selectedRow, 2).toString();
+            String tb1quantity = tb1Model.getValueAt(selectedRow, 3).toString();
+            
+            String tb1company = tb1Model.getValueAt(selectedRow, 4).toString();
+
+            // Set values to text fields and combo box
+            tfID.setText(tb1id);
+            tfMedicine.setText(tb1medicine);
+            tfPrice.setText(tb1price);
+            tfQuantity.setText(tb1quantity);
+            cbCompany.setSelectedItem(tb1company);
+        } else {
+            System.out.println("Invalid row selected or table is empty.");
+        }
+
         
     }//GEN-LAST:event_tableMedicineMouseClicked
 
@@ -396,12 +399,13 @@ public class Medicines extends javax.swing.JFrame {
             java.sql.ResultSet medData = statement.executeQuery(getMedQuery);
 
             while(medData.next()){
+                String id = medData.getString("ID");
                 String medName = medData.getString("MEDICINE_NAME");
                 String price = medData.getString("PRICE");
                 String quantity = medData.getString("QUANTITY");
                 String company = medData.getString("COMPANY");
                 
-                String tbData[] = {medName,price, quantity, company};
+                String tbData[] = {id, medName, price, quantity, company};
                 
                 medModel.addRow(tbData);
             }
