@@ -41,6 +41,7 @@ public class bankAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         usernameTxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        passwordTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         employeeTable = new javax.swing.JTable();
         viewBtn = new javax.swing.JButton();
@@ -53,9 +54,8 @@ public class bankAdmin extends javax.swing.JFrame {
         nameTxt = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         viewBtn1 = new javax.swing.JButton();
-        pfPassword = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
         btnStudLogout = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +91,7 @@ public class bankAdmin extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add Bank Employee");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 87, 202, -1));
+        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 167, 150, -1));
 
         employeeTable.setBackground(new java.awt.Color(204, 204, 255));
         employeeTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -163,10 +164,6 @@ public class bankAdmin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(viewBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 467, -1, -1));
-        jPanel1.add(pfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 150, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/accounting-watts-scaled.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
 
         btnStudLogout.setBackground(new java.awt.Color(0, 0, 0));
         btnStudLogout.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
@@ -178,6 +175,9 @@ public class bankAdmin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnStudLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(785, 26, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/accounting-watts-scaled.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,78 +250,35 @@ String EmployeeUsername = "";
     
     private void addTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTxtActionPerformed
         // TODO add your handling code here:
-        // Retrieve the raw input from text fields
-        String name = nameTxt.getText().trim();
+String name = nameTxt.getText();
         String gender = (String) genderTxt.getSelectedItem();
-        String ageStr = ageTxt.getText().trim();
-        String phoneStr = phoneTxt.getText().trim();
-        String username = usernameTxt.getText().trim();
+        int age = Integer.parseInt(ageTxt.getText());
+        int phone = Integer.parseInt(phoneTxt.getText());
 
-        // For the password field (JPasswordField)
-        char[] passwordChars = pfPassword.getPassword();
-        String password = new String(passwordChars);
+        String username = usernameTxt.getText();
+        String password = passwordTxt.getText();
 
-        // Basic empty checks
-        if (name.isEmpty() || username.isEmpty() || ageStr.isEmpty() || password.isEmpty() || phoneStr.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please fill out all required fields!");
-            return; // Stop further execution
+
+
+        if(usernameTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||ageTxt.getText().isEmpty()||passwordTxt.getText().isEmpty()           ){
+            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
+
+        } else{
+
+            // Community.CreateCommunity(house,person,community,city,hospital);
+           // Bankemployee.CreateBankemployee(name,gender,age,phone,username,password);
+           bankEmployee employee =  new bankEmployee(name,gender,age,phone,username,password);
+               employee.addEmployee();
         }
 
-        // Validate name: only letters (and spaces if you want)
-        // Adjust the regex if you allow spaces: "[a-zA-Z ]+" allows letters and spaces
-        if (!name.matches("[a-zA-Z]+")) {
-            JOptionPane.showMessageDialog(null, "Name should contain only alphabetic characters!");
-            return;
-        }
+        //JOptionPane.showMessageDialog(this,"New Employ details Added");
 
-        // Validate age: must be an integer
-        int age;
-        try {
-            age = Integer.parseInt(ageStr);
-            if (age <= 0) {
-                JOptionPane.showMessageDialog(null, "Age must be a positive integer!");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Age must be a valid integer!");
-            return;
-        }
-
-        // Validate phone: must be exactly 9 digits
-        // Check length first
-        if (phoneStr.length() != 9) {
-            JOptionPane.showMessageDialog(null, "Phone number must be exactly 9 digits long!");
-            return;
-        }
-
-        // Check if all are digits
-        if (!phoneStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Phone number must contain only digits!");
-            return;
-        }
-
-        // If validations pass, we can convert phone to int safely
-        int phone = Integer.parseInt(phoneStr);
-
-        // Now proceed to create and add the employee since all validations are passed
-        bankEmployee employee = new bankEmployee(name, gender, age, phone, username, password);
-        employee.addEmployee();
-
-        // Clear the fields after successful addition
-        genderTxt.setSelectedIndex(0);
+        genderTxt.setSelectedItem("");
         nameTxt.setText("");
         ageTxt.setText("");
         phoneTxt.setText("");
         usernameTxt.setText("");
-        pfPassword.setText("");
-
-        // Optionally clear password chars for security
-        java.util.Arrays.fill(passwordChars, ' ');
-
-
-
-
-
+        passwordTxt.setText("");
        
 
         //employee_table();
@@ -467,7 +424,7 @@ financialLogin emergencyLoginObj = new financialLogin();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTxt;
-    private javax.swing.JPasswordField pfPassword;
+    private javax.swing.JTextField passwordTxt;
     private javax.swing.JTextField phoneTxt;
     private javax.swing.JButton updateBtn;
     private javax.swing.JTextField usernameTxt;
