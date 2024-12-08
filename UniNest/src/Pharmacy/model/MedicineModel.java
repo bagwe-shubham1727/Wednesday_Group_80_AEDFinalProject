@@ -4,6 +4,7 @@
  */
 package Pharmacy.model;
 
+import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 /**
@@ -85,14 +86,68 @@ public class MedicineModel {
     }
 
     public void insertMedicines() {
-        try {
-            java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
+        boolean medExists = checkMed();
+        
+        if (!medExists) {
+            try {
+                java.sql.Statement statement = connection.JDBCconnection.Connect().createStatement();
 
-            statement.executeUpdate("insert into universitysystem.medicine" + "(ID, MEDICINE_NAME, PRICE, QUANTITY, COMPANY)" + "values ('" + this.getId() + "','" + this.getMedicine() + "','" + this.getPrice() + "','" + this.getQuantity() + "', '" + this.getCompany() + "')");
-            JOptionPane.showMessageDialog(null, "Medicine successfully added!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+                statement.executeUpdate("insert into universitysystem.medicine" + "(ID, MEDICINE_NAME, PRICE, QUANTITY, COMPANY)" + "values ('" + this.getId() + "','" + this.getMedicine() + "','" + this.getPrice() + "','" + this.getQuantity() + "', '" + this.getCompany() + "')");
+                JOptionPane.showMessageDialog(null, "Medicine successfully added!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Something Went Wrong");
+                System.err.println(e);
+            }
         }
+        else if (medExists){
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+
+                System.out.println("connection open");
+                java.sql.Statement statement = connection.createStatement();
+                System.out.println("connection open");
+                
+                String updateQuery = "UPDATE universitysystem.medicine SET ID = '"+this.getId()+"', PRICE = '"+this.getPrice()+"',QUANTITY = '"+this.getQuantity()+"',COMPANY = '"+this.getCompany()+"'  WHERE MEDICINE_NAME = '"+this.getMedicine()+"'";
+                statement.executeUpdate(updateQuery);
+                JOptionPane.showMessageDialog(null, "Medicine exists already, updated the details");
+                System.out.println("Update Successful");
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "please add data in correct format!");
+            }
+        }
+        
+    }
+    
+    public boolean checkMed() {
+        boolean medExists = false;
+        try {
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+
+            System.out.println("connection open");
+            java.sql.Statement statement = connection.createStatement();
+            System.out.println("connection open");
+
+            String query = "SELECT * FROM universitysystem.medicine WHERE MEDICINE_NAME = '"+this.getMedicine()+"'";
+            System.out.println("connection insert");
+            
+            java.sql.ResultSet studentData = statement.executeQuery(query);
+
+                while (studentData.next()) {
+                    String medName = studentData.getString("MEDICINE_NAME") != null ? studentData.getString("MEDICINE_NAME") : "";
+                    
+                    if (medName.equals(this.medicine)){
+                        medExists = true;
+                    }
+                    
+                    break;
+                }
+                
+            
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return medExists;
     }
 
     public void updateMedicines() {
