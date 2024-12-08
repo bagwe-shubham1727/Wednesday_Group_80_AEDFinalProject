@@ -41,12 +41,12 @@ public class bankAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         usernameTxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        passwordTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         employeeTable = new javax.swing.JTable();
         viewBtn = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
         updateBtn = new javax.swing.JButton();
+        pfPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         ageTxt = new javax.swing.JTextField();
@@ -91,7 +91,6 @@ public class bankAdmin extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add Bank Employee");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 87, 202, -1));
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 167, 150, -1));
 
         employeeTable.setBackground(new java.awt.Color(204, 204, 255));
         employeeTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -135,6 +134,13 @@ public class bankAdmin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(728, 467, -1, -1));
+
+        pfPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 150, -1));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel3.setText("Gender:");
@@ -256,11 +262,11 @@ String name = nameTxt.getText();
         int phone = Integer.parseInt(phoneTxt.getText());
 
         String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
+        String password = new String(pfPassword.getPassword());
 
 
 
-        if(usernameTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||ageTxt.getText().isEmpty()||passwordTxt.getText().isEmpty()           ){
+        if(usernameTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||ageTxt.getText().isEmpty()||pfPassword.getText().isEmpty()           ){
             JOptionPane.showMessageDialog(null, "Plz Enter Details!");
 
         } else{
@@ -278,7 +284,7 @@ String name = nameTxt.getText();
         ageTxt.setText("");
         phoneTxt.setText("");
         usernameTxt.setText("");
-        passwordTxt.setText("");
+        pfPassword.setText("");
        
 
         //employee_table();
@@ -333,6 +339,10 @@ financialLogin emergencyLoginObj = new financialLogin();
         setVisible(false);
         emergencyLoginObj.setVisible(true);
     }//GEN-LAST:event_btnStudLogoutActionPerformed
+
+    private void pfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pfPasswordActionPerformed
 
 //    public void employee_table(){
 //        try{
@@ -424,7 +434,7 @@ financialLogin emergencyLoginObj = new financialLogin();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTxt;
-    private javax.swing.JTextField passwordTxt;
+    private javax.swing.JPasswordField pfPassword;
     private javax.swing.JTextField phoneTxt;
     private javax.swing.JButton updateBtn;
     private javax.swing.JTextField usernameTxt;
