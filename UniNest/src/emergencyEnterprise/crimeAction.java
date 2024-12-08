@@ -23,6 +23,7 @@ public class crimeAction extends javax.swing.JFrame {
     public crimeAction() {
         initComponents();
         setResizable(false);
+        loadActionsFromDB();
     }
 
     /**
@@ -35,7 +36,6 @@ public class crimeAction extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        actionTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         viewBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -56,20 +56,19 @@ public class crimeAction extends javax.swing.JFrame {
         btnStudLogout = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
-        jPanel1.add(actionTxt);
-        actionTxt.setBounds(687, 363, 189, 23);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 204));
         jLabel2.setText("Phone:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(530, 200, 47, 17);
+        jLabel2.setBounds(530, 200, 60, 20);
 
         viewBtn.setBackground(new java.awt.Color(255, 255, 204));
         viewBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -80,13 +79,13 @@ public class crimeAction extends javax.swing.JFrame {
             }
         });
         jPanel1.add(viewBtn);
-        viewBtn.setBounds(389, 402, 107, 23);
+        viewBtn.setBounds(389, 402, 108, 25);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 204));
         jLabel3.setText("Address:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(530, 240, 61, 17);
+        jLabel3.setBounds(530, 240, 58, 20);
 
         submitBtn.setBackground(new java.awt.Color(255, 255, 204));
         submitBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -97,13 +96,13 @@ public class crimeAction extends javax.swing.JFrame {
             }
         });
         jPanel1.add(submitBtn);
-        submitBtn.setBounds(687, 402, 74, 23);
+        submitBtn.setBounds(687, 402, 73, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 204));
         jLabel4.setText("Crime Details:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(530, 280, 102, 17);
+        jLabel4.setBounds(530, 280, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,21 +115,21 @@ public class crimeAction extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 204));
         jLabel5.setText("Officer Name:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(530, 320, 99, 17);
+        jLabel5.setBounds(530, 320, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 204));
         jLabel6.setText("Action Taken:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(530, 360, 98, 17);
+        jLabel6.setBounds(530, 360, 100, 20);
 
         nameTxt.setEnabled(false);
         jPanel1.add(nameTxt);
-        nameTxt.setBounds(687, 158, 189, 23);
+        nameTxt.setBounds(687, 158, 189, 22);
 
         phoneTxt.setEnabled(false);
         jPanel1.add(phoneTxt);
-        phoneTxt.setBounds(687, 199, 189, 23);
+        phoneTxt.setBounds(687, 199, 189, 22);
 
         addressTxt.setEnabled(false);
         addressTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +138,7 @@ public class crimeAction extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addressTxt);
-        addressTxt.setBounds(687, 240, 189, 23);
+        addressTxt.setBounds(687, 240, 189, 22);
 
         crimeTable.setBackground(new java.awt.Color(255, 255, 204));
         crimeTable.setForeground(new java.awt.Color(153, 0, 0));
@@ -168,7 +167,7 @@ public class crimeAction extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cdTxt);
-        cdTxt.setBounds(687, 281, 189, 23);
+        cdTxt.setBounds(687, 281, 189, 22);
 
         officerTxt.setEnabled(false);
         officerTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -177,13 +176,13 @@ public class crimeAction extends javax.swing.JFrame {
             }
         });
         jPanel1.add(officerTxt);
-        officerTxt.setBounds(687, 322, 189, 23);
+        officerTxt.setBounds(687, 322, 189, 22);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 204));
         jLabel1.setText("Name:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(530, 160, 44, 17);
+        jLabel1.setBounds(530, 160, 44, 20);
 
         jLabelLogoCrimeAction.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/NUPDnobg.png"))); // NOI18N
         jPanel1.add(jLabelLogoCrimeAction);
@@ -198,7 +197,7 @@ public class crimeAction extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnStudLogout);
-        btnStudLogout.setBounds(800, 20, 75, 23);
+        btnStudLogout.setBounds(800, 20, 74, 25);
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Want to deposit Salary?");
@@ -214,6 +213,10 @@ public class crimeAction extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1);
         jButton1.setBounds(330, 20, 80, 23);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(690, 360, 190, 22);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/NUPDbg.jpg"))); // NOI18N
         jLabel8.setText("HElloo");
@@ -290,27 +293,27 @@ public class crimeAction extends javax.swing.JFrame {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
 
-        String name = nameTxt.getText();
+    String name = nameTxt.getText();
+    int phone = Integer.parseInt(phoneTxt.getText());
+    String address = addressTxt.getText();
+    String cd = cdTxt.getText();
+    String officer = officerTxt.getText();
+    
+    // Now get the selected action from the combo box instead of a text field
+    String action = jComboBox1.getSelectedItem().toString();
 
-        int phone = Integer.parseInt(phoneTxt.getText());
-        String address = addressTxt.getText();
-        String cd = cdTxt.getText();
-        String officer = officerTxt.getText();
-        String action = actionTxt.getText();
+    // Validate that required fields are not empty
+    if (name.isEmpty() || address.isEmpty() || phoneTxt.getText().isEmpty() || cd.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please Enter Details!");
+    } else {
+        // Create the crimeaction object using the combo box selection for 'action'
+        crimeaction action1 = new crimeaction(name, phone, address, cd, officer, action);
+        action1.addaction();
 
-        if (addressTxt.getText().isEmpty() || nameTxt.getText().isEmpty() || phoneTxt.getText().isEmpty() || cdTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
-
-        } else {
-
-            // Community.CreateCommunity(house,person,community,city,hospital);
-            //CrimeDetails.CreateCrimeDetails(name,phone,address,cd,officer,action);
-            crimeaction action1 = new crimeaction(name, phone, address, cd, officer, action);
-            action1.addaction();
-            
-            actionTxt.setEditable(false);
-        }
-
+        // If you previously had something like actionTxt.setEditable(false); remove it
+        // If you want to reset the combo box after submission:
+        // jComboBox1.setSelectedIndex(0);
+    }
 //        
 
     }//GEN-LAST:event_submitBtnActionPerformed
@@ -378,12 +381,12 @@ public class crimeAction extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField actionTxt;
     private javax.swing.JTextField addressTxt;
     private javax.swing.JButton btnStudLogout;
     private javax.swing.JTextField cdTxt;
     private javax.swing.JTable crimeTable;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -402,4 +405,25 @@ public class crimeAction extends javax.swing.JFrame {
     private javax.swing.JButton submitBtn;
     private javax.swing.JButton viewBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void loadActionsFromDB() {
+         jComboBox1.removeAllItems(); // clear existing items if any
+    try {
+        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+        java.sql.Statement statement = connection.createStatement();
+        String query = "SELECT action_name FROM action_types"; // Example table name and column
+        java.sql.ResultSet rs = statement.executeQuery(query);
+
+        while (rs.next()) {
+            String actionName = rs.getString("action_name");
+            jComboBox1.addItem(actionName);
+        }
+
+        rs.close();
+        statement.close();
+        connection.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error loading actions: " + e.getMessage());
+    }
+    }
 }
