@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.DriverManager;
 
-
 /**
  *
  * @author aditi
@@ -132,6 +131,12 @@ public class professor extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Grade:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 267, -1, -1));
+
+        GradeTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GradeTxtActionPerformed(evt);
+            }
+        });
         jPanel1.add(GradeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 264, 215, -1));
 
         jLabelLogoprofessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Northeastern_University_Logo-White.png"))); // NOI18N
@@ -178,100 +183,91 @@ public class professor extends javax.swing.JFrame {
     String currSubjectTeach = "";
     String currProfUsername = "";
 
-    public void setProfData(String profName, String currentSubjectTeach){
+    public void setProfData(String profName, String currentSubjectTeach) {
         lblProfName.setText("Welcome Professor " + profName);
         currSubjectTeach = currentSubjectTeach;
         currProfUsername = profName;
         System.out.println(currProfUsername);
     }
-    
+
     private void btnViewStudDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudDataActionPerformed
-        DefaultTableModel studSubModel = (DefaultTableModel)subjectTable.getModel();
+        DefaultTableModel studSubModel = (DefaultTableModel) subjectTable.getModel();
         studSubModel.setRowCount(0);
 
-        try{
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '"+currSubjectTeach+"' and ProfessorUsername = '"+currProfUsername+"'";
+            String studentQuery = "SELECT * FROM universitysystem.courseregistration WHERE Subject = '" + currSubjectTeach + "' and ProfessorUsername = '" + currProfUsername + "'";
             java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
-            
-            while(studentData.next()){
+
+            while (studentData.next()) {
                 String studName = studentData.getString("username");
                 String subject = studentData.getString("Subject");
 
-                String tbData[] = {studName,subject};
+                String tbData[] = {studName, subject};
 
                 studSubModel.addRow(tbData);
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"No Students Registered Under You");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No Students Registered Under You");
         }
     }//GEN-LAST:event_btnViewStudDataActionPerformed
 
-    
-public class CourseGrade{
-        
-        
-        public static void CreateCourseGrade(String sName, String Subject, String Grade, String Remarks){
-            
-             try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            
-            System.out.println("connection open");
-            java.sql.Statement statement = connection.createStatement();
-                        System.out.println("connection open");
+    public class CourseGrade {
 
-            String query = "INSERT INTO universitysystem.coursegrade (studentName, subject, marks, remarks) values(?,?,?,?)";
-                        System.out.println("connection insert");
-            //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
+        public static void CreateCourseGrade(String sName, String Subject, String Grade, String Remarks) {
 
-           // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1,sName);
-            preparedStmt.setString(2,Subject);
-            preparedStmt.setString(3,Grade);
-            preparedStmt.setString(4,Remarks);
+            try {
+                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
 
-            
-            System.out.println("connection insert");
-            
-           
+                System.out.println("connection open");
+                java.sql.Statement statement = connection.createStatement();
+                System.out.println("connection open");
 
-            preparedStmt.execute();
-             System.out.println("connection run");
-             JOptionPane.showMessageDialog(null,"Details Added");
+                String query = "INSERT INTO universitysystem.coursegrade (studentName, subject, marks, remarks) values(?,?,?,?)";
+                System.out.println("connection insert");
+                //statement.executeUpdate("insert into universitysystem.login" + "(role, username, password)" + "values ('BankEmployee','"+username+"', '"+password+"')");
 
-             connection.close();
+                // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setString(1, sName);
+                preparedStmt.setString(2, Subject);
+                preparedStmt.setString(3, Grade);
+                preparedStmt.setString(4, Remarks);
+
+                System.out.println("connection insert");
+
+                preparedStmt.execute();
+                System.out.println("connection run");
+                JOptionPane.showMessageDialog(null, "Details Added");
+
+                connection.close();
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "please add data in correct format!");
+            }
+
         }
-        catch(Exception e){
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null,"please add data in correct format!");
-        }      
-             
-        }
-    
-    }      
-    
-    
-    
-    
+
+    }
+
+
     private void gradeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeTxtActionPerformed
-      String StudentName = sNameTxt.getText();
+        String StudentName = sNameTxt.getText();
         String Subject = subjectTxt.getText();
         String Grade = GradeTxt.getText();
         String Remarks = remarksTxt.getText();
 
-        if(sNameTxt.getText().isEmpty()|| GradeTxt.getText().isEmpty()||remarksTxt.getText().isEmpty()||subjectTxt.getText().isEmpty()){
+        if (sNameTxt.getText().isEmpty() || GradeTxt.getText().isEmpty() || remarksTxt.getText().isEmpty() || subjectTxt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Plz Enter Details!");
 
-        } else{
+        } else {
 
             // Community.CreateCommunity(house,person,community,city,hospital);
-            CourseGrade.CreateCourseGrade(StudentName,Subject,Grade,Remarks);
+            CourseGrade.CreateCourseGrade(StudentName, Subject, Grade, Remarks);
         }
 
         //JOptionPane.showMessageDialog(this,"New Employ details Added");
-
         sNameTxt.setText("");
         subjectTxt.setText("");
         GradeTxt.setText("");
@@ -285,28 +281,48 @@ public class CourseGrade{
 
     private void subjectTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectTableMouseClicked
         // TODO add your handling code here:
-        
-         DefaultTableModel profModel = (DefaultTableModel)subjectTable.getModel();
-                 String studentNameTxt = subjectTable.getValueAt(subjectTable.getSelectedRow(), 0).toString();
 
-        sNameTxt.setText(subjectTable.getValueAt(subjectTable.getSelectedRow(), 0).toString());  
+        DefaultTableModel profModel = (DefaultTableModel) subjectTable.getModel();
+        String studentNameTxt = subjectTable.getValueAt(subjectTable.getSelectedRow(), 0).toString();
+        sNameTxt.setText(subjectTable.getValueAt(subjectTable.getSelectedRow(), 0).toString());
         subjectTxt.setText(subjectTable.getValueAt(subjectTable.getSelectedRow(), 1).toString());
-        
-        try{
+        String subject = subjectTxt.getText();
+        String marks = "";
+        String remarks = "";
+        try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
             java.sql.Statement statement = connection.createStatement();
-            String profQuery = "SELECT * FROM universitysystem.courseregistration WHERE username = '"+studentNameTxt+"'";
+            String courseQuery = "SELECT * FROM universitysystem.coursegrade WHERE studentName = '" + studentNameTxt + "' AND subject = '"+subject+"'";
+            java.sql.ResultSet profData = statement.executeQuery(courseQuery);
+            while (profData.next()) {
+                marks = profData.getString("marks")!= null ? profData.getString("marks") : "";
+                remarks = profData.getString("remarks")!= null ? profData.getString("remarks") : "";
+                break;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        GradeTxt.setText(marks);
+        remarksTxt.setText(remarks);
+        
+        
+        
+        try {
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String profQuery = "SELECT * FROM universitysystem.courseregistration WHERE username = '" + studentNameTxt + "'";
             java.sql.ResultSet profData = statement.executeQuery(profQuery);
-            while(profData.next()){
+            while (profData.next()) {
                 studentNameTxt = profData.getString("username");
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_subjectTableMouseClicked
 
     private void btnProfLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfLogoutActionPerformed
-       currSubjectTeach = "";
+        currSubjectTeach = "";
         currProfUsername = "";
         uniLogin uniLoginObj = new uniLogin();
         setVisible(false);
@@ -314,7 +330,7 @@ public class CourseGrade{
     }//GEN-LAST:event_btnProfLogoutActionPerformed
 
     private void btnReportCrime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportCrime1ActionPerformed
-       crimeReport cr = new crimeReport();
+        crimeReport cr = new crimeReport();
         cr.getUserData(currProfUsername, "professor");
         setVisible(false);
         cr.setVisible(true);
@@ -323,6 +339,10 @@ public class CourseGrade{
     private void sNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sNameTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sNameTxtActionPerformed
+
+    private void GradeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GradeTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GradeTxtActionPerformed
 
     /**
      * @param args the command line arguments

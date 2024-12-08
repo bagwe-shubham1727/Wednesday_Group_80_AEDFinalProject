@@ -571,7 +571,7 @@ public class staffAdmin extends javax.swing.JFrame {
         String profEmail = txtProfMail.getText();
         int profAge = Integer.parseInt(txtProfAge.getText());
         String profUsername = txtProfUsername.getText();
-        String profPassword = txtStudPassword.getText();
+        String profPassword = txtProfPassword.getText();
 
         if(profname.isEmpty()|| subjectTeach.isEmpty()|| profEmail.isEmpty()|| profAge == 0 || profUsername.isEmpty() || profPassword.isEmpty()){
             JOptionPane.showMessageDialog(null, "Plz Enter Details!");
@@ -586,7 +586,7 @@ public class staffAdmin extends javax.swing.JFrame {
         txtProfMail.setText("");
         txtProfAge.setText("");
         txtProfUsername.setText("");
-        txtStudPassword.setText("");
+        txtProfPassword.setText("");
     }//GEN-LAST:event_btnAddProfActionPerformed
 
     private void btnProfDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfDeleteActionPerformed
