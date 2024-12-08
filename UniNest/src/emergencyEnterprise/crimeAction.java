@@ -240,36 +240,27 @@ public class crimeAction extends javax.swing.JFrame {
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
-    tb1Model.setRowCount(0);
+        tb1Model.setRowCount(0);
+        try {
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.crimereport";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
 
-    try {
-        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-        java.sql.Statement statement = connection.createStatement();
+            while (studentData.next()) {
+                String name = studentData.getString("name");
+                String phone = studentData.getString("phone");
+                String address = studentData.getString("address");
+                String crimeDetails = studentData.getString("crimeDetails");
 
-        // Updated query to join with police table and fetch officer's name
-        String query = "SELECT c.name, c.phone, c.address, c.crimeDetails, p.name AS officer_name " +
-                       "FROM crimereport c " +
-                       "LEFT JOIN police p ON c.officer_id = p.id";
+                String tbData[] = {name, phone, address, crimeDetails};
 
-        java.sql.ResultSet resultSet = statement.executeQuery(query);
+                tb1Model.addRow(tbData);
+            }
 
-        while (resultSet.next()) {
-            String name = resultSet.getString("name");
-            String phone = resultSet.getString("phone");
-            String address = resultSet.getString("address");
-            String crimeDetails = resultSet.getString("crimeDetails");
-            String officerName = resultSet.getString("officer_name");
-
-            tb1Model.addRow(new Object[]{name, phone, address, crimeDetails, officerName});
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
-
-        resultSet.close();
-        statement.close();
-        connection.close();
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error: " + e.getLocalizedMessage());
-    }
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
@@ -282,22 +273,19 @@ public class crimeAction extends javax.swing.JFrame {
 
     private void crimeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crimeTableMouseClicked
         // TODO add your handling code here:
-     DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
+        DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
 
-    int selectedRow = crimeTable.getSelectedRow();
+        String tb1name = tb1Model.getValueAt(crimeTable.getSelectedRow(), 0).toString();
 
-    String tb1name = tb1Model.getValueAt(selectedRow, 0).toString();
-    String tb1phone = tb1Model.getValueAt(selectedRow, 1).toString();
-    String tb1address = tb1Model.getValueAt(selectedRow, 2).toString();
-    String tb1crimeDetails = tb1Model.getValueAt(selectedRow, 3).toString();
-    String tb1officer = tb1Model.getValueAt(selectedRow, 4).toString(); // Officer's name
+        String tb1phone = tb1Model.getValueAt(crimeTable.getSelectedRow(), 1).toString();
+        String tb1address = tb1Model.getValueAt(crimeTable.getSelectedRow(), 2).toString();
+        String tb1cd = tb1Model.getValueAt(crimeTable.getSelectedRow(), 3).toString();
 
-    nameTxt.setText(tb1name);
-    phoneTxt.setText(tb1phone);
-    addressTxt.setText(tb1address);
-    cdTxt.setText(tb1crimeDetails);
-    officerTxt.setText(tb1officer);
-
+        nameTxt.setText(tb1name);
+        phoneTxt.setText(tb1phone);
+        addressTxt.setText(tb1address);
+        cdTxt.setText(tb1cd);
+        officerTxt.setText(currPoliceName);
 
     }//GEN-LAST:event_crimeTableMouseClicked
 
@@ -320,7 +308,7 @@ public class crimeAction extends javax.swing.JFrame {
 
     try {
         long phone = Long.parseLong(phoneStr);
-        crimeaction action1 = new crimeaction(name, (int) phone, address, crimeDetails, officer, action);
+        crimeaction action1 = new crimeaction(name, phone, address, crimeDetails, officer, action);
         action1.addaction();
 
         // Clear fields after successful submission

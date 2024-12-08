@@ -267,43 +267,20 @@ public class crimeReport extends javax.swing.JFrame {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
         String name = nameTxt.getText();
-        String phoneStr = phoneTxt.getText();
+        long phone = Long.parseLong(phoneTxt.getText());
         String address = addressTxt.getText();
-        String crimeDetails = cdTxt.getText();
+        String cd = cdTxt.getText();
 
-        if (name.isEmpty() || phoneStr.isEmpty() || address.isEmpty() || crimeDetails.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter all details!");
-            return;
+        if (addressTxt.getText().isEmpty() || nameTxt.getText().isEmpty() || phoneTxt.getText().isEmpty() || cdTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Plz Enter Details!");
+
+        } else {
+
+            // Community.CreateCommunity(house,person,community,city,hospital);
+            //CrimeReport.CreateCrimeReport(name,phone,address,cd);
+            crimereport report = new crimereport(name, phone, address, cd);
+            report.addCrime();
         }
-
-        try {
-            long phone = Long.parseLong(phoneStr);
-
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            String query = "INSERT INTO crimereport (name, phone, address, crimeDetails, officer_id) VALUES (?, ?, ?, ?, ?)";
-
-            java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1, name);
-            preparedStmt.setLong(2, phone);
-            preparedStmt.setString(3, address);
-            preparedStmt.setString(4, crimeDetails);
-            preparedStmt.setInt(5, getOfficerId());  // Helper method to get officer ID
-
-            preparedStmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Report Added Successfully!");
-
-            connection.close();
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Please enter a valid phone number!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
-    }
-
-    // Helper method to get a valid officer ID
-    private int getOfficerId() {
-        // You can enhance this to fetch the officer ID dynamically based on the logged-in user
-        return 1; // Placeholder value, replace with actual logic
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed

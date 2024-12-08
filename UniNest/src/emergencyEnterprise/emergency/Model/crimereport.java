@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
 public class crimereport {
 
     String name;
-    int phone;
+    long phone;
     String address;
     String cd;
 
-    public crimereport(String name, int phone, String address, String cd) {
+    public crimereport(String name, long phone, String address, String cd) {
         this.setName(name);
         this.setPhone(phone);
         this.setAddress(address);
@@ -33,11 +33,11 @@ public class crimereport {
         this.name = name;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -75,7 +75,7 @@ public class crimereport {
 
             System.out.println("connection insert");
 
-            preparedStmt.setInt(2, phone);
+            preparedStmt.setLong(2, phone);
             preparedStmt.setString(3, address);
             preparedStmt.setString(4, cd);
 
