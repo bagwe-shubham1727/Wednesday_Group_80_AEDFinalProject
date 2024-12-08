@@ -147,7 +147,7 @@ public class crimeAction extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Phone", "Address", "Crime Details"
+                "Name", "Phone", "Address", "Crime Details", "Officer's Name"
             }
         ));
         crimeTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -240,27 +240,36 @@ public class crimeAction extends javax.swing.JFrame {
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
-        tb1Model.setRowCount(0);
-        try {
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            java.sql.Statement statement = connection.createStatement();
-            String studentQuery = "SELECT * FROM universitysystem.crimereport";
-            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+    tb1Model.setRowCount(0);
 
-            while (studentData.next()) {
-                String name = studentData.getString("name");
-                String phone = studentData.getString("phone");
-                String address = studentData.getString("address");
-                String crimeDetails = studentData.getString("crimeDetails");
+    try {
+        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+        java.sql.Statement statement = connection.createStatement();
 
-                String tbData[] = {name, phone, address, crimeDetails};
+        // Updated query to join with police table and fetch officer's name
+        String query = "SELECT c.name, c.phone, c.address, c.crimeDetails, p.name AS officer_name " +
+                       "FROM crimereport c " +
+                       "LEFT JOIN police p ON c.officer_id = p.id";
 
-                tb1Model.addRow(tbData);
-            }
+        java.sql.ResultSet resultSet = statement.executeQuery(query);
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            String phone = resultSet.getString("phone");
+            String address = resultSet.getString("address");
+            String crimeDetails = resultSet.getString("crimeDetails");
+            String officerName = resultSet.getString("officer_name");
+
+            tb1Model.addRow(new Object[]{name, phone, address, crimeDetails, officerName});
         }
+
+        resultSet.close();
+        statement.close();
+        connection.close();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error: " + e.getLocalizedMessage());
+    }
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
@@ -273,18 +282,21 @@ public class crimeAction extends javax.swing.JFrame {
 
     private void crimeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crimeTableMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
+     DefaultTableModel tb1Model = (DefaultTableModel) crimeTable.getModel();
 
-        String tb1name = tb1Model.getValueAt(crimeTable.getSelectedRow(), 0).toString();
+    int selectedRow = crimeTable.getSelectedRow();
 
-        String tb1phone = tb1Model.getValueAt(crimeTable.getSelectedRow(), 1).toString();
-        String tb1address = tb1Model.getValueAt(crimeTable.getSelectedRow(), 2).toString();
-        String tb1cd = tb1Model.getValueAt(crimeTable.getSelectedRow(), 3).toString();
+    String tb1name = tb1Model.getValueAt(selectedRow, 0).toString();
+    String tb1phone = tb1Model.getValueAt(selectedRow, 1).toString();
+    String tb1address = tb1Model.getValueAt(selectedRow, 2).toString();
+    String tb1crimeDetails = tb1Model.getValueAt(selectedRow, 3).toString();
+    String tb1officer = tb1Model.getValueAt(selectedRow, 4).toString(); // Officer's name
 
-        nameTxt.setText(tb1name);
-        phoneTxt.setText(tb1phone);
-        addressTxt.setText(tb1address);
-        cdTxt.setText(tb1cd);
+    nameTxt.setText(tb1name);
+    phoneTxt.setText(tb1phone);
+    addressTxt.setText(tb1address);
+    cdTxt.setText(tb1crimeDetails);
+    officerTxt.setText(tb1officer);
 
 
     }//GEN-LAST:event_crimeTableMouseClicked
@@ -293,26 +305,29 @@ public class crimeAction extends javax.swing.JFrame {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
 
-    String name = nameTxt.getText();
-    int phone = Integer.parseInt(phoneTxt.getText());
-    String address = addressTxt.getText();
-    String cd = cdTxt.getText();
-    String officer = officerTxt.getText();
-    
-    // Now get the selected action from the combo box instead of a text field
-    String action = jComboBox1.getSelectedItem().toString();
+            String name = nameTxt.getText();
+            String phoneStr = phoneTxt.getText();
+            String address = addressTxt.getText();
+            String crimeDetails = cdTxt.getText();
+            String officer = officerTxt.getText();
+            String action = jComboBox1.getSelectedItem().toString();
 
-    // Validate that required fields are not empty
-    if (name.isEmpty() || address.isEmpty() || phoneTxt.getText().isEmpty() || cd.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Please Enter Details!");
-    } else {
-        // Create the crimeaction object using the combo box selection for 'action'
-        crimeaction action1 = new crimeaction(name, phone, address, cd, officer, action);
+    // Validate inputs
+    if (name.isEmpty() || phoneStr.isEmpty() || address.isEmpty() || crimeDetails.isEmpty() || officer.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter all details!");
+        return;
+    }
+
+    try {
+        long phone = Long.parseLong(phoneStr);
+        crimeaction action1 = new crimeaction(name, (int) phone, address, crimeDetails, officer, action);
         action1.addaction();
 
-        // If you previously had something like actionTxt.setEditable(false); remove it
-        // If you want to reset the combo box after submission:
-        // jComboBox1.setSelectedIndex(0);
+        // Clear fields after successful submission
+        clearFields();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Please enter a valid phone number!");
+    
     }
 //        
 
@@ -425,5 +440,14 @@ public class crimeAction extends javax.swing.JFrame {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error loading actions: " + e.getMessage());
     }
+    }
+
+    private void clearFields() {
+    nameTxt.setText("");
+    phoneTxt.setText("");
+    addressTxt.setText("");
+    cdTxt.setText("");
+    officerTxt.setText("");
+    jComboBox1.setSelectedIndex(0);
     }
 }
