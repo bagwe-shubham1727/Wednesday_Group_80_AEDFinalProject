@@ -187,7 +187,7 @@ public class bankAction extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Gender", "Age", "Phone", "Salary", "Designation"
+                "Name", "Gender", "Age", "Phone", "Balance", "Designation"
             }
         ));
         policeTableD.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -318,9 +318,11 @@ public class bankAction extends javax.swing.JFrame {
         
         if (!tb1action.isBlank()){
             actionTakenTxt.setEnabled(false);
+            submitBtn.setEnabled(false);
         }
         else {
             actionTakenTxt.setEnabled(true);
+            submitBtn.setEnabled(true);
         }
         
     }//GEN-LAST:event_bankserviceTableMouseClicked

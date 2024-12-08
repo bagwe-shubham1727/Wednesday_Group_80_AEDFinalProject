@@ -98,15 +98,30 @@ public class bankresponse {
             String query = "INSERT INTO universitysystem.bankresponse (Name,AccountType,Operation,Amount,Employee,ActionTaken) values(?,?,?,?,?,?)";
             System.out.println("connection insert");
             if ("student".equals(currRole)) {
-                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = '" + amount + "' WHERE username = '" + name + "'";
+                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount + '" + amount + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(studentQuery);
 
             }
-            String policeQuery = "UPDATE universitysystem.police SET salary = salary + '" + amount + "' WHERE username = '" + name + "'";
-            statement.executeUpdate(policeQuery);
-
-            String studentQuery = "UPDATE universitysystem.students SET LoanAmount = '" + amount + "' WHERE username = '" + name + "'";
-            statement.executeUpdate(studentQuery);
+            
+            if (operation.equals("Deposit Amount")) {
+                String policeQuery = "UPDATE universitysystem.police SET salary = salary + '" + amount + "' WHERE username = '" + name + "'";
+                statement.executeUpdate(policeQuery);
+            } else if (operation.equals("Withdraw Amount")) {
+                String policeQuery = "UPDATE universitysystem.police SET salary = salary - '" + amount + "' WHERE username = '" + name + "'";
+                statement.executeUpdate(policeQuery);
+            }
+            
+            
+            
+            
+            if(operation.equals("Repay Loan")){
+                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount - '" + amount + "' WHERE username = '" + name + "'";
+                statement.executeUpdate(studentQuery);
+            } else if (operation.equals("Request Loan")) {
+                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount + '" + amount + "' WHERE username = '" + name + "'";
+                statement.executeUpdate(studentQuery);
+            }
+            
 
             // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
             java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);

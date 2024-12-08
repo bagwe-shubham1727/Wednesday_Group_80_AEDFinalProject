@@ -99,11 +99,11 @@ public class bankServices extends javax.swing.JFrame {
         jPanel1.add(jLabelBankServicesLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 94, -1, 84));
 
         operationTxt.setForeground(new java.awt.Color(255, 255, 255));
-        operationTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Request Loan", " " }));
+        operationTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Request Loan", "Repay Loan" }));
         jPanel1.add(operationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 343, 146, -1));
 
         accountTxt.setForeground(new java.awt.Color(255, 255, 255));
-        accountTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student Account", "Police Account" }));
+        accountTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student Account" }));
         jPanel1.add(accountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 302, 146, -1));
 
         btnStudLogout.setBackground(new java.awt.Color(0, 0, 0));
@@ -161,7 +161,32 @@ public class bankServices extends javax.swing.JFrame {
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null, e);
                 }
-            }else if(accountType.equals("Police Account") && operation.equals("Deposit Salary")){
+            } else if(accountType.equals("Student Account") && operation.equals("Repay Loan")){
+                try{
+                    java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                    java.sql.Statement statement = connection.createStatement();
+                    String studentQuery = "SELECT * FROM universitysystem.students WHERE username = '"+username+"'";
+                    java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+                    
+//                    have to add validation if user user exists or not
+                    
+                    while(studentData.next()){
+                            String name = studentData.getString("username"); 
+                            int loanAmount = (studentData.getString("Loanamount") != null) ? Integer.parseInt(studentData.getString("Loanamount")) : 0;
+                            
+                            if (loanAmount == 0 || loanAmount < amount){
+                                JOptionPane.showMessageDialog(null, "Repayment Amount exceeds loan amount!");
+                                break;
+                            }
+                            
+                            bankservices service =  new bankservices(name,accountType,operation,amount);
+                            service.addServices();
+                    }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, e);
+                }
+            }
+            else if(accountType.equals("Police Account") && operation.equals("Deposit Salary")){
                 try{
                     java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
                     java.sql.Statement statement = connection.createStatement();
