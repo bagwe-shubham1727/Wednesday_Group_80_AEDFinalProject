@@ -83,7 +83,7 @@ public class crimereport {
 
             preparedStmt.execute();
             System.out.println("connection run");
-            JOptionPane.showMessageDialog(null, "Details Added");
+            JOptionPane.showMessageDialog(null, "Crime Reported Successfully");
 
             connection.close();
         } catch (Exception e) {

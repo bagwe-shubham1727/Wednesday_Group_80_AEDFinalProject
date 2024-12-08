@@ -596,7 +596,7 @@ public class staffAdmin extends javax.swing.JFrame {
             java.sql.Statement statement = connection.createStatement();
 
             statement.executeUpdate("DELETE FROM universitysystem.professors WHERE username = '"+profUserame+"'");
-            JOptionPane.showMessageDialog(null, "Professors Deleted added!");
+            JOptionPane.showMessageDialog(null, "Professors Deleted!");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
         }

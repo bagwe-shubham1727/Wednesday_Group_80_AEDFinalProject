@@ -280,6 +280,7 @@ public class crimeReport extends javax.swing.JFrame {
             //CrimeReport.CreateCrimeReport(name,phone,address,cd);
             crimereport report = new crimereport(name, phone, address, cd);
             report.addCrime();
+            clearFields();
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
@@ -382,4 +383,17 @@ public class crimeReport extends javax.swing.JFrame {
     private javax.swing.JButton submitBtn;
     private javax.swing.JButton viewBtn;
     // End of variables declaration//GEN-END:variables
+
+    public void clearFields() {
+        nameTxt.setText("");
+        phoneTxt.setText("");
+        addressTxt.setText("");
+        cdTxt.setText("");
+    }
+
+
+
+
+
+
 }
