@@ -4,11 +4,24 @@
  */
 package university;
 
+
 import emergencyEnterprise.crimeReport;
 import emergencyEnterprise.crimeReport;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.DriverManager;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -240,7 +253,7 @@ public class professor extends javax.swing.JFrame {
                 preparedStmt.execute();
                 System.out.println("connection run");
                 JOptionPane.showMessageDialog(null, "Details Added");
-
+                triggerEmail(Grade, Remarks, sName, Subject);
                 connection.close();
             } catch (Exception e) {
                 System.out.println(e);
@@ -248,9 +261,75 @@ public class professor extends javax.swing.JFrame {
             }
 
         }
+        
+        public static void triggerEmail(String Grade, String Remarks, String sName, String Subject){
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String studentQuery = "SELECT * FROM universitysystem.students WHERE username = '" + sName +"'";
+            java.sql.ResultSet studentData = statement.executeQuery(studentQuery);
+            
+            while (studentData.next()) {
+                String name = studentData.getString("name");
+                String email = studentData.getString("email");
+                sendEmail(email, Grade, Remarks, name, Subject);
+                break;
+            }
+            
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    
 
+    public static void sendEmail(String email, String Grade, String Remarks, String sName, String Subject) {
+        final String password = "ibsremjnquvvkapq";
+        String fromEmail = "bostonhomies4@gmail.com";
+        String toEmail = email;
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+ 
+        properties.put("mail.smtp.starttls.required", "true");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        });
+        MimeMessage msg = new MimeMessage(session);
+        try {
+            msg.setFrom(new InternetAddress(fromEmail));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            msg.setSubject(Subject + " Course Graded");
+ 
+            String bodyText ="Dear" + sName + ",\n\n"
+                        + "Your coursework has been graded by the professor.\n"
+                        + "Grade: " + Grade + "\n"
+                        + "Remarks: " + Remarks + "\n\n"
+                        + "Best regards,\n"
+                        + "University Administration";
+
+        // Set the body content
+            msg.setText(bodyText);
+
+        // Send the email
+        Transport.send(msg);
+        System.out.println("Sent message successfully to " + toEmail);
+        } catch (MessagingException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+ 
     }
 
+    }
+    
+    
 
     private void gradeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeTxtActionPerformed
         String StudentName = sNameTxt.getText();
