@@ -103,10 +103,10 @@ public class bankresponse {
 
             }
             
-            if (operation.equals("Deposit Amount")) {
+            if (operation.equals("Deposit Amount") && action.equals("Approve")) {
                 String policeQuery = "UPDATE universitysystem.police SET salary = salary + '" + amount + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(policeQuery);
-            } else if (operation.equals("Withdraw Amount")) {
+            } else if (operation.equals("Withdraw Amount") && action.equals("Approve")) {
                 String policeQuery = "UPDATE universitysystem.police SET salary = salary - '" + amount + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(policeQuery);
             }
@@ -114,10 +114,10 @@ public class bankresponse {
             
             
             
-            if(operation.equals("Repay Loan")){
+            if(operation.equals("Repay Loan") && action.equals("Approve")){
                 String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount - '" + amount + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(studentQuery);
-            } else if (operation.equals("Request Loan")) {
+            } else if (operation.equals("Request Loan") && action.equals("Approve")) {
                 String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount + '" + amount + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(studentQuery);
             }
@@ -154,7 +154,7 @@ public class bankresponse {
             }
 
             
-            JOptionPane.showMessageDialog(null, "Details Added");
+            JOptionPane.showMessageDialog(null, "Records Updated");
 
             connection.close();
         } catch (Exception e) {
