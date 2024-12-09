@@ -233,6 +233,7 @@ public class Employee extends javax.swing.JFrame {
     int currentSelectedCount = 0;
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         // TODO add your handling code here:
+        boolean medExist = medExists();
         String medName = lblMed.getText();
         String medPrice = lblPrice.getText();
         int medQuant = Integer.parseInt(lblQuant.getText());
@@ -243,16 +244,57 @@ public class Employee extends javax.swing.JFrame {
             try{
                 java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
                 java.sql.Statement statement = connection.createStatement();
+                //statement.executeUpdate("insert into universitysystem.medicine_taken" + "(student_username, medicine_name, quantity)" + "values ('"+currStudUsername+"','"+medName+"', '"+medQuant+"')");
+                
+                if (!medExist) {
+                    String sql = "INSERT INTO universitysystem.medicine_taken "
+                            + "(student_username, medicine_name, quantity) "
+                            + "VALUES (?, ?, ?)";
+
+                    java.sql.PreparedStatement pstmt = connection.prepareStatement(sql);
+                    pstmt.setString(1, currStudUsername);
+                    pstmt.setString(2, medName);
+                    pstmt.setInt(3, medQuant);
+                    pstmt.executeUpdate();
+                } else if (medExist) {
+                    statement.executeUpdate("UPDATE universitysystem.medicine_taken SET quantity = quantity + '"+medQuant+"' WHERE medicine_name = '"+medName+"' AND student_username = '"+currStudUsername+"'");
+                }
+                
+                
+                
+                
                 statement.executeUpdate("UPDATE universitysystem.students SET medicineTaken = '"+medName+"', medicineQuant = medicineQuant + '"+medQuant+"' where username ='"+currStudUsername+"'");
-                statement.executeUpdate("UPDATE universitysystem.medicine SET QUANTITY = QUANTITY - '"+medQuant+"'");
+                statement.executeUpdate("UPDATE universitysystem.medicine SET QUANTITY = QUANTITY - '"+medQuant+"' WHERE MEDICINE_NAME = '"+medName+"'");
                 JOptionPane.showMessageDialog(null,"Thank you for Purchase");
             }
             catch(Exception e){
                 JOptionPane.showMessageDialog(null,e);
             }
-        }
+}
+
     }//GEN-LAST:event_btnBuyActionPerformed
 
+    public boolean medExists(){
+        boolean medExists = false;
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String getMedQuery = "SELECT * FROM universitysystem.medicine_taken WHERE student_username='"+currStudUsername+"'";
+            java.sql.ResultSet medData = statement.executeQuery(getMedQuery);
+            
+            while(medData.next()){
+                String medName = medData.getString("MEDICINE_NAME");
+                if (medName.equals(lblMed.getText())){
+                    medExists = true;
+                }
+            }
+            
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return medExists;
+    }
+    
     private void tblMedicineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicineMouseClicked
         // TODO add your handling code here:
         DefaultTableModel tb1Model = (DefaultTableModel)tblMedicine.getModel();
@@ -282,27 +324,29 @@ public class Employee extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel medModel = (DefaultTableModel)tblMedTaken.getModel();
-        medModel.setRowCount(0);
         
-        try{
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
-            java.sql.Statement statement = connection.createStatement();
-            String getMedQuery = "SELECT * FROM universitysystem.students where username = '"+currStudUsername+"'";
-            java.sql.ResultSet medData = statement.executeQuery(getMedQuery);
-            
-            while(medData.next()){
-                String medName = medData.getString("medicineTaken");
-                String quantity = medData.getString("medicineQuant");
-                
-                String tbData[] = {medName,quantity};
-                
-                medModel.addRow(tbData);
-            }
-            
-         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-         }
+        medTakenRefTbl();
+//        DefaultTableModel medModel = (DefaultTableModel)tblMedTaken.getModel();
+//        medModel.setRowCount(0);
+//        
+//        try{
+//            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+//            java.sql.Statement statement = connection.createStatement();
+//            String getMedQuery = "SELECT * FROM universitysystem.students where username = '"+currStudUsername+"'";
+//            java.sql.ResultSet medData = statement.executeQuery(getMedQuery);
+//            
+//            while(medData.next()){
+//                String medName = medData.getString("medicineTaken");
+//                String quantity = medData.getString("medicineQuant");
+//                
+//                String tbData[] = {medName,quantity};
+//                
+//                medModel.addRow(tbData);
+//            }
+//            
+//         }catch(Exception e){
+//            JOptionPane.showMessageDialog(null,e);
+//         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -362,4 +406,31 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JTable tblMedTaken;
     private javax.swing.JTable tblMedicine;
     // End of variables declaration//GEN-END:variables
+
+public void medTakenRefTbl(){
+    
+    DefaultTableModel medModel = (DefaultTableModel)tblMedTaken.getModel();
+        medModel.setRowCount(0);
+        
+        try{
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Statement statement = connection.createStatement();
+            String getMedQuery = "SELECT * FROM universitysystem.medicine_taken where student_username = '"+currStudUsername+"'";
+            java.sql.ResultSet medData = statement.executeQuery(getMedQuery);
+            
+            while(medData.next()){
+                String medName = medData.getString("medicine_name");
+                String quantity = medData.getString("quantity");
+                
+                String tbData[] = {medName,quantity};
+                
+                medModel.addRow(tbData);
+            }
+            
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+         }
+
+    }
+
 }
