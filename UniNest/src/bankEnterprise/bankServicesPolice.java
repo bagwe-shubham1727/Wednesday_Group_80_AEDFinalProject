@@ -86,7 +86,6 @@ public class bankServicesPolice extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 269, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Welcome Users");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 195, -1, -1));
 
@@ -94,11 +93,11 @@ public class bankServicesPolice extends javax.swing.JFrame {
         jPanel1.add(jLabelBankServicesLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 99, -1, 84));
 
         operationTxt.setForeground(new java.awt.Color(255, 255, 255));
-        operationTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Deposit Salary" }));
+        operationTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Deposit Amount", "Withdraw Amount" }));
         jPanel1.add(operationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 348, 146, -1));
 
         accountTxt.setForeground(new java.awt.Color(255, 255, 255));
-        accountTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employer Account" }));
+        accountTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Police Account" }));
         jPanel1.add(accountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 307, 146, -1));
 
         btnStudLogout.setBackground(new java.awt.Color(0, 0, 0));
