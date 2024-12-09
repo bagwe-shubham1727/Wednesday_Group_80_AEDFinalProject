@@ -16,11 +16,11 @@ public class bankEmployee {
     String name;
     String gender;
     int age;
-    int phone;
+    long phone;
     String username;
     String password;
 
-    public bankEmployee(String name, String gender, int age, int phone, String username, String password) {
+    public bankEmployee(String name, String gender, int age, long phone, String username, String password) {
         this.setName(name);
         this.setPhone(phone);
         this.setAge(age);
@@ -53,11 +53,11 @@ public class bankEmployee {
         this.age = age;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -96,7 +96,7 @@ public class bankEmployee {
             System.out.println("connection insert");
 
             preparedStmt.setInt(3, age);
-            preparedStmt.setInt(4, phone);
+            preparedStmt.setLong(4, phone);
 
             preparedStmt.setString(5, username);
             preparedStmt.setString(6, password);
@@ -105,7 +105,7 @@ public class bankEmployee {
 
             preparedStmt.execute();
             System.out.println("connection run");
-            JOptionPane.showMessageDialog(null, "Details Added");
+            JOptionPane.showMessageDialog(null, "Bank Employee Added");
 
             connection.close();
         } catch (Exception e) {

@@ -42,13 +42,13 @@ public class bankAction extends javax.swing.JFrame {
         jLabelBankresponseLogo = new javax.swing.JLabel();
         nameTxt = new javax.swing.JTextField();
         accountTxt = new javax.swing.JTextField();
+        actionTakenTxt = new javax.swing.JComboBox<>();
         operationTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         bankserviceTable = new javax.swing.JTable();
         amountTxt = new javax.swing.JTextField();
         employeeTxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        actionTakenTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         viewBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -103,6 +103,9 @@ public class bankAction extends javax.swing.JFrame {
         accountTxt.setEnabled(false);
         jPanel3.add(accountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 205, -1));
 
+        actionTakenTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Approve", "Reject" }));
+        jPanel3.add(actionTakenTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 200, -1));
+
         operationTxt.setEnabled(false);
         jPanel3.add(operationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 205, -1));
 
@@ -138,7 +141,6 @@ public class bankAction extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setText("UserName:");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
-        jPanel3.add(actionTakenTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 205, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Account Type:");
@@ -187,7 +189,7 @@ public class bankAction extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Gender", "Age", "Phone", "Salary", "Designation"
+                "Name", "Gender", "Age", "Phone", "Balance", "Designation"
             }
         ));
         policeTableD.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -314,13 +316,16 @@ public class bankAction extends javax.swing.JFrame {
         accountTxt.setText(tb1account);
         operationTxt.setText(tb1operation);
         amountTxt.setText(tb1amount);
-        actionTakenTxt.setText(tb1action);
+        actionTakenTxt.setSelectedItem(tb1action);
+        //actionTakenTxt.setText(tb1action);
         
         if (!tb1action.isBlank()){
             actionTakenTxt.setEnabled(false);
+            submitBtn.setEnabled(false);
         }
         else {
             actionTakenTxt.setEnabled(true);
+            submitBtn.setEnabled(true);
         }
         
     }//GEN-LAST:event_bankserviceTableMouseClicked
@@ -378,13 +383,16 @@ public class bankAction extends javax.swing.JFrame {
         String operation = operationTxt.getText();
         int amount = Integer.parseInt(amountTxt.getText());
         String employee = employeeTxt.getText();
-        String action = actionTakenTxt.getText();
+        String action = actionTakenTxt.getSelectedItem().toString();
 
-        if(amountTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||actionTakenTxt.getText().isEmpty()||employeeTxt.getText().isEmpty()           ){
+        if(amountTxt.getText().isEmpty()|| nameTxt.getText().isEmpty()||actionTakenTxt.getSelectedItem().toString().isEmpty()||employeeTxt.getText().isEmpty()           ){
             JOptionPane.showMessageDialog(null, "Plz Enter Details!");
 
-        } else{
-
+        } 
+        else{
+            if (action.equals("Reject")){
+                JOptionPane.showMessageDialog(null, "Your request is unfortunately rejected! Pls try again later");
+            }
             // Community.CreateCommunity(house,person,community,city,hospital);
             // BankResponse.CreateBankResponse(name,accountType,operation,amount,employee,action);
             bankresponse response =  new bankresponse(name,accountType,operation,amount,employee,action,currRole);
@@ -506,7 +514,7 @@ public class bankAction extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField accountTxt;
-    private javax.swing.JTextField actionTakenTxt;
+    private javax.swing.JComboBox<String> actionTakenTxt;
     private javax.swing.JTextField amountTxt;
     private javax.swing.JTable bankserviceTable;
     private javax.swing.JButton btnReportCrime1;
