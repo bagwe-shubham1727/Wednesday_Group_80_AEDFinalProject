@@ -21,7 +21,8 @@ public class bankresponse {
     String action;
     String currRole;
 
-    public bankresponse(String name, String accountType, String operation, int amount, String employee, String action, String currRole) {
+    public bankresponse(String name, String accountType, String operation, int amount, String employee, String action,
+            String currRole) {
         this.setName(name);
         this.setAccountType(accountType);
         this.setOperation(operation);
@@ -89,7 +90,8 @@ public class bankresponse {
 
     public void addResponse() {
         try {
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem",
+                    "root", "user@1234");
 
             System.out.println("connection open");
             java.sql.Statement statement = connection.createStatement();
@@ -98,30 +100,31 @@ public class bankresponse {
             String query = "INSERT INTO universitysystem.bankresponse (Name,AccountType,Operation,Amount,Employee,ActionTaken) values(?,?,?,?,?,?)";
             System.out.println("connection insert");
             if ("student".equals(currRole)) {
-                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount + '" + amount + "' WHERE username = '" + name + "'";
+                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount + '" + amount
+                        + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(studentQuery);
 
             }
-            
+
             if (operation.equals("Deposit Amount") && action.equals("Approve")) {
-                String policeQuery = "UPDATE universitysystem.police SET salary = salary + '" + amount + "' WHERE username = '" + name + "'";
+                String policeQuery = "UPDATE universitysystem.police SET salary = salary + '" + amount
+                        + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(policeQuery);
             } else if (operation.equals("Withdraw Amount") && action.equals("Approve")) {
-                String policeQuery = "UPDATE universitysystem.police SET salary = salary - '" + amount + "' WHERE username = '" + name + "'";
+                String policeQuery = "UPDATE universitysystem.police SET salary = salary - '" + amount
+                        + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(policeQuery);
             }
-            
-            
-            
-            
-            if(operation.equals("Repay Loan") && action.equals("Approve")){
-                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount - '" + amount + "' WHERE username = '" + name + "'";
+
+            if (operation.equals("Repay Loan") && action.equals("Approve")) {
+                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount - '" + amount
+                        + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(studentQuery);
             } else if (operation.equals("Request Loan") && action.equals("Approve")) {
-                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount + '" + amount + "' WHERE username = '" + name + "'";
+                String studentQuery = "UPDATE universitysystem.students SET LoanAmount = LoanAmount + '" + amount
+                        + "' WHERE username = '" + name + "'";
                 statement.executeUpdate(studentQuery);
             }
-            
 
             // java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
             java.sql.PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -139,10 +142,12 @@ public class bankresponse {
 
             preparedStmt.execute();
             System.out.println("connection run");
-            
-            //String updateQuery = "UPDATE university.bankservices SET Employee = '" + employee + "' AND SET ActionTaken = '" + action + "' WHERE username = '" + name + "'";
-            //statement.executeUpdate(updateQuery);
-            
+
+            // String updateQuery = "UPDATE university.bankservices SET Employee = '" +
+            // employee + "' AND SET ActionTaken = '" + action + "' WHERE username = '" +
+            // name + "'";
+            // statement.executeUpdate(updateQuery);
+
             String updateQuery = "UPDATE universitysystem.bankservices SET Employee = ?, ActionTaken = ? WHERE Name = ?";
             try (java.sql.PreparedStatement pstmt = connection.prepareStatement(updateQuery)) {
                 pstmt.setString(1, employee);
@@ -153,10 +158,9 @@ public class bankresponse {
                 System.out.println(e);
             }
 
-            
             JOptionPane.showMessageDialog(null, "Records Updated");
 
-            connection.close();
+            // connection.close();
         } catch (Exception e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "please add data in correct format!");

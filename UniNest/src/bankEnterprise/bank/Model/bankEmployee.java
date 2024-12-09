@@ -79,7 +79,8 @@ public class bankEmployee {
 
     public void addEmployee() {
         try {
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem",
+                    "root", "user@1234");
 
             System.out.println("connection open");
             java.sql.Statement statement = connection.createStatement();
@@ -107,7 +108,7 @@ public class bankEmployee {
             System.out.println("connection run");
             JOptionPane.showMessageDialog(null, "Bank Employee Added");
 
-            connection.close();
+            // connection.close();
         } catch (Exception e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "please add data in correct format!");
