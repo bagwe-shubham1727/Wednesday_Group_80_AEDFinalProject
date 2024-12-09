@@ -88,7 +88,7 @@ public class InventoryEnterpriseLogin extends javax.swing.JFrame {
         labelRole.setText("ROLE:");
         jPanel1.add(labelRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 74, -1));
 
-        cfRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student", "Professor", "Police" }));
+        cfRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student", " " }));
         jPanel1.add(cfRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 90, -1));
 
         buttonLogin.setBackground(new java.awt.Color(204, 255, 255));
