@@ -151,7 +151,7 @@ try {
             if (username.equals("admin") && password.equals("admin")) {
                 JOptionPane.showMessageDialog(null, "Admin Login Successful!");
                 this.setVisible(false);
-                GymAdmin admin=new GymAdmin("admin","Administrator");
+                GymAdmin admin=new GymAdmin("admin","admin", "admin");
                 new ManageMembers(admin).setVisible(true);  // Redirect to ManageMembers for Admin
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Admin Credentials!");

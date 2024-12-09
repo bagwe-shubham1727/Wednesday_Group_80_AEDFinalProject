@@ -395,7 +395,7 @@ private void memberTableMouseClicked(java.awt.event.MouseEvent evt) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            GymAdmin admin=new GymAdmin("admin","Administartor");
+            GymAdmin admin=new GymAdmin("admin","admin", "admin");
             new ManageMembers(admin).setVisible(true);
             }
         });

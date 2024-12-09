@@ -168,7 +168,7 @@ public class uniLogin extends javax.swing.JFrame {
                     if (!correctPassword.equals(password)) {
                         JOptionPane.showMessageDialog(null, "You entered the password wrong");
                     } else {
-                        String profName = profData.getString("name");
+                        String profName = profData.getString("username");
                         String currentSubjectTeach = profData.getString("subjectTeach");
 
                         professor profObj = new professor();

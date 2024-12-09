@@ -204,8 +204,8 @@ String EmployeeUsername = "";
         String EnameTxt = employeeTable.getValueAt(employeeTable.getSelectedRow(), 0).toString();
         nameTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 0).toString());
         genderTxt.setSelectedItem(employeeTable.getValueAt(employeeTable.getSelectedRow(), 1).toString());
-        ageTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 2).toString());
-        phoneTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 3).toString());
+        ageTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 3).toString());
+        phoneTxt.setText(employeeTable.getValueAt(employeeTable.getSelectedRow(), 2).toString());
 
         try {
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
