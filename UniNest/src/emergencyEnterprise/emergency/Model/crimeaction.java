@@ -82,7 +82,8 @@ public class crimeaction {
         boolean actionExists = checkaction();
         if (!actionExists) {
             try {
-                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                java.sql.Connection connection = DriverManager
+                        .getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
 
                 System.out.println("connection open");
                 java.sql.Statement statement = connection.createStatement();
@@ -109,21 +110,22 @@ public class crimeaction {
                 System.out.println("connection run");
                 JOptionPane.showMessageDialog(null, "Details Added");
 
-                connection.close();
+                // connection.close();
             } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "please add data in correct format!");
             }
-        }
-        else if (actionExists){
+        } else if (actionExists) {
             try {
-                java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+                java.sql.Connection connection = DriverManager
+                        .getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
 
                 System.out.println("connection open");
                 java.sql.Statement statement = connection.createStatement();
                 System.out.println("connection open");
-                
-                String updateQuery = "UPDATE universitysystem.crimedetails SET action = '"+action+"' WHERE name = '"+name+"' AND crimeDetails = '"+cd+"'";
+
+                String updateQuery = "UPDATE universitysystem.crimedetails SET action = '" + action + "' WHERE name = '"
+                        + name + "' AND crimeDetails = '" + cd + "'";
                 statement.executeUpdate(updateQuery);
                 JOptionPane.showMessageDialog(null, "Details exists already, updated the action");
                 System.out.println("Update Successful");
@@ -132,35 +134,35 @@ public class crimeaction {
                 JOptionPane.showMessageDialog(null, "please add data in correct format!");
             }
         }
-        
 
     }
-    
+
     public boolean checkaction() {
         boolean actionExists = false;
         try {
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem", "root", "user@1234");
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitysystem",
+                    "root", "user@1234");
 
             System.out.println("connection open");
             java.sql.Statement statement = connection.createStatement();
             System.out.println("connection open");
 
-            String query = "SELECT * FROM universitysystem.crimedetails WHERE name = '"+name+"' AND crimeDetails = '"+cd+"'";
+            String query = "SELECT * FROM universitysystem.crimedetails WHERE name = '" + name
+                    + "' AND crimeDetails = '" + cd + "'";
             System.out.println("connection insert");
-            
+
             java.sql.ResultSet studentData = statement.executeQuery(query);
 
-                while (studentData.next()) {
-                    String action = studentData.getString("action") != null ? studentData.getString("action") : "";
-                    
-                    if (!action.isBlank()){
-                        actionExists = true;
-                    }
-                    
-                    break;
+            while (studentData.next()) {
+                String action = studentData.getString("action") != null ? studentData.getString("action") : "";
+
+                if (!action.isBlank()) {
+                    actionExists = true;
                 }
-                
-            
+
+                break;
+            }
+
         } catch (Exception e) {
             System.err.println(e);
         }
